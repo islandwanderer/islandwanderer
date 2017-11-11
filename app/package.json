@@ -1,8 +1,9 @@
 {
-  "name": "bowfolios",
+  "name": "islandwanderer",
   "private": true,
   "scripts": {
     "start": "meteor --no-release-check --settings ../config/settings.development.json",
+    "demo": "meteor --no-release-check --settings ../config/settings.demo.json",
     "lint": "eslint ./imports",
     "jsdoc": "./node_modules/.bin/jsdoc -c ./jsdoc.json -r .",
     "test": "cross-env TEST_WATCH=1 meteor test --driver-package meteortesting:mocha"

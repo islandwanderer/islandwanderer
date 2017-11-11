@@ -1,0 +1,35 @@
+<template name="Message_Page">
+
+	{{#if Template.subscriptionsReady}}
+
+		<div class="ui text container message-body raised segment">
+
+			<div class="ui center aligned top attached message-header basic segment header">
+				Message
+			</div>
+
+			<div class="ui attached basic form disabled segment">
+				<div class="ui message-window field">
+					<textarea rows="15">
+						{{#each recentMessages }}
+							{{> message }}
+						{{/each }}
+					</textarea>
+				</div>
+			</div>
+
+			<div class="ui bottom attached message-box basic segment">
+				{{#if currentUser}}
+					<form class="ui new-message form">
+						<div class="field">
+							<input type="text" name="text" placeholder="Add a message" autocomplete="off"/>
+						</div>
+					</form>
+				{{/if}}
+			</div>
+
+		</div>
+
+	{{/if}}
+
+</template>
