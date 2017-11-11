@@ -38,6 +38,9 @@ Template.Profile_Page.helpers({
               return { label: interest.name, selected: _.contains(selectedInterests, interest.name) };
             });
   },
+  getUsername() {
+    return FlowRouter.getParam('username');
+  },
 });
 
 
