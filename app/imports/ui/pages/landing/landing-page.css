@@ -1,36 +1,68 @@
 .landing-section-1 {
-  padding: 10px 10px 30px 10px;
-  background-color: #00B5AD;
-  color: #E5F9E7;
+  padding-top: 15%;
+  color: #1f7ebc;
+}
+
+.landing-section-1-2{
+  background-image: url("https://image.freepik.com/free-photo/beach-at-sunset-with-an-island-background_1259-23.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .landing-section-2 {
   padding: 20px 10px 20px 10px;
-  background-color: #E5F9E7;
-  color:  #00B5AD;
+  color: white;
 }
 
+
 .landing-section-3 {
-  padding: 20px 10px 30px 30px;
-  background-color: #00B5AD;
+  background-color: #3ed489;
+  font-family: 'Raleway', sans-sherif;
   color: #E5F9E7;
+  font-weight: 900;
+  font-size: 26px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
+
 
 .landing-section-5 {
   padding: 20px 10px 20px 10px;
-  background-color: #00B5AD;
-  color: #E5F9E7;
+  color: #1f7ebc7;
 }
 
 
 .landing-section-1-welcome {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-sherif;
   font-weight: 900;
-  font-size: 72px;
+  font-size: 150px;
 }
 
 .landing-section-header {
-  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  font-family: 'Raleway', sans-sherif;
   font-weight: 900;
-  font-size: 36px;
+  font-size: 26px;
+}
+
+.ui.three.column.grid.container{
+  padding-bottom: 50px;
+}
+
+.column{
+  text-align: center;
+}
+
+.border{
+  background-color: white;
+  padding-top: 5px;
+}
+
+.footer{
+  background-image: url("https://lh3.googleusercontent.com/90pBMBW9-fOJUho3QqbVoWCBOj8MMJ65aijqla6BbAFVMQTA79OoHfuIShEcviSPQ-v8js-2vcxw48YutK8Iq0n-PDs14Rv56zfE3voUJhC7PF8vaCNBSqbpT7eqaXYB3zSfUIdfBkT4W6DSoanVw7uXjaIFHdGngzeQE7YsfaY34E8KS0cDXlKkJovasDrfRlJqINV6m2TTEeWcyU7MpZfl6UK2SQdrNJwe57wPRt-bqm8PlpH9ETvTCVo5V0zt4Teaeer2WfVxLhQEoXPkZX5wAPrdLFtytY9ztjcNxtOmYF7bQ-NlZdo6P5_GG9QFqkvVpnVejXzWkPdJm8lJ4s_n2SkKlpf5LvCWxgQMoimQ2OKUn9deRcJMMyvJnzIET0BxRUUwflKIblf02JKXiY12guaul7PCOGfRFWyGGfE85HRpsrt9r0ouy5zueSCxTUaCXbD6399NEvdTeutk0nCrhAh3tEWURF0w8Dvz814TcjsAB5HgAK6l2Zf50G29d5eo6vUdPFmL7Vf-uS8IbpJXcjdJWJ82I6x2SBQZWaTfh2EXKk36hK_ijZga8v-kyAwbc9xHDcFLyX2bTjHsNnNb9OAdv94Cx09GqWnJ=w2733-h1475-no");
+  background-size: contain;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
