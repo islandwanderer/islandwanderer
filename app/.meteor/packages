@@ -50,4 +50,5 @@ insecure@1.0.7
 
 # Tests
 meteortesting:mocha
+momentjs:moment
 fullcalendar:fullcalendar
