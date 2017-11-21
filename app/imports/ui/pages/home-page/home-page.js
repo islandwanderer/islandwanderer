@@ -6,14 +6,14 @@ import { Interests } from '/imports/api/interest/InterestCollection';
 
 const selectedInterestsKey = 'selectedInterests';
 
-Template.Filter_Page.onCreated(function onCreated() {
+Template.Home_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(selectedInterestsKey, undefined);
 });
 
-Template.Filter_Page.helpers({
+Template.Home_Page.helpers({
   profiles() {
     // Initialize selectedInterests to all of them if messageFlags is undefined.
     if (!Template.instance().messageFlags.get(selectedInterestsKey)) {
@@ -36,7 +36,7 @@ Template.Filter_Page.helpers({
   },
 });
 
-Template.Filter_Page.events({
+Template.Home_Page.events({
   'submit .filter-data-form'(event, instance) {
     event.preventDefault();
     const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
