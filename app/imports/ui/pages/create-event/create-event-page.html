@@ -1,0 +1,54 @@
+<template name="Create_Event_Page">
+	{{#if Template.subscriptionsReady}}
+
+		<div class="ui text container segment">
+			<div class="ui dividing header">
+				Create New Event
+			</div>
+			<form class="ui equal width form profile-data-form {{ successClass }} {{ errorClass }}">
+
+        <div class="field">
+          {{> Text_Form_Control label="What" placeholder="What's happs?" value=profile.firstName errorMessage=(fieldError "eventWhat")}}
+         </div>
+
+				<div class="fields">
+					{{> Text_Form_Control label="Day" placeholder="Day of Event" value=profile.firstName errorMessage=(fieldError "eventDay")}}
+					{{> Text_Form_Control label="Time" placeholder="Time of Event" value=profile.lastName errorMessage=(fieldError "eventTime")}}
+        </div>
+
+        <div class="field">
+          {{> Text_Form_Control label="Maximum capacity" placeholder="Maximum Number of People able to Attend" value=profile.firstName errorMessage=(fieldError "eventMax")}}
+        </div>
+
+				<div class="ui basic segment">
+
+          <div class="field">
+            {{> Radio_Form_Control label="Meeting Location" name="meeting" radios=meeting}}
+            {{> Radio_Field name="meeting" label="At Location" checked="checked"}}
+            {{> Radio_Field name="meeting" label="At UH Campus" }}
+            {{> Radio_Field name="meeting" label="Other" }}
+
+          </div>
+
+          <div class="field">
+            {{> TextArea_Form_Control label="Tags" placeholder="Tags related to event" errorMessage=(fieldError "tags")}}
+          </div>
+
+					<div class="field">
+            {{> TextArea_Form_Control label="Comments" placeholder="Additional information about event" errorMessage=(fieldError "comments")}}
+					</div>
+
+        </div>
+
+				<button class="ui primary button" type="submit">Create</button>
+				{{#if displaySuccessMessage}}
+					<div class="ui success message">
+						<p>Event data successfully updated.</p>
+					</div>
+				{{/if}}
+			</form>
+		</div>
+
+	{{/if}}
+
+</template>
