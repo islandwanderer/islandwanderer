@@ -1,0 +1,56 @@
+<template name="Create_Event_Page">
+
+	{{#if Template.subscriptionsReady}}
+
+		<div class="ui text container segment">
+			<div class="ui dividing header">
+				Event Info
+			</div>
+			<form class="ui equal width form event-data-form {{ successClass }} {{ errorClass }}">
+
+				<div class="two fields">
+          <div class="field">
+					{{> Text_Form_Control label="What: " placeholder="Event name" value=event.eventName errorMessage=(fieldError "eventName")}}
+				  </div>
+          <div class="field">
+            {{> Text_Form_Control label="Max # of People: " placeholder="ex. 100" value=event.maxPeople errorMessage=(fieldError "maxPeople")}}
+          </div>
+        </div>
+
+        <div class="two fields">
+          <div class="ui dividing header">When: </div>
+          <div class="field">
+            {{> Text_Form_Control label="Date: " placeholder="Event date" value=event.eventDate errorMessage=(fieldError "eventDate")}}
+          </div>
+          <div class="field">
+            {{> Text_Form_Control label="Time of Day: " placeholder="ex. 100" value=event.eventTime errorMessage=(fieldError "eventTime")}}
+          </div>
+        </div>
+
+        <div class="two fields">
+          <div class="field">
+            {{> Text_Form_Control label="Where: " placeholder="Event Location" value=event.eventLocation errorMessage=(fieldError "eventLocation")}}
+          </div>
+          <div class="ui radio checkbox">
+            {{> Radio_Form_Control label="Meeting Place: " name="UH Campus" value=event.meetupLocation checked="checked" }}
+            {{> Radio_Form_Control name="At Location" value=event.meetupLocation }}
+            {{> Radio_Form_Control label="Meeting Place: " name="Other" value=event.meetupLocation}}
+          </div>
+        </div>
+
+				{{> TextArea_Form_Control label="Additional" value=event.comments placeholder="Additional information about event" errorMessage=(fieldError "additional")}}
+        {{> TextArea_Form_Control label="Tags" value=event.tags placeholder="Tags relating to event" errorMessage=(fieldError "tags")}}
+
+
+				<button class="ui primary button" type="submit">Create Event</button>
+				{{#if displaySuccessMessage}}
+					<div class="ui success message">
+						<p>Event data successfully updated.</p>
+					</div>
+				{{/if}}
+			</form>
+		</div>
+
+	{{/if}}
+
+</template>
