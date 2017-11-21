@@ -68,6 +68,14 @@ userRoutes.route('/home', {
   },
 });
 
+export const createEventPageRouteName = 'Create_Event_Page';
+userRoutes.route('/create-event', {
+  name: createEventPageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: createEventPageRouteName });
+  },
+});
+
 export const messagePageRouteName = 'Message_Page';
 userRoutes.route('/message', {
   name: messagePageRouteName,
