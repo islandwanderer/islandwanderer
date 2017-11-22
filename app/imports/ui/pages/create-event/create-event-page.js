@@ -8,7 +8,7 @@ import { Interests } from '/imports/api/interest/InterestCollection';
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
-Template.Profile_Page.onCreated(function onCreated() {
+Template.Create_Event_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
@@ -17,7 +17,7 @@ Template.Profile_Page.onCreated(function onCreated() {
   this.context = Profiles.getSchema().namedContext('Profile_Page');
 });
 
-Template.Profile_Page.helpers({
+Template.Create_Event_Page.helpers({
   successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
   },
@@ -44,7 +44,7 @@ Template.Profile_Page.helpers({
 });
 
 
-Template.Profile_Page.events({
+Template.Create_Event_Page.events({
   'submit .profile-data-form'(event, instance) {
     event.preventDefault();
     const firstName = event.target.First.value;
