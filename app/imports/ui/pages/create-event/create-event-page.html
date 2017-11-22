@@ -14,13 +14,12 @@
 				<div class="fields">
 					{{> Text_Form_Control label="Day" placeholder="Day of Event" value=profile.firstName errorMessage=(fieldError "eventDay")}}
 					{{> Text_Form_Control label="Time" placeholder="Time of Event" value=profile.lastName errorMessage=(fieldError "eventTime")}}
+
         </div>
 
         <div class="field">
           {{> Text_Form_Control label="Maximum capacity" placeholder="Maximum Number of People able to Attend" value=profile.firstName errorMessage=(fieldError "eventMax")}}
         </div>
-
-				<div class="ui basic segment">
 
           <div class="field">
             {{> Radio_Form_Control label="Meeting Location" name="meeting" radios=meeting}}
@@ -37,8 +36,6 @@
 					<div class="field">
             {{> TextArea_Form_Control label="Comments" placeholder="Additional information about event" errorMessage=(fieldError "comments")}}
 					</div>
-
-        </div>
 
 				<button class="ui primary button" type="submit">Create</button>
 				{{#if displaySuccessMessage}}
