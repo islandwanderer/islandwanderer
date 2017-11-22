@@ -4,18 +4,16 @@
 
 		<div class="ui text container message-body raised segment">
 
-			<div class="ui center aligned top attached message-header basic segment header">
+			<div class="ui center aligned large top attached message-header basic segment header">
 				Message
 			</div>
 
-			<div class="ui attached basic form disabled segment">
-				<div class="ui message-window field">
-					<textarea rows="15">
-						{{#each recentMessages }}
-							{{> message }}
-						{{/each }}
-					</textarea>
-				</div>
+			<div class="ui attached basic segment">
+				<ul class="message-window">
+					{{#each recentMessages }}
+						{{> message }}
+					{{/each }}
+				</ul>
 			</div>
 
 			<div class="ui bottom attached message-box basic segment">

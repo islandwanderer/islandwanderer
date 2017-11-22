@@ -8,7 +8,12 @@ import '/imports/ui/layouts/landing';
 import '/imports/ui/layouts/shared';
 import '/imports/ui/layouts/user';
 import '/imports/ui/pages/directory';
+<<<<<<< HEAD
+import '/imports/ui/pages/home-page';
+=======
 import '/imports/ui/pages/filter';
+import '/imports/ui/pages/create-event';
+>>>>>>> create-event-page
 import '/imports/ui/pages/landing';
 import '/imports/ui/pages/profile';
 import '/imports/ui/pages/message';
