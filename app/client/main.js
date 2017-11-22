@@ -13,6 +13,7 @@ import '/imports/ui/pages/landing';
 import '/imports/ui/pages/profile';
 import '/imports/ui/pages/message';
 import '/imports/ui/pages/calendar';
+import '/imports/ui/pages/admin';
 import '/imports/ui/stylesheets/style.css';
 import '/imports/api/base';
 import '/imports/api/profile';

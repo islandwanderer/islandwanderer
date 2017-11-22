@@ -1,0 +1,24 @@
+<template name="Admin_Page">
+	{{#if Template.subscriptionsReady}}
+
+		<div class="ui text container segment">
+ <div style="text-align: center" class="ui dividing header">
+				Administrator
+			</div>
+    </div>
+
+  {{/if}}
+
+  {{> Admin_Page_Directory profiles=profiles }}
+
+
+  <button class="ui primary button" type="submit">Remove Post</button>
+  <button class="ui primary button" type="submit">Give Feedback</button>
+  <button class="ui primary button" type="submit">Remove Tag</button>
+  {{#if displaySuccessMessage}}
+    <div class="ui success message">
+      <p>Flagged post successfully handled.</p>
+    </div>
+  {{/if}}
+
+</template>
