@@ -18,7 +18,6 @@
         </div>
 
         <div class="two fields">
-          <div class="ui dividing header">When: </div>
           <div class="field">
             {{> Text_Form_Control label="Date: " placeholder="Event date" value=event.eventDate errorMessage=(fieldError "eventDate")}}
           </div>
@@ -31,14 +30,19 @@
           <div class="field">
             {{> Text_Form_Control label="Where: " placeholder="Event Location" value=event.eventLocation errorMessage=(fieldError "eventLocation")}}
           </div>
+          <div class="field">
+            <label> Meeting Place: </label>
           <div class="ui radio checkbox">
-            {{> Radio_Form_Control label="Meeting Place: " name="UH Campus" value=event.meetupLocation checked="checked" }}
-            {{> Radio_Form_Control name="At Location" value=event.meetupLocation }}
-            {{> Radio_Form_Control label="Meeting Place: " name="Other" value=event.meetupLocation}}
+            <div class="row">
+              {{> Radio_Field name="meetupLocation" label="At Location" checked=checked}}
+              {{> Radio_Field name="meetupLocation" label="At UH Campus" }}
+              {{> Radio_Field name="meetupLocation" label="Other" }}
+            </div>
+          </div>
           </div>
         </div>
 
-				{{> TextArea_Form_Control label="Additional" value=event.comments placeholder="Additional information about event" errorMessage=(fieldError "additional")}}
+				{{> TextArea_Form_Control label="Additional Information" value=event.comments placeholder="Additional information about event" errorMessage=(fieldError "additional")}}
         {{> TextArea_Form_Control label="Tags" value=event.tags placeholder="Tags relating to event" errorMessage=(fieldError "tags")}}
 
 
