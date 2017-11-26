@@ -9,3 +9,4 @@ Template.registerHelper('fieldError', (fieldName) => {
   const errorObject = _.find(invalidKeys, (keyObj) => keyObj.name === fieldName);
   return errorObject && Template.instance().context.keyErrorMessage(errorObject.name);
 });
+``
