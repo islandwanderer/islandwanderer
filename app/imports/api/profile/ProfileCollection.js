@@ -19,7 +19,7 @@ class ProfileCollection extends BaseCollection {
   constructor() {
     super('Profile', new SimpleSchema({
       username: { type: String },
-      firstName: { type: String, optional: false },
+      firstName: { type: String, optional: true },
       lastName: { type: String, optional: true },
       email: { type: SimpleSchema.RegEx.Email, optional: true },
       text: {
