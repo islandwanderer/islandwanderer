@@ -15,7 +15,7 @@ Template.Message_Page.onCreated(function onCreated() {
 
 Template.Message_Page.helpers({
   recentMessages() {
-    return Messages.find({}, { sort: { username: 1 } });
+    return Messages.find({}, { sort: { sendDate: 1 } });
   },
 });
 
@@ -24,9 +24,9 @@ Template.Message_Page.events({
     event.preventDefault();
     const message = event.target.message.value;
     const events = event.target.event.value;
-    // const sendDate = new Date();
+    const sendDate = new Date();
     const username = FlowRouter.getParam('username');
-    const updatedMessageData = { username, message, events };
+    const updatedMessageData = { username, message, sendDate, events };
 
     console.log(updatedMessageData);
     instance.context.reset();

@@ -11,7 +11,7 @@ class MessageCollection extends BaseCollection {
       username: { type: String },
       events: { type: String },
       message: { type: String },
-      // sendDate: { type: Date, optional: true },
+      sendDate: { type: Date, optional: true },
     }, { tracker: Tracker }));
   }
 
@@ -20,16 +20,16 @@ class MessageCollection extends BaseCollection {
     const username = doc.username;
     const events = doc.event;
     const message = doc.message;
-    // const sendDate = doc.sendDate;
-    return { username, message, events };
+    const sendDate = doc.sendDate;
+    return { username, message, events, sendDate };
   }
 
-  define({ username, message = '', events = '' }) {
+  define({ username, message = '', sendDate = new Date(), events = '' }) {
     // make sure required fields are OK.
-    const checkPattern = { username: String, message: String, events: String };
-    check({ username, message, events }, checkPattern);
+    const checkPattern = { username: String, message: String, sendDate: Date, events: String };
+    check({ username, message, sendDate, events }, checkPattern);
     return this._collection.insert({
-      username, message, events,
+      username, message, sendDate, events
     });
   }
 }
