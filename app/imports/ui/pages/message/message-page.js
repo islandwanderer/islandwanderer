@@ -15,7 +15,7 @@ Template.Message_Page.onCreated(function onCreated() {
 
 Template.Message_Page.helpers({
   recentMessages() {
-    return Messages.find({}, { sort: { sendDate: 1 } });
+    return Messages.find({}, { sort: { username: 1 } });
   },
 });
 
@@ -24,10 +24,11 @@ Template.Message_Page.events({
     event.preventDefault();
     const message = event.target.message.value;
     const events = event.target.event.value;
-    const sendDate = new Date();
+    // const sendDate = new Date();
     const username = FlowRouter.getParam('username');
-    const updatedMessageData = { message, events, sendDate, username };
+    const updatedMessageData = { username, message, events };
 
+    console.log(updatedMessageData);
     instance.context.reset();
     const cleanData = Messages.getSchema().clean(updatedMessageData);
     instance.context.validate(cleanData);
@@ -42,4 +43,3 @@ Template.Message_Page.events({
     }
   },
 });
-

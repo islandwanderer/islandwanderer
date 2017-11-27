@@ -130,6 +130,26 @@
           "picture": "/images/casanova.jpg"
         }
       ]
+    },
+    {
+      "name": "MessageCollection",
+      "contents": [
+        {
+          "username": "henric",
+          "events": "test event",
+          "message": "hello there"
+        },
+        {
+          "username": "baek",
+          "events": "test event",
+          "message": "hi"
+        },
+        {
+          "username": "esb",
+          "events": "test event",
+          "message": "testing"
+        }
+      ]
     }
   ]
 }
