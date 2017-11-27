@@ -100,6 +100,14 @@ userRoutes.route('/admin', {
   },
 });
 
+export const reviewPageRouteName = 'Review_Page';
+userRoutes.route('/review', {
+  name: reviewPageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: reviewPageRouteName });
+  },
+});
+
 
 /*                        MISC ROUTES                       */
 FlowRouter.notFound = {

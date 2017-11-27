@@ -11,6 +11,7 @@ import '/imports/ui/pages/directory';
 import '/imports/ui/pages/home-page';
 import '/imports/ui/pages/create-event';
 import '/imports/ui/pages/landing';
+import '/imports/ui/pages/review';
 import '/imports/ui/pages/profile';
 import '/imports/ui/pages/message';
 import '/imports/ui/pages/calendar';
