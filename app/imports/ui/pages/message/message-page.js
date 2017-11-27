@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 // import { Meteor } from 'meteor/meteor';
-import { ReactiveDict } from 'meteor/reactive-dict';
+// import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 // import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
@@ -9,7 +9,7 @@ import { Messages } from '/imports/api/message/MessageCollection';
 Template.Message_Page.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
   this.subscribe(Messages.getPublicationName());
-  this.messageFlags = new ReactiveDict();
+  // this.messageFlags = new ReactiveDict();
   this.context = Messages.getSchema().namedContext('Message_Page');
 });
 
@@ -28,18 +28,15 @@ Template.Message_Page.events({
     const username = FlowRouter.getParam('username');
     const updatedMessageData = { username, message, sendDate, events };
 
-    console.log(updatedMessageData);
     instance.context.reset();
     const cleanData = Messages.getSchema().clean(updatedMessageData);
     instance.context.validate(cleanData);
 
     if (instance.context.isValid()) {
-      console.log('valid');
-      const docID = Messages.findDoc(FlowRouter.getParam('username'))._id;
-      Messages.update(docID, { $set: cleanData });
-      this.event.target.text.value = '';
-    } else {
-      console.log('invalid');
+      // const docID = Messages.findDoc(FlowRouter.getParam('username'))._id;
+      // Messages.update(docID, { $set: cleanData });
+      Messages.insert({ username: username, events: events, sendDate: sendDate, message: message });
+      this.event.target.message.value = '';
     }
   },
 });

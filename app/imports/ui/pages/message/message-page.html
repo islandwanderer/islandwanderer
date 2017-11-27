@@ -12,9 +12,14 @@
 			<div class="ui attached basic segment">
 				<ul class="message-window">
 					{{#each recentMessages }}
+						<!--<li>-->
+						<!--<div class="username">{{ username }}</div>-->
+						<!--<div class="messages">{{ message }}</div>-->
+						<!--</li>-->
 						<li>
-							<div class="username">{{ username }}</div>
-							<div class="messages">{{ message }}</div>
+							<div class="ui text-message label">
+								{{ username }}:  {{ message }}
+							</div>
 						</li>
 					{{/each }}
 				</ul>
