@@ -10,6 +10,7 @@ import '/imports/ui/layouts/user';
 import '/imports/ui/pages/directory';
 import '/imports/ui/pages/home-page';
 import '/imports/ui/pages/create-event';
+import '/imports/ui/pages/event';
 import '/imports/ui/pages/edit-event';
 import '/imports/ui/pages/landing';
 import '/imports/ui/pages/review';

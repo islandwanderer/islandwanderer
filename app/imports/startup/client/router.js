@@ -76,6 +76,14 @@ userRoutes.route('/create-event', {
   },
 });
 
+export const EventPageRouteName = 'Event_Page';
+userRoutes.route('/event', {
+  name: EventPageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: EventPageRouteName });
+  },
+});
+
 export const editEventPageRouteName = 'Edit_Event_Page';
 userRoutes.route('/edit-event', {
   name: editEventPageRouteName,
