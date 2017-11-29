@@ -26,7 +26,7 @@ Template.Message_Page.events({
     const events = event.target.event.value;
     const sendDate = new Date();
     const username = FlowRouter.getParam('username');
-    const updatedMessageData = { username, message, sendDate, events };
+    const updatedMessageData = { username, events, message, sendDate };
 
     instance.context.reset();
     const cleanData = Messages.getSchema().clean(updatedMessageData);
@@ -38,10 +38,8 @@ Template.Message_Page.events({
         events: events,
         sendDate: sendDate,
         message: message,
-      }, function () {
-        window.scrollTo(0, document.body.scrollHeight);
       });
-      this.event.target.message.value = '';
+      event.target.reset();
     }
   },
 });
