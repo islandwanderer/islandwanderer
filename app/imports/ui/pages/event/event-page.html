@@ -1,0 +1,42 @@
+<template name="Event_Page">
+  <div class="ui text container">
+    <div class="ui dividing header">
+     Event
+    </div>
+    {{#if Template.subscriptionsReady}}
+    <div class="ui three column grid container">
+
+      <div class="row">
+        <div class="column"> event.name</div>
+        <div class="column">event.date</div>
+        <div class="column">event.time</div>
+      </div>
+      <div class="row">
+        <div class="column">event.location</div>
+        <div class="column">event.meeting</div>
+        <div class="column">event.additional</div>
+      </div>
+      <div class="row">
+        <div class="column"> </div>
+        <div class="column"> event.tags</div>
+        <div class="column"> </div>
+      </div>
+      <div class="row">
+        <div class="column"> </div>
+        <div class="column">
+          <div class="row">
+            {{> Text_Form_Control placeholder="Tell a friend by username" value=event.eventRefer errorMessage=(fieldError "eventRefer")}}
+          </div>
+          <div class="row">
+          <button class="ui primary button" type="submit">Refer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{else}}
+    {{> Loading}}
+    {{/if}}
+
+  </div>
+</template>
