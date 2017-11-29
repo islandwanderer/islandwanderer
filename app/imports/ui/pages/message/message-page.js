@@ -33,9 +33,14 @@ Template.Message_Page.events({
     instance.context.validate(cleanData);
 
     if (instance.context.isValid()) {
-      // const docID = Messages.findDoc(FlowRouter.getParam('username'))._id;
-      // Messages.update(docID, { $set: cleanData });
-      Messages.insert({ username: username, events: events, sendDate: sendDate, message: message });
+      Messages.insert({
+        username: username,
+        events: events,
+        sendDate: sendDate,
+        message: message,
+      }, function () {
+        window.scrollTo(0, document.body.scrollHeight);
+      });
       this.event.target.message.value = '';
     }
   },

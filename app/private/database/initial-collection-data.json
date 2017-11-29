@@ -128,6 +128,22 @@
           "facebook": "henricasanova",
           "additional": "I am a Professor of Information and Computer Sciences at the University of Hawaii.",
           "picture": "/images/casanova.jpg"
+        },
+        {
+          "firstName": "Kiera",
+          "lastName": "Williams",
+          "username": "kieraw",
+          "email": "kieraw@hawaii.edu",
+          "additional": "",
+          "admin": "yes"
+        },
+        {
+          "firstName": "Natasha",
+          "lastName": "Meinzen",
+          "username": "nmeinzen",
+          "email": "nmeinzen@hawaii.edu",
+          "additional": "",
+          "admin": "yes"
         }
       ]
     },
