@@ -4,14 +4,23 @@
 
 		<div class="ui text container message-body raised segment">
 
-			<div class="ui center aligned large top attached message-header basic segment header">
+			<div class="ui center aligned large top attached message-header basic segment header form">
 				Message
+
 			</div>
 
 			<div class="ui attached basic segment">
 				<ul class="message-window">
 					{{#each recentMessages }}
-						{{> message }}
+						<!--<li>-->
+						<!--<div class="username">{{ username }}</div>-->
+						<!--<div class="messages">{{ message }}</div>-->
+						<!--</li>-->
+						<li>
+							<div class="ui text-message label">
+								{{ username }}:  {{ message }}
+							</div>
+						</li>
 					{{/each }}
 				</ul>
 			</div>
@@ -20,7 +29,12 @@
 				{{#if currentUser}}
 					<form class="ui new-message form">
 						<div class="field">
-							<input type="text" name="text" placeholder="Add a message" autocomplete="off"/>
+							{{> Text_Form_Control label="" name="event" placeholder="Choose event (Dropdown, checkbox, one of those)" }}
+						</div>
+						<div class="field">
+							<!--<input type="text" name="message" placeholder="Add a message" autocomplete="off"/>-->
+							{{> TextArea_Form_Control rows="2" label=" " name="message" type="text" placeholder="Type Message" }}
+							<button class="ui primary button" type="submit">Send</button>
 						</div>
 					</form>
 				{{/if}}

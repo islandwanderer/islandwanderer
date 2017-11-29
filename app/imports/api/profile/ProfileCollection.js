@@ -19,7 +19,7 @@ class ProfileCollection extends BaseCollection {
   constructor() {
     super('Profile', new SimpleSchema({
       username: { type: String },
-      firstName: { type: String, optional: false },
+      firstName: { type: String, optional: true },
       lastName: { type: String, optional: true },
       email: { type: SimpleSchema.RegEx.Email, optional: true },
       text: {
@@ -33,6 +33,7 @@ class ProfileCollection extends BaseCollection {
       facebook: { type: SimpleSchema.RegEx.Url, optional: true },
       twitter: { type: SimpleSchema.RegEx.Url, optional: true },
       additional: { type: String, optional: true },
+      admin: { type: String, optional: true },
     }, { tracker: Tracker }));
   }
 
@@ -53,7 +54,8 @@ class ProfileCollection extends BaseCollection {
     const facebook = doc.facebook;
     const twitter = doc.twitter;
     const additional = doc.additional;
-    return { firstName, lastName, username, email, text, slack, facebook, twitter, picture, additional };
+    const admin = doc.admin;
+    return { firstName, lastName, username, email, text, slack, facebook, twitter, picture, additional, admin };
   }
 
   /**
@@ -79,11 +81,11 @@ class ProfileCollection extends BaseCollection {
    */
   define({
            firstName = '', lastName = '', username, email = '', text = '', picture = '',
-           facebook = '', twitter = '', slack = '', additional = '',
+           facebook = '', twitter = '', slack = '', additional = '', admin = '',
          }) {
     // make sure required fields are OK.
-    const checkPattern = { firstName: String, lastName: String, username: String, additional: String };
-    check({ firstName, lastName, username, additional }, checkPattern);
+    const checkPattern = { firstName: String, lastName: String, username: String, additional: String, admin: String };
+    check({ firstName, lastName, username, additional, admin }, checkPattern);
 
     if (this.find({ username }).count() > 0) {
       throw new Meteor.Error(`${username} is previously defined in another Profile`);
@@ -94,7 +96,7 @@ class ProfileCollection extends BaseCollection {
     }
 
     return this._collection.insert({
-      firstName, lastName, username, email, text, picture, facebook, twitter, slack, additional });
+      firstName, lastName, username, email, text, picture, facebook, twitter, slack, additional, admin });
   }
 }
 

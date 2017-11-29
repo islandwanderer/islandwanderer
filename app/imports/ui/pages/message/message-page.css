@@ -31,3 +31,8 @@
 
 .new-message.form {
 }
+
+.text-message.label {
+  padding: 5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
+}
