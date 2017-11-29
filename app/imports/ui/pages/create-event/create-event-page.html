@@ -19,7 +19,7 @@
 
         <div class="two fields">
           <div class="field">
-            {{> Text_Form_Control label="Date: " placeholder="Event date" value=event.eventDate errorMessage=(fieldError "eventDate")}}
+            {{> Text_Form_Control label="Date: " placeholder="dd-mm-yyyy" value=event.eventDate errorMessage=(fieldError "eventDate")}}
           </div>
           <div class="field">
             {{> Text_Form_Control label="Time of Day: " placeholder="ex. 100" value=event.eventTime errorMessage=(fieldError "eventTime")}}
@@ -42,8 +42,8 @@
           </div>
         </div>
 
-				{{> TextArea_Form_Control label="Additional Information" value=event.comments placeholder="Additional information about event" errorMessage=(fieldError "additional")}}
-        {{> TextArea_Form_Control label="Tags" value=event.tags placeholder="Tags relating to event" errorMessage=(fieldError "tags")}}
+				{{> TextArea_Form_Control label="Additional Information" value=event.comments placeholder="Additional information about event" errorMessage=(fieldError "eventAdditional")}}
+        {{> TextArea_Form_Control label="Tags" value=event.tags placeholder="Tags relating to event" errorMessage=(fieldError "eventTags")}}
 
 
 				<button class="ui primary button" type="submit">Create Event</button>

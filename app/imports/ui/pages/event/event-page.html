@@ -21,17 +21,29 @@
         <div class="column"> event.tags</div>
         <div class="column"> </div>
       </div>
+    </div>
+    <div class="ui two column grid containter">
+
       <div class="row">
-        <div class="column"> </div>
         <div class="column">
-          <div class="row">
+          <button class="ui primary button" type="submit">RSVP</button>
+        </div>
+        <div class="column">
             {{> Text_Form_Control placeholder="Tell a friend by username" value=event.eventRefer errorMessage=(fieldError "eventRefer")}}
-          </div>
           <div class="row">
           <button class="ui primary button" type="submit">Refer</button>
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="column">
+          <button class="ui primary button" type="submit">Delete</button>
+        </div>
+      </div>
+      <div class="column">
+        <button class="ui primary button" type="submit">Edit</button>
+      </div>
+    </div>
     </div>
 
     {{else}}
