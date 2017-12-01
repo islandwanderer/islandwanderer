@@ -42,8 +42,8 @@
           </div>
         </div>
 
-				{{> TextArea_Form_Control label="Additional Information" value=event.comments placeholder="Additional information about event" errorMessage=(fieldError "additional")}}
-        {{> TextArea_Form_Control label="Tags" value=event.tags placeholder="Tags relating to event" errorMessage=(fieldError "tags")}}
+				{{> TextArea_Form_Control label="Additional Information" value=event.comments placeholder="i.e. 'Long hike, bring water' " errorMessage=(fieldError "additional")}}
+        {{> TextArea_Form_Control label="Tags" value=event.tags placeholder= "i.e 'Hiking' 'Beach' 'morning' 'allday' etc" errorMessage=(fieldError "tags")}}
 
 
 				<button class="ui primary button" type="submit">Create Event</button>
