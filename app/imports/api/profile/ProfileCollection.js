@@ -1,6 +1,6 @@
 import SimpleSchema from 'simpl-schema';
 import BaseCollection from '/imports/api/base/BaseCollection';
-import { Interests } from '/imports/api/interest/InterestCollection';
+import { Tags } from '/imports/api/tag/TagCollection';
 import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
@@ -50,7 +50,7 @@ class ProfileCollection extends BaseCollection {
    * @param { Object } description Object with required key username.
    * Remaining keys are optional.
    * Username must be unique for all users. It should be the UH email account.
-   * Interests is an array of defined interest names.
+   * Tagss is an array of defined interest names.
    * @throws { Meteor.Error } If a user with the supplied username already exists, or
    * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
    * @returns The newly created docID.
@@ -66,8 +66,8 @@ class ProfileCollection extends BaseCollection {
       throw new Meteor.Error(`${username} is previously defined in another Profile`);
     }
 
-    // Throw an error if any of the passed Interest names are not defined.
-    Interests.assertNames(interests);
+    // Throw an error if any of the passed Tags names are not defined.
+    Tags.assertNames(interests);
 
     // Throw an error if there are duplicates in the passed interest names.
     if (interests.length !== _.uniq(interests).length) {

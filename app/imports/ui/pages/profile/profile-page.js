@@ -3,13 +3,13 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
-import { Interests } from '/imports/api/interest/InterestCollection';
+import { Events } from '/imports/api/event/EventCollection';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
 Template.Profile_Page.onCreated(function onCreated() {
-  this.subscribe(Interests.getPublicationName());
+  this.subscribe(Events.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
@@ -30,12 +30,12 @@ Template.Profile_Page.helpers({
   profile() {
     return Profiles.findDoc(FlowRouter.getParam('username'));
   },
-  interests() {
+  events() {
     const profile = Profiles.findDoc(FlowRouter.getParam('username'));
-    const selectedInterests = profile.interests;
-    return profile && _.map(Interests.findAll(),
-            function makeInterestObject(interest) {
-              return { label: interest.name, selected: _.contains(selectedInterests, interest.name) };
+    const selectedEvents = profile.events;
+    return profile && _.map(Events.findAll(),
+            function makeEventObject(Event) {
+              return { label: Event.name, selected: _.contains(selectedEvents, Event.name) };
             });
   },
   getUsername() {
@@ -56,10 +56,10 @@ Template.Profile_Page.events({
     const facebook = event.target.Facebook.value;
     const instagram = event.target.Instagram.value;
     const bio = event.target.Bio.value;
-    const selectedInterests = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
-    const interests = _.map(selectedInterests, (option) => option.value);
+    const selectedEvents = _.filter(event.target.Events.selectedOptions, (option) => option.selected);
+    const events = _.map(selectedEvents, (option) => option.value);
 
-    const updatedProfileData = { firstName, lastName, title, picture, github, facebook, instagram, bio, interests,
+    const updatedProfileData = { firstName, lastName, title, picture, github, facebook, instagram, bio, events,
       username };
 
     // Clear out any old validation errors.

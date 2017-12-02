@@ -1,23 +1,23 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { _ } from 'meteor/underscore';
-import { Profiles } from '/imports/api/profile/ProfileCollection';
-import { Interests } from '/imports/api/interest/InterestCollection';
+// import { _ } from 'meteor/underscore';
+import { Events } from '/imports/api/event/EventCollections';
+import { Tags } from '/imports/api/tag/TagCollections';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
-Template.Create_Event_Page.onCreated(function onCreated() {
-  this.subscribe(Interests.getPublicationName());
-  this.subscribe(Profiles.getPublicationName());
+Template.Edit_Event_Page.onCreated(function onCreated() {
+  this.subscribe(Events.getPublicationName());
+  this.subscribe(Tags.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
-  this.context = Profiles.getSchema().namedContext('Profile_Page');
+  this.context = Events.getSchema().namedContext('Event_Page');
 });
 
-Template.Create_Event_Page.helpers({
+Template.Edit_Event_Page.helpers({
   successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
   },
@@ -27,51 +27,39 @@ Template.Create_Event_Page.helpers({
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
-  profile() {
-    return Profiles.findDoc(FlowRouter.getParam('username'));
+  event() {
+    return Events.findDoc(FlowRouter.getParam('eventName'));
   },
-  interests() {
-    const profile = Profiles.findDoc(FlowRouter.getParam('username'));
-    const selectedInterests = profile.interests;
-    return profile && _.map(Interests.findAll(),
-            function makeInterestObject(interest) {
-              return { label: interest.name, selected: _.contains(selectedInterests, interest.name) };
-            });
-  },
-  getUsername() {
-    return FlowRouter.getParam('username');
+  geteventName() {
+    return FlowRouter.getParam('eventName');
   },
 });
 
 
-Template.Create_Event_Page.events({
-  'submit .profile-data-form'(event, instance) {
+Template.Edit_Event_Page.events({
+  'submit .event-data-form'(event, instance) {
     event.preventDefault();
-    const firstName = event.target.First.value;
-    const lastName = event.target.Last.value;
-    const title = event.target.Title.value;
-    const username = FlowRouter.getParam('username'); // schema requires username.
-    const picture = event.target.Picture.value;
-    const github = event.target.Github.value;
-    const facebook = event.target.Facebook.value;
-    const instagram = event.target.Instagram.value;
-    const bio = event.target.Bio.value;
-    const selectedInterests = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
-    const interests = _.map(selectedInterests, (option) => option.value);
-
-    const updatedProfileData = { firstName, lastName, title, picture, github, facebook, instagram, bio, interests,
-      username };
+    const eventName = event.target.eventName.value;
+    const max = event.target.maxPeople.value;
+    const date = event.target.eventDate.value;
+    const time = event.target.eventTime.value;
+    const name = FlowRouter.getParam('eventName'); // schema requires username.
+    const location = event.target.eventLocation.value;
+    const tags = event.target.Github.value;
+    const additional = event.target.eventAdditional.value;
+    const updatedEventData = { eventName, max, date, time, location, additional, tags,
+      name };
 
     // Clear out any old validation errors.
     instance.context.reset();
-    // Invoke clean so that updatedProfileData reflects what will be inserted.
-    const cleanData = Profiles.getSchema().clean(updatedProfileData);
+    // Invoke clean so that updatedEventData reflects what will be inserted.
+    const cleanData = Events.getSchema().clean(updatedEventData);
     // Determine validity.
     instance.context.validate(cleanData);
 
     if (instance.context.isValid()) {
-      const docID = Profiles.findDoc(FlowRouter.getParam('username'))._id;
-      const id = Profiles.update(docID, { $set: cleanData });
+      const docID = Events.findDoc(FlowRouter.getParam('eventName'))._id;
+      const id = Events.update(docID, { $set: cleanData });
       instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
     } else {

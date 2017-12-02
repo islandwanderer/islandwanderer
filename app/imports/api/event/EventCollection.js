@@ -19,7 +19,7 @@ class EventCollection extends BaseCollection {
   constructor() {
     super('Event', new SimpleSchema({
       eventName: { type: String },
-      name: { type: Number, min: 0 },
+      username: { type: String, min: 0 },
       maxPeople: { type: String },
       eventDate: { type: String,
         regEx: /^(?:(?:31(\\|-|\\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/ },
@@ -46,17 +46,18 @@ class EventCollection extends BaseCollection {
    * @throws {Meteor.Error} If the event definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ eventName, eventDate, eventTime, eventLocation, eventAdditional, eventTags }) {
+  define({ eventName, eventDate, eventTime, eventLocation, eventAdditional, eventTags, eventAttending }) {
     check(eventName, String);
     check(eventLocation, String);
     check(eventAdditional, String);
     check(eventTags, String);
     check(eventDate, String);
     check(eventTime, String);
+    check(eventAttending, String);
     if (this.find({ eventName }).count() > 0) {
       throw new Meteor.Error(`${eventName} is previously defined in another Interest`);
     }
-    return this._collection.insert({ eventName, eventDate, eventTime, eventLocation, eventAdditional, eventTags });
+    return this._collection.insert({ eventName, eventDate, eventTime, eventLocation, eventAdditional, eventTags, eventAttending });
   }
 
   /**
