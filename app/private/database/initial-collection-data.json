@@ -5,57 +5,83 @@
       "name": "TagCollection",
       "contents": [
         {
-          "name": "Hiking"
+          "name": "Hike"
         },
         {
           "name": "Beach"
         },
         {
+          "name": "weekend"
+        },
+        {
+          "name": "sunset"
+        },
+        {
           "name": "allday"
-        },
-        {
-          "name": "Saturday"
-        },
-        {
-          "name": "North Shore"
         }
       ]
     },
     {
-      "name": "EventCollection",
+      "name": "ProfileCollection",
       "contents": [
         {
-          "eventName": "Manoa Falls Hike",
-          "maxPeople": "15",
-          "eventDate": "12.17.17",
-          "eventTime": "11 AM",
-          "eventLocation": "Manoa Falls",
-          "additional": "Beware of the rain",
-          "tags": [
-            "hike, Sunday, morning, manoa falls"
-          ]
+          "firstName": "Lee",
+          "lastName": "Altenberg",
+          "username": "altenber",
+          "bio": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
+          "interests": [
+            "Evolutionary Computation"
+          ],
+          "title": "Associate Professor, Information and Computer Sciences",
+          "picture": "/images/altenberg.jpg"
         },
         {
-          "eventName": "Diamond Head Hike",
-          "maxPeople": "20",
-          "eventDate": "12.20.17",
-          "eventTime": "5 PM",
-          "eventLocation": "Diamond Head",
-          "additional": " ",
-          "tags": [
-            "hike, Wednesday, dusk, diamond head, sunset"
-          ]
+          "firstName": "Kyungim",
+          "lastName": "Baek",
+          "username": "baek",
+          "bio": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
+          "interests": [
+            "Computer Vision"
+          ],
+          "title": "Associate Professor, Information and Computer Sciences",
+          "picture": "/images/baek.jpg"
         },
         {
-          "eventName": "North Shore Explore",
-          "maxPeople": "7",
-          "eventDate": "12.22.17",
-          "eventTime": "8 AM",
-          "eventLocation": "North Shore",
-          "additional": "All day trip. Will try to do all the tourist things",
-          "tags": [
-            "north shore, Friday, allday, tourist"
-          ]
+          "firstName": "Edo",
+          "lastName": "Biagioni",
+          "username": "esb",
+          "bio": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
+          "interests": [
+            "Mobile Networks",
+            "Sailing"
+          ],
+          "title": "Associate Professor, Information and Computer Sciences",
+          "picture": "/images/biagioni.jpg"
+        },
+        {
+          "firstName": "Kim",
+          "lastName": "Binsted",
+          "username": "binsted",
+          "bio": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
+          "interests": [
+            "Mars",
+            "Imu Cooking"
+          ],
+          "title": "Associate Professor, Information and Computer Sciences",
+          "picture": "/images/binsted.jpg"
+        },
+        {
+          "firstName": "Henri",
+          "lastName": "Casanova",
+          "username": "henric",
+          "github": "henricasanova",
+          "bio": "I am a Professor of Information and Computer Sciences at the University of Hawaii.",
+          "interests": [
+            "Surfing",
+            "Photography"
+          ],
+          "title": "Professor, Information and Computer Sciences",
+          "picture": "/images/casanova.jpg"
         }
       ]
     }

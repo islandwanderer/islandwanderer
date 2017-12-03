@@ -25,8 +25,7 @@ class TagCollection extends BaseCollection {
   /**
    * Defines a new Tag.
    * @example
-   * Tags.define({ name: 'Software Engineering',
-   *                    description: 'Methods for group development of large, high quality software systems' });
+   * Tags.define({ name: 'Software Engineering'});
    * @param { Object } description Object with keys name and description.
    * Name must be previously undefined. Description is optional.
    * Creates a "slug" for this name and stores it in the slug field.

@@ -3,13 +3,13 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
-import { Events } from '/imports/api/event/EventCollection';
+import { Tags } from '/imports/api/tag/TagCollection';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
 Template.Profile_Page.onCreated(function onCreated() {
-  this.subscribe(Events.getPublicationName());
+  this.subscribe(Tags.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
@@ -30,12 +30,12 @@ Template.Profile_Page.helpers({
   profile() {
     return Profiles.findDoc(FlowRouter.getParam('username'));
   },
-  events() {
+  tags() {
     const profile = Profiles.findDoc(FlowRouter.getParam('username'));
-    const selectedEvents = profile.events;
-    return profile && _.map(Events.findAll(),
-            function makeEventObject(Event) {
-              return { label: Event.name, selected: _.contains(selectedEvents, Event.name) };
+    const selectedTags = profile.tags;
+    return profile && _.map(Tags.findAll(),
+            function makeTagObject(tag) {
+              return { label: tag.name, selected: _.contains(selectedTags, tag.name) };
             });
   },
   getUsername() {
@@ -56,10 +56,10 @@ Template.Profile_Page.events({
     const facebook = event.target.Facebook.value;
     const instagram = event.target.Instagram.value;
     const bio = event.target.Bio.value;
-    const selectedEvents = _.filter(event.target.Events.selectedOptions, (option) => option.selected);
-    const events = _.map(selectedEvents, (option) => option.value);
+    const selectedTags = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
+    const tags = _.map(selectedTags, (option) => option.value);
 
-    const updatedProfileData = { firstName, lastName, title, picture, github, facebook, instagram, bio, events,
+    const updatedProfileData = { firstName, lastName, title, picture, github, facebook, instagram, bio, tags,
       username };
 
     // Clear out any old validation errors.

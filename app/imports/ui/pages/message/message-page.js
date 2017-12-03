@@ -4,13 +4,13 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
-import { Events } from '/imports/api/event/EventCollection';
+import { Tags } from '/imports/api/tag/TagCollection';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
 Template.Message_Page.onCreated(function onCreated() {
-  this.subscribe(Interests.getPublicationName());
+  this.subscribe(Tags.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
@@ -31,12 +31,12 @@ Template.Message_Page.helpers({
   profile() {
     return Profiles.findDoc(FlowRouter.getParam('username'));
   },
-  interests() {
+  iags() {
     const profile = Profiles.findDoc(FlowRouter.getParam('username'));
-    const selectedInterests = profile.interests;
-    return profile && _.map(Interests.findAll(),
-            function makeInterestObject(interest) {
-              return { label: interest.name, selected: _.contains(selectedInterests, interest.name) };
+    const selectedTags = profile.iags;
+    return profile && _.map(Tags.findAll(),
+            function makeTagObject(iag) {
+              return { label: iag.name, selected: _.contains(selectedTags, iag.name) };
             });
   },
   recentMessages() {
@@ -62,10 +62,10 @@ Template.Message_Page.events({
   //   const facebook = event.target.Facebook.value;
   //   const instagram = event.target.Instagram.value;
   //   const bio = event.target.Bio.value;
-  //   const selectedInterests = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
-  //   const interests = _.map(selectedInterests, (option) => option.value);
+  //   const selectedTags = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
+  //   const iags = _.map(selectedTags, (option) => option.value);
   //
-  //   const updatedProfileData = { firstName, lastName, title, picture, github, facebook, instagram, bio, interests,
+  //   const updatedProfileData = { firstName, lastName, title, picture, github, facebook, instagram, bio, iags,
   //     username };
   //
   //   // Clear out any old validation errors.
