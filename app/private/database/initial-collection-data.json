@@ -166,6 +166,52 @@
           "message": "testing"
         }
       ]
+    },
+    {
+      "name": "EventCollection",
+      "contents": [
+        {
+          "eventName": "newEvent1",
+          "maxPeople": 25,
+          "eventDate": "12.23.2017",
+          "eventTime": "5AM",
+          "eventLocation": "Diamond Head",
+          "eventAdditional": "bring h2o",
+          "eventTags": "hiking, diamond head, over break",
+          "eventAttending": [
+            "amaskey",
+            "kieraw",
+            "nmeinzen"
+          ]
+        },
+        {
+          "eventName": "newEvent2",
+          "maxPeople": 25,
+          "eventDate": "12.23.2017",
+          "eventTime": "5AM",
+          "eventLocation": "Diamond Head",
+          "eventAdditional": "bring h2o",
+          "eventTags": "hiking, diamond head, over break",
+          "eventAttending": [
+            "kieraw",
+            "nmeinzen"
+          ]
+        },
+        {
+          "eventName": "newEvent3",
+          "maxPeople": 25,
+          "eventDate": "12.23.2017",
+          "eventTime": "5AM",
+          "eventLocation": "Diamond Head",
+          "eventAdditional": "bring h2o",
+          "eventTags": "hiking, diamond head, over break",
+          "eventAttending": [
+            "amaskey",
+            "henric",
+            "esb"
+          ]
+        }
+      ]
     }
   ]
 }
