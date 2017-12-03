@@ -85,7 +85,7 @@ userRoutes.route('/event', {
 });
 
 export const editEventPageRouteName = 'Edit_Event_Page';
-userRoutes.route('/edit-event', {
+userRoutes.route('/edit-event/:_id', {
   name: editEventPageRouteName,
   action() {
     BlazeLayout.render('User_Layout', { main: editEventPageRouteName });

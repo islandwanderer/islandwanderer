@@ -11,11 +11,12 @@ const displayErrorMessages = 'displayErrorMessages';
 
 Template.Create_Event_Page.onCreated(function onCreated() {
   this.subscribe(Tags.getPublicationName());
+  this.subscribe(Event.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
-  this.context = Profiles.getSchema().namedContext('Profile_Page');
+  this.context = Event.getSchema().namedContext('Edit_Event_Page');
 });
 
 Template.Create_Event_Page.helpers({
@@ -35,7 +36,7 @@ Template.Create_Event_Page.helpers({
     return Event.findDoc(FlowRouter.getParam('eventName'));
   },
   tags() {
-    const event = Profiles.findDoc(FlowRouter.getParam('eventName'));
+    const event = Events.findDoc(FlowRouter.getParam('eventName'));
     const selectedTags = event.tags;
     return event && _.map(Tags.findAll(),
         function makeTagObject(tag) {
@@ -44,6 +45,16 @@ Template.Create_Event_Page.helpers({
   },
   getUsername() {
     return Profiles.FlowRouter.getParam('username');
+  },
+  eventDataField(fieldName) {
+    const eventData = Event.findOne(FlowRouter.getParam('_id'));
+    // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
+    return eventData && eventData[fieldName];
+  },
+  fieldError(fieldName) {
+    const invalidKeys = Template.instance().context.invalidKeys();
+    const errorObject = _.find(invalidKeys, (keyObj) => keyObj.name === fieldName);
+    return errorObject && Template.instance().context.keyErrorMessage(errorObject.name);
   },
 });
 
@@ -68,26 +79,32 @@ Template.Create_Event_Page.events({
     const additional = event.target.eventAdditional.value;
     const selectedTags = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
     const tags = _.map(selectedTags, (option) => option.value);
+    const attending = _.map(event.target.eventAttending.selectedOptions, (option) => option.selected.value);
 
-    const updatedProfileData = { name, max, date, time, location, additional, tags,
-      username };
+    const updatedEventData = { name, max, date, time, location, additional, tags, attending, username };
 
     // Clear out any old validation errors.
     instance.context.reset();
-    // Invoke clean so that updatedProfileData reflects what will be inserted.
-    const cleanData = Profiles.getSchema().clean(updatedProfileData);
+    // Invoke clean so that updatedEventData reflects what will be inserted.
+    const cleanData = Event.getSchema().clean(updatedEventData);
     // Determine validity.
     instance.context.validate(cleanData);
 
     if (instance.context.isValid()) {
-      const docID = Profiles.findDoc(FlowRouter.getParam('username'))._id;
-      const id = Profiles.update(docID, { $set: cleanData });
+      const docID = Event.findDoc(FlowRouter.getParam('eventName'))._id;
+      Event.update(FlowRouter.getParam('_id'), { $set: cleanData });
+      const id = Event.update(docID, { $set: cleanData });
       instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
     } else {
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
     }
+  },
+  'click .delete'(event, instance) {
+    const selected = instance.context.get('Event');
+    instance.context.remove({ _id: selected });
+    FlowRouter.go('Home_Page');
   },
 });
 

@@ -10,10 +10,10 @@
 
 				<div class="two fields">
           <div class="field">
-					{{> Text_Form_Control label="What: " placeholder="Event name" value=event.eventName errorMessage=(fieldError "eventName")}}
+					{{> Text_Form_Control label="What: " required=true placeholder="Event name"  value=(eventDataField 'eventName') errorMessage=(fieldError "eventName")}}
 				  </div>
           <div class="field">
-            {{> Text_Form_Control label="Max # of People: " placeholder="ex. 100" value=event.maxPeople errorMessage=(fieldError "maxPeople")}}
+            {{> Text_Form_Control label="Max # of People: " required=true placeholder="ex. 100"  value=(eventDataField 'maxPeople') errorMessage=(fieldError "maxPeople")}}
           </div>
         </div>
 
@@ -21,7 +21,6 @@
           <div class="field">
             <label>Date</label>
             <select class="ui dropdown" name="Day">
-              <option value="">(Select one)</option>
               <option value="1" selected=true>1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -55,7 +54,6 @@
               <option value="31">31</option>
             </select>
             <select class="ui dropdown" name="Month">
-              <option value="">(Select one)</option>
               <option value="1" selected=true>Janurary</option>
               <option value="2">February</option>
               <option value="3">March</option>
@@ -70,7 +68,6 @@
               <option value="12">December</option>
             </select>
             <select class="ui dropdown" name="Year">
-              <option value="">(Select one)</option>
               <option value="2017" selected=true>2017</option>
               <option value="2018">2018</option>
             </select>
@@ -79,7 +76,6 @@
           <div class="field">
             <label>Time</label>
             <select class="ui dropdown" name="Hour">
-              <option value="">(Select one)</option>
               <option value="1" selected=true>1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -94,14 +90,12 @@
               <option value="12">12</option>
             </select>
             <select class="ui dropdown" name="Minute">
-              <option value="">(Select one)</option>
               <option value="1" selected=true>00</option>
               <option value="2">15</option>
               <option value="3">30</option>
               <option value="4">45</option>
             </select>
             <select class="ui dropdown" name="meridiem">
-              <option value="">(Select one)</option>
               <option value="1" selected=true>AM</option>
               <option value="2">PM</option>
             </select>
@@ -110,7 +104,7 @@
 
         <div class="two fields">
           <div class="field">
-            {{> Text_Form_Control label="Where: " placeholder="Event Location" value=event.eventLocation errorMessage=(fieldError "eventLocation")}}
+            {{> Text_Form_Control label="Where: " required=true placeholder="Event Location" value=event.eventLocation errorMessage=(fieldError "eventLocation")}}
           </div>
           <div class="field">
             <label> Meeting Place: </label>
@@ -124,8 +118,8 @@
           </div>
         </div>
 
-				{{> TextArea_Form_Control label="Additional Information" value=event.comments placeholder="Additional information about event" errorMessage=(fieldError "additional")}}
-        {{> TextArea_Form_Control label="Tags" value=event.tags placeholder="Tags relating to event" errorMessage=(fieldError "tags")}}
+				{{> TextArea_Form_Control label="Additional Information" placeholder="Additional information about event"  value=(eventDataField 'eventAdditional') errorMessage=(fieldError "additional")}}
+        {{> TextArea_Form_Control label="Tags"  value=(eventDataField 'tags') placeholder="Tags relating to event" errorMessage=(fieldError "tags")}}
 
 				<button class="ui primary button" type="submit">Update Event</button>
 

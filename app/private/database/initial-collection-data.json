@@ -5,19 +5,19 @@
       "name": "TagCollection",
       "contents": [
         {
-          "name": "Hike"
+          "name": "Hiking"
         },
         {
           "name": "Beach"
         },
         {
-          "name": "weekend"
-        },
-        {
-          "name": "sunset"
-        },
-        {
           "name": "allday"
+        },
+        {
+          "name": "Saturday"
+        },
+        {
+          "name": "North Shore"
         }
       ]
     },
@@ -82,6 +82,44 @@
           ],
           "title": "Professor, Information and Computer Sciences",
           "picture": "/images/casanova.jpg"
+        }
+      ]
+    },
+    {
+      "name": "EventCollection",
+      "contents": [
+        {
+          "eventName": "Manoa Falls Hike",
+          "maxPeople": "15",
+          "eventDate": "12.17.17",
+          "eventTime": "11 AM",
+          "eventLocation": "Manoa Falls",
+          "additional": " ",
+          "tags": [
+            "hike, Sunday, morning, manoa falls"
+          ]
+        },
+        {
+          "eventName": "Diamond Head Hike",
+          "maxPeople": "20",
+          "eventDate": "12.20.17",
+          "eventTime": "5 AM",
+          "eventLocation": "Diamond Head",
+          "additional": " Sunrise hike ",
+          "tags": [
+            "hike, Wednesday, sunrise, diamond head "
+          ]
+        },
+        {
+          "eventName": "Norht Shore Explore ",
+          "maxPeople": "7",
+          "eventDate": "12.16.17",
+          "eventTime": "7 AM",
+          "eventLocation": "North Shore",
+          "additional": "All day exploration of the North side of Oahu.",
+          "tags": [
+            "north shore, explore, allday, playingtourist, beach "
+          ]
         }
       ]
     }

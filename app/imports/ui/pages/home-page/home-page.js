@@ -3,12 +3,14 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Tags } from '/imports/api/tag/TagCollection';
+import { Events } from '/imports/api/event/EventCollection';
 
 const selectedTagsKey = 'selectedTags';
 
 Template.Home_Page.onCreated(function onCreated() {
   this.subscribe(Tags.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
+  this.subscribe(Events.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(selectedTagsKey, undefined);
 });

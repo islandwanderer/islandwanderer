@@ -53,7 +53,7 @@ Template.Create_Event_Page.events({
     event.preventDefault();
     const name = event.target.eventName.value;
     const max = event.target.maxPeople.value;
-    const username = FlowRouter.getParam('username'); // schema requires username
+    const username = profile.FlowRouter.getParam('username'); // schema requires username
     const selectedyear = Event.elements.Year.selectedIndex.options.value;
     const selectedmonth = Event.elements.Month.selectedIndex.options.value;
     const selectedday = Event.elements.Day.selectedIndex.options.value;

@@ -26,13 +26,16 @@ class EventCollection extends BaseCollection {
       eventTime: { type: String },
       tags: { type: Array, optional: true },
       'tags.$': { type: String },
+      eventAttending: { type: Array },
+      'eventAttending.$': { type: String },
       eventLocation: { type: String },
       meetupLocation: { type: String },
       eventAdditional: { type: String, optional: true },
     }, { tracker: Tracker }));
   }
 
-  /**
+ /* eslint max-len:0 */
+ /**
    * Defines a new Event.
    * @example
    * Events.define({ eventName: 'Diamond Head Hike',
@@ -51,7 +54,7 @@ class EventCollection extends BaseCollection {
    * if one or more tags are not defined
    * @returns The newly created docID.
    */
-  define({ eventName = '', maxPeople = '', creator, eventDate = '', tags = [], eventTime = '', eventLocation = '', meetupLocation = '',
+  define({ eventName = '', maxPeople = '', creator, eventDate = '', tags = [], eventAttending = [], eventTime = '', eventLocation = '', meetupLocation = '',
       eventAdditional = '' }) {
     // make sure required fields are OK.
     const checkPattern = { eventName: String, eventDate: String, username: String, eventTime: String, eventLocation: String,
@@ -69,7 +72,7 @@ class EventCollection extends BaseCollection {
     if (tags.length !== _.uniq(tags).length) {
       throw new Meteor.Error(`${tags} contains duplicates`);
     }
-    return this._collection.insert({ eventName, maxPeople, eventDate, creator, eventTime, eventLocation, meetupLocation, eventAdditional, Tags });
+    return this._collection.insert({ eventName, maxPeople, eventDate, creator, eventTime, eventLocation, meetupLocation, eventAdditional, tags, eventAttending });
   }
 
   /**
@@ -84,11 +87,12 @@ class EventCollection extends BaseCollection {
     const creator = doc.creator;
     const date = doc.eventDate;
     const tags = doc.tags;
+    const attending = doc.eventAttending;
     const time = doc.eventTime;
     const location = doc.eventLocation;
     const meetup = doc.meetupLocation;
     const additional = doc.eventAdditional;
-    return { name, max, creator, date, tags, time, location, meetup, additional };
+    return { name, max, creator, date, tags, attending, time, location, meetup, additional };
   }
 }
 
