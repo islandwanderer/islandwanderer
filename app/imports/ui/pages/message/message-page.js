@@ -7,18 +7,23 @@ import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Messages } from '/imports/api/message/MessageCollection';
 import { Events } from '/imports/api/event/EventCollection';
 
+// const username = FlowRouter.getParam('username');
+const selectedEventKey = 'selectedEvent';
+
 Template.Message_Page.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
   this.subscribe(Messages.getPublicationName());
   this.subscribe(Events.getPublicationName());
   this.messageFlags = new ReactiveDict();
+  this.messageFlags.set(selectedEventKey, undefined);
   this.context = Messages.getSchema().namedContext('Message_Page');
-  this.currentUser = FlowRouter.getParam('username')
 });
 
 Template.Message_Page.helpers({
   recentMessages() {
-    return Messages.find({}, { sort: { sendDate: 1 } });
+    const selectEvent = Template.instance().messageFlags.get(selectedEventKey);
+    const filteredEvent = Messages.filter({ events: selectEvent }, { sort: { sendDate: 1 } });
+    return filteredEvent;
   },
 
   urEvents() {
@@ -27,17 +32,15 @@ Template.Message_Page.helpers({
       let eventObject = {};
       const checkEventSubscription = _.contains(oneEvent.eventAttending, username);
       if (checkEventSubscription) {
-        eventObject = { label: oneEvent.eventName };
+        eventObject = {
+          label: oneEvent.eventName,
+          // selected: _.contains(Template.instance().messageFlags.get(selectedInterestsKey), oneEvent.eventName),
+        };
       }
       return eventObject;
     });
     return eventList;
   },
-
-// return [{ label: 'event1', value: 'event1' }, { label: 'event2', value: 'event2' }];
-//       return {
-//         label: oneEvent.eventAttending,
-//         selected: _.contains(Template.instance().messageFlags.get(selectedInterestsKey), oneEvent.eventAttending),
 
 });
 
@@ -63,5 +66,9 @@ Template.Message_Page.events({
       });
       event.target.reset();
     }
+  },
+  'change select[name="events"]': function (event) {
+    event.preventDefault();
+    Template.instance().messageFlags.set(selectedEventKey, event.target.value);
   },
 });

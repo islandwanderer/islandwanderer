@@ -4,9 +4,7 @@
 
 		<div class="ui text container message-body raised segment">
 
-			<div class="ui center aligned large top attached message-header basic segment header form">
-				Message
-			</div>
+			<!--<div class="ui center aligned large top attached message-header basic segment header form"></div>-->
 
 			<div class="ui attached basic segment">
 				<ul class="message-window">
@@ -23,11 +21,12 @@
 			<div class="ui bottom attached message-box basic segment">
 				{{#if currentUser}}
 					<form class="ui new-message form">
+
 						<div class="field">
-							{{> Select_Form_Control label="events" required=true options=urEvents multiple=false }}
-						</div>
-						<div class="field">
-							{{> TextArea_Form_Control rows="2" label="" name="message" type="text" placeholder="Type Message" }}
+							<div class="ui event-dropdown fields">
+								{{> Select_Form_Control label="Choose event" required=true name="events" options=urEvents multiple=false }}
+							</div>
+							{{> TextArea_Form_Control rows="2" label=" " name="message" type="text" placeholder="Type Message" }}
 							<button class="ui primary button" type="submit">Send</button>
 						</div>
 					</form>
