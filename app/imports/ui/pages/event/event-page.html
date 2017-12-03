@@ -26,22 +26,22 @@
     <div class="ui two column grid containter">
       <div class="row">
         <div class="column">
-          <button class="ui primary button" type="submit">RSVP</button>
+          <button class="ui primary button" style="background-color: white" type="submit">RSVP</button>
         </div>
         <div class="column">
             {{> Text_Form_Control placeholder="Tell a friend by username" value=event.eventRefer errorMessage=(fieldError "eventRefer")}}
           <div class="row" style="margin-top: 10px">
-          <button class="ui primary button" type="submit">Refer</button>
+          <button class="ui primary button" style="background-color: white" type="submit">Refer</button>
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="column">
-          <button class="ui primary button" type="submit">Delete</button>
+          <button class="ui primary button" style="background-color: white" type="submit">Delete</button>
         </div>
       <div class="column">
-        <button class="ui primary green button" style="background-color: lightseagreen" type="submit"><a href="{{pathFor 'Edit_Event_Page' _id=event._id}}"> Edit</a></button>
+        <button class="ui primary green button" style="background-color: white" type="submit"><a href="{{pathFor 'Edit_Event_Page' _id=event._id}}"> Edit</a></button>
 
       </div>
       </div>

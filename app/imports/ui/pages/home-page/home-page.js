@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Tags } from '/imports/api/tag/TagCollection';
 import { Events } from '/imports/api/event/EventCollection';
@@ -39,10 +40,15 @@ Template.Home_Page.helpers({
 });
 
 Template.Home_Page.events({
+
+  'click newEvent-button': FlowRouter.go('Create_Event_Page'),
+
+  'click review-button': FlowRouter.go('Review_Page'),
+
   'submit .filter-data-form'(event, instance) {
     event.preventDefault();
     const selectedOptions = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
     instance.messageFlags.set(selectedTagsKey, _.map(selectedOptions, (option) => option.value));
-  },
+  }
 });
 
