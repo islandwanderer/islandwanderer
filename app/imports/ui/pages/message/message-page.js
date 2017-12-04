@@ -7,7 +7,6 @@ import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Messages } from '/imports/api/message/MessageCollection';
 import { Events } from '/imports/api/event/EventCollection';
 
-// const username = FlowRouter.getParam('username');
 const selectedEventKey = 'selectedEvent';
 
 Template.Message_Page.onCreated(function onCreated() {
@@ -34,7 +33,6 @@ Template.Message_Page.helpers({
       if (checkEventSubscription) {
         eventObject = {
           label: oneEvent.eventName,
-          // selected: _.contains(Template.instance().messageFlags.get(selectedInterestsKey), oneEvent.eventName),
         };
       }
       return eventObject;
