@@ -66,7 +66,8 @@ Template.Message_Page.events({
         sendDate: sendDate,
         message: message,
       });
-      event.target.reset();
+  0-
+  event.target.reset();
     }
   },
   'change select[name="events"]': function (event) {

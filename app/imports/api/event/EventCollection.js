@@ -23,14 +23,17 @@ class EventCollection extends BaseCollection {
       eventDate: { type: String },
       eventTime: { type: String },
       eventLocation: { type: String },
+      mmetupLocation: { type: String },
       eventAdditional: { type: String, optional: true },
-      eventTags: { type: String, optional: true },
+      eventTags: { type: Array, optional: true },
+      'eventTags.$': { type: String },
       eventAttending: { type: Array, optional: true },
       'eventAttending.$': { type: String },
     }, { tracker: Tracker }));
   }
 
-  /**
+/*eslint max-len:0*/
+  /** //eslint-disable-line max-len //eslint-disable-line max-len
    * Defines a new Event.
    * @example
    * Event.define({ eventName: 'Diamond Head Hike',
@@ -39,14 +42,14 @@ class EventCollection extends BaseCollection {
    *               eventTime: 5 AM,
    *               eventLocation: 'Diamon Head
    *               eventAdditional: 'Bring H20!',
-   *               eventTags: 'hiking, diamondHead, overBreak;, });
+   *               eventTags: 'hiking, diamondHead, sunrise;, });
    * @param { Object } description Object with keys name and description.
    * eventNme must be previously undefined. eventAdditional and eventTags are optional.
    * Creates a "slug" for this name and stores it in the slug field.
    * @throws {Meteor.Error} If the event definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ eventName, eventDate, maxPeople, eventTime, eventLocation, eventAdditional, eventTags, eventAttending = [] }) {
+  define({ eventName, eventDate, maxPeople, eventTime, eventLocation, meetupLocation, eventAdditional, eventTags = [], eventAttending = [] }) {
     check(eventName, String);
     check(eventLocation, String);
     check(eventAdditional, String);
@@ -62,9 +65,10 @@ class EventCollection extends BaseCollection {
       eventDate,
       eventTime,
       eventLocation,
+      meetupLocation,
       eventAdditional,
       eventTags,
-      eventAttending
+      eventAttending,
     });
   }
 
