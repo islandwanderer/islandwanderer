@@ -38,3 +38,8 @@
   padding: 5px 5px 5px 5px;
   margin: 5px 5px 5px 5px;
 }
+
+.mine {
+  text-align: right;
+  color: white;
+}

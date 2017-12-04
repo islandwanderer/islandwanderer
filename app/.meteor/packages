@@ -53,3 +53,4 @@ meteortesting:mocha
 momentjs:moment
 fullcalendar:fullcalendar
 alanning:roles
+raix:handlebar-helpers

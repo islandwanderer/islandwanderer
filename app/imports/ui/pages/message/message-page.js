@@ -39,7 +39,9 @@ Template.Message_Page.helpers({
     });
     return eventList;
   },
-
+  currentUser() {
+    return FlowRouter.getParam('username');
+  },
 });
 
 Template.Message_Page.events({
