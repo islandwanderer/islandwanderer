@@ -46,7 +46,6 @@ Template.Profile_Page.events({
     const twitter = event.target.Twitter.value;
     const picture = event.target.Picture.value;
     const additional = event.target.Additional.value;
-    const admin = event.target.admin.value;
 
     const updatedProfileData = {
       firstName,
@@ -59,7 +58,6 @@ Template.Profile_Page.events({
       twitter,
       picture,
       additional,
-      admin,
     };
 
     // Clear out any old validation errors.
