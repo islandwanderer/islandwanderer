@@ -32,7 +32,6 @@ class EventCollection extends BaseCollection {
     }, { tracker: Tracker }));
   }
 
-/*eslint max-len:0*/
   /** //eslint-disable-line max-len //eslint-disable-line max-len
    * Defines a new Event.
    * @example
