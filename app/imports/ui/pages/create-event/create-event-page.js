@@ -53,15 +53,15 @@ Template.Create_Event_Page.events({
     event.preventDefault();
     const name = event.target.eventName.value;
     const max = event.target.maxPeople.value;
-    const username = profile.FlowRouter.getParam('username'); // schema requires username
-    const selectedyear = Event.elements.Year.selectedIndex.options.value;
-    const selectedmonth = Event.elements.Month.selectedIndex.options.value;
-    const selectedday = Event.elements.Day.selectedIndex.options.value;
+    const username = event.FlowRouter.getParam('eventName'); // schema requires username
+    const selectedyear = event.elements.Year.selectedIndex.options.value;
+    const selectedmonth = event.elements.Month.selectedIndex.options.value;
+    const selectedday = event.elements.Day.selectedIndex.options.value;
     const selecteddate = selectedyear + selectedmonth + selectedday;
     const date = selecteddate;
-    const selectedhour = Event.elements.Hour.selectedIndex.options.value;
-    const selectedminute = Event.elements.Minute.selectedIndex.options.value;
-    const selectedm = Event.elements.meridiem.selectedIndex.options.value;
+    const selectedhour = event.elements.Hour.selectedIndex.options.value;
+    const selectedminute = event.elements.Minute.selectedIndex.options.value;
+    const selectedm = event.elements.meridiem.selectedIndex.options.value;
     const selectedtime = selectedhour + selectedminute + selectedm;
     const time = selectedtime;
     const location = event.elements.Location.selectedIndex.options.value;

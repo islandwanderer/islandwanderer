@@ -4,10 +4,12 @@
 
         <div style="margin-bottom: 30px" class="two column row">
           <div class="column">
-            <button class="ui teal newEvent-button" type="submit">Create a New Event</button>
+            <button class="ui teal newEvent-button" type="button"><a class="{{isActiveRoute "Event_Page"}} item" href="{{pathFor "Event_Page" username=routeUserName}}">Profile</a></button>
+            <button class="ui teal newEvent-button" type="button"><a class="{{ isActiveRoute 'Create_Event_Page'}} item" href="{{ pathFor 'Create_Event_Page' }}">Add Event </a></button>
+
           </div>
           <div class="column">
-            <button class="ui teal review -button" type="submit">Submit User or Event for Review</button>
+            <button class="ui teal review-button" type="button">Submit User or Event for Review</button>
           </div>
       </div>
 
@@ -15,7 +17,7 @@
         <div  class="centered column">
       <form class="ui equal width form filter-data-form">
         <div class="field">
-          {{> Select_Form_Control label="Find Events by Name or Tag" options=tags multiple=true }}
+          {{> Select_Form_Control label="Find Events by Tags" options=eventTags multiple=true }}
         </div>
         <button class="ui white button" type="submit">Filter</button>
       </form>

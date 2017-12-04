@@ -72,10 +72,10 @@ class BaseCollection {
    */
   findDoc(name) {
     const doc = (
-            this._collection.findOne(name) ||
-            this._collection.findOne({ name }) ||
-            this._collection.findOne({ username: name }) ||
-            this._collection.findOne({ _id: name }));
+        this._collection.findOne(name) ||
+        this._collection.findOne({ name }) ||
+        this._collection.findOne({ username: name }) ||
+        this._collection.findOne({ _id: name }));
     if (!doc) {
       throw new Meteor.Error(`${name} is not a defined ${this._type}`);
     }
@@ -92,6 +92,10 @@ class BaseCollection {
   find(selector, options) {
     const theSelector = (typeof selector === 'undefined') ? {} : selector;
     return this._collection.find(theSelector, options);
+  }
+
+  filter(theSelector, options) {
+    return this._collection.find(theSelector, options).fetch();
   }
 
   /**
@@ -115,6 +119,11 @@ class BaseCollection {
     return true;
   }
 
+  insert(doc) {
+    this._collection.insert(doc);
+    return true;
+  }
+
   /**
    * Returns true if the passed entity is in this collection.
    * @param { String | Object } name The docID, or an object specifying a document, or the name, or the username.
@@ -122,10 +131,10 @@ class BaseCollection {
    */
   isDefined(name) {
     return (
-    !!this._collection.findOne(name) ||
-    !!this._collection.findOne({ name }) ||
-    !!this._collection.findOne({ username: name }) ||
-    !!this._collection.findOne({ _id: name }));
+        !!this._collection.findOne(name) ||
+        !!this._collection.findOne({ name }) ||
+        !!this._collection.findOne({ username: name }) ||
+        !!this._collection.findOne({ _id: name }));
   }
 
   /**

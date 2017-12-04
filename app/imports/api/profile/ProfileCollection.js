@@ -1,9 +1,8 @@
 import SimpleSchema from 'simpl-schema';
 import BaseCollection from '/imports/api/base/BaseCollection';
-import { Tags } from '/imports/api/tag/TagCollection';
 import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
-import { _ } from 'meteor/underscore';
+// import { _ } from 'meteor/underscore';
 import { Tracker } from 'meteor/tracker';
 
 /** @module Profile */
@@ -20,62 +19,22 @@ class ProfileCollection extends BaseCollection {
   constructor() {
     super('Profile', new SimpleSchema({
       username: { type: String },
-      // Remainder are optional
       firstName: { type: String, optional: true },
       lastName: { type: String, optional: true },
-      bio: { type: String, optional: true },
-      tags: { type: Array, optional: true },
-      'tags.$': { type: String },
-      title: { type: String, optional: true },
+      email: { type: SimpleSchema.RegEx.Email, optional: true },
+      text: {
+        type: String,
+        optional: true,
+        max: 12,
+        regEx: /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/,
+      },
       picture: { type: SimpleSchema.RegEx.Url, optional: true },
-      github: { type: SimpleSchema.RegEx.Url, optional: true },
+      slack: { type: SimpleSchema.RegEx.Url, optional: true },
       facebook: { type: SimpleSchema.RegEx.Url, optional: true },
-      instagram: { type: SimpleSchema.RegEx.Url, optional: true },
+      twitter: { type: SimpleSchema.RegEx.Url, optional: true },
+      additional: { type: String, optional: true },
+      admin: { type: String, optional: true },
     }, { tracker: Tracker }));
-  }
-
-  /**
-   * Defines a new Profile.
-   * @example
-   * Profiles.define({ firstName: 'Philip',
-   *                   lastName: 'Johnson',
-   *                   username: 'johnson',
-   *                   bio: 'I have been a professor of computer science at UH since 1990.',
-   *                   tags: ['Application Development', 'Software Engineering', 'Databases'],
-   *                   title: 'Professor of Information and Computer Sciences',
-   *                   picture: 'http://philipmjohnson.org/headshot.jpg',
-   *                   github: 'https://github.com/philipmjohnson',
-   *                   facebook: 'https://facebook.com/philipmjohnson',
-   *                   instagram: 'https://instagram.com/philipmjohnson' });
-   * @param { Object } description Object with required key username.
-   * Remaining keys are optional.
-   * Username must be unique for all users. It should be the UH email account.
-   * Tags is an array of defined tag names.
-   * @throws { Meteor.Error } If a user with the supplied username already exists, or
-   * if one or more tags are not defined, or if github, facebook, and instagram are not URLs.
-   * @returns The newly created docID.
-   */
-  define({ firstName = '', lastName = '', username, bio = '', tags = [], picture = '', title = '', github = '',
-      facebook = '', instagram = '' }) {
-    // make sure required fields are OK.
-    const checkPattern = { firstName: String, lastName: String, username: String, bio: String, picture: String,
-      title: String };
-    check({ firstName, lastName, username, bio, picture, title }, checkPattern);
-
-    if (this.find({ username }).count() > 0) {
-      throw new Meteor.Error(`${username} is previously defined in another Profile`);
-    }
-
-    // Throw an error if any of the passed Tag names are not defined.
-    Tags.assertNames(tags);
-
-    // Throw an error if there are duplicates in the passed tag names.
-    if (tags.length !== _.uniq(tags).length) {
-      throw new Meteor.Error(`${tags} contains duplicates`);
-    }
-
-    return this._collection.insert({ firstName, lastName, username, bio, tags, picture, title, github,
-      facebook, instagram });
   }
 
   /**
@@ -88,14 +47,56 @@ class ProfileCollection extends BaseCollection {
     const firstName = doc.firstName;
     const lastName = doc.lastName;
     const username = doc.username;
-    const bio = doc.bio;
-    const tags = doc.tags;
+    const email = doc.email;
+    const text = doc.text;
     const picture = doc.picture;
-    const title = doc.title;
-    const github = doc.github;
+    const slack = doc.slack;
     const facebook = doc.facebook;
-    const instagram = doc.instagram;
-    return { firstName, lastName, username, bio, tags, picture, title, github, facebook, instagram };
+    const twitter = doc.twitter;
+    const additional = doc.additional;
+    const admin = doc.admin;
+    return { firstName, lastName, username, email, text, slack, facebook, twitter, picture, additional, admin };
+  }
+
+  /**
+   * Defines a new Profile.
+   * @example
+   * Profiles.define({ firstName: 'Philip',
+   *                   lastName: 'Johnson',
+   *                   username: 'johnson',
+   *                   bio: 'I have been a professor of computer science at UH since 1990.',
+   *                   interests: ['Application Development', 'Software Engineering', 'Databases'],
+   *                   title: 'Professor of Information and Computer Sciences',
+   *                   picture: 'http://philipmjohnson.org/headshot.jpg',
+   *                   github: 'https://github.com/philipmjohnson',
+   *                   facebook: 'https://facebook.com/philipmjohnson',
+   *                   instagram: 'https://instagram.com/philipmjohnson' });
+   * @param { Object } description Object with required key username.
+   * Remaining keys are optional.
+   * Username must be unique for all users. It should be the UH email account.
+   * Interests is an array of defined interest names.
+   * @throws { Meteor.Error } If a user with the supplied username already exists, or
+   * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
+   * @returns The newly created docID.
+   */
+  define({
+           firstName = '', lastName = '', username, email = '', text = '', picture = '',
+           facebook = '', twitter = '', slack = '', additional = '', admin = '',
+         }) {
+    // make sure required fields are OK.
+    const checkPattern = { firstName: String, lastName: String, username: String, additional: String, admin: String };
+    check({ firstName, lastName, username, additional, admin }, checkPattern);
+
+    if (this.find({ username }).count() > 0) {
+      throw new Meteor.Error(`${username} is previously defined in another Profile`);
+    }
+
+    if (this.find({ email }).count() > 0) {
+      throw new Meteor.Error(`${email} is previously defined in another Profile`);
+    }
+
+    return this._collection.insert({
+      firstName, lastName, username, email, text, picture, facebook, twitter, slack, additional, admin });
   }
 }
 

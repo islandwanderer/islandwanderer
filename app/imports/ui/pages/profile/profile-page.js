@@ -1,15 +1,13 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { _ } from 'meteor/underscore';
+// import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
-import { Tags } from '/imports/api/tag/TagCollection';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
 Template.Profile_Page.onCreated(function onCreated() {
-  this.subscribe(Tags.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
@@ -30,37 +28,37 @@ Template.Profile_Page.helpers({
   profile() {
     return Profiles.findDoc(FlowRouter.getParam('username'));
   },
-  tags() {
-    const profile = Profiles.findDoc(FlowRouter.getParam('username'));
-    const selectedTags = profile.tags;
-    return profile && _.map(Tags.findAll(),
-            function makeTagObject(tag) {
-              return { label: tag.name, selected: _.contains(selectedTags, tag.name) };
-            });
-  },
   getUsername() {
     return FlowRouter.getParam('username');
   },
 });
-
 
 Template.Profile_Page.events({
   'submit .profile-data-form'(event, instance) {
     event.preventDefault();
     const firstName = event.target.First.value;
     const lastName = event.target.Last.value;
-    const title = event.target.Title.value;
     const username = FlowRouter.getParam('username'); // schema requires username.
-    const picture = event.target.Picture.value;
-    const github = event.target.Github.value;
+    const email = `${username}@hawaii.edu`;
+    const text = event.target.Text.value;
+    const slack = event.target.Slack.value;
     const facebook = event.target.Facebook.value;
-    const instagram = event.target.Instagram.value;
-    const bio = event.target.Bio.value;
-    const selectedTags = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
-    const tags = _.map(selectedTags, (option) => option.value);
+    const twitter = event.target.Twitter.value;
+    const picture = event.target.Picture.value;
+    const additional = event.target.Additional.value;
 
-    const updatedProfileData = { firstName, lastName, title, picture, github, facebook, instagram, bio, tags,
-      username };
+    const updatedProfileData = {
+      firstName,
+      lastName,
+      username,
+      email,
+      text,
+      slack,
+      facebook,
+      twitter,
+      picture,
+      additional,
+    };
 
     // Clear out any old validation errors.
     instance.context.reset();

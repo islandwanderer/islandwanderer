@@ -4,14 +4,14 @@
 
 		<div class="ui text container message-body raised segment">
 
-			<div class="ui center aligned large top attached message-header basic segment header">
-				Message
-			</div>
-
 			<div class="ui attached basic segment">
 				<ul class="message-window">
 					{{#each recentMessages }}
-						{{> message }}
+						<li class="{{#if $eq username currentUser }} mine {{ else }} {{ username }} {{/if}}">
+							<div class="ui {{#if $eq username currentUser }} mine {{ else }} {{ username }} {{/if}} text-message label">
+							{{ username }}:  {{ message }}
+							</div>
+						</li>
 					{{/each }}
 				</ul>
 			</div>
@@ -19,8 +19,13 @@
 			<div class="ui bottom attached message-box basic segment">
 				{{#if currentUser}}
 					<form class="ui new-message form">
+
 						<div class="field">
-							<input type="text" name="text" placeholder="Add a message" autocomplete="off"/>
+							<div class="ui event-dropdown fields">
+								{{> Select_Form_Control label="Choose event" required=true name="events" options=urEvents multiple=false }}
+							</div>
+							{{> TextArea_Form_Control rows="2" label=" " name="message" type="text" placeholder="Type Message" }}
+							<button class="ui primary button" type="submit">Send</button>
 						</div>
 					</form>
 				{{/if}}

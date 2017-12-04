@@ -77,7 +77,7 @@ userRoutes.route('/create-event', {
 });
 
 export const EventPageRouteName = 'Event_Page';
-userRoutes.route('/event', {
+userRoutes.route('/event/:_id', {
   name: EventPageRouteName,
   action() {
     BlazeLayout.render('User_Layout', { main: EventPageRouteName });
@@ -113,6 +113,14 @@ userRoutes.route('/admin', {
   name: adminPageRouteName,
   action() {
     BlazeLayout.render('User_Layout', { main: adminPageRouteName });
+  },
+});
+
+export const reviewPageRouteName = 'Review_Page';
+userRoutes.route('/review', {
+  name: reviewPageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: reviewPageRouteName });
   },
 });
 

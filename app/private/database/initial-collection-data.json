@@ -8,16 +8,16 @@
           "name": "Hiking"
         },
         {
+          "name": "Exploration"
+        },
+        {
           "name": "Beach"
         },
         {
-          "name": "allday"
+          "name": "sunrise"
         },
         {
-          "name": "Saturday"
-        },
-        {
-          "name": "North Shore"
+          "name": "waterfall"
         }
       ]
     },
@@ -25,63 +25,89 @@
       "name": "ProfileCollection",
       "contents": [
         {
-          "firstName": "Lee",
-          "lastName": "Altenberg",
-          "username": "altenber",
-          "bio": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
-          "interests": [
-            "Evolutionary Computation"
-          ],
-          "title": "Associate Professor, Information and Computer Sciences",
-          "picture": "/images/altenberg.jpg"
+          "firstName": "George",
+          "lastName": "Lee",
+          "username": "gelee",
+          "email": "gelee@hawaii.edu",
+          "additional": "I teach section 3 of ICS 314..",
+          "picture": "/images/altenberg.jpg",
+          "text": "808-123-3333"
         },
         {
           "firstName": "Kyungim",
           "lastName": "Baek",
           "username": "baek",
-          "bio": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
-          "interests": [
-            "Computer Vision"
-          ],
-          "title": "Associate Professor, Information and Computer Sciences",
-          "picture": "/images/baek.jpg"
+          "email": "baek@hawaii.edu",
+          "additional": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
+          "picture": "/images/baek.jpg",
+          "twitter": "@kay"
         },
         {
           "firstName": "Edo",
           "lastName": "Biagioni",
           "username": "esb",
-          "bio": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
-          "interests": [
-            "Mobile Networks",
-            "Sailing"
-          ],
-          "title": "Associate Professor, Information and Computer Sciences",
-          "picture": "/images/biagioni.jpg"
+          "email": "esb@hawaii.edu",
+          "additional": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
+          "picture": "/images/biagioni.jpg",
+          "slack": "esb"
         },
         {
           "firstName": "Kim",
           "lastName": "Binsted",
           "username": "binsted",
-          "bio": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
-          "interests": [
-            "Mars",
-            "Imu Cooking"
-          ],
-          "title": "Associate Professor, Information and Computer Sciences",
+          "email": "binsted@hawaii.edu",
+          "additional": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
           "picture": "/images/binsted.jpg"
         },
         {
           "firstName": "Henri",
           "lastName": "Casanova",
           "username": "henric",
-          "github": "henricasanova",
-          "bio": "I am a Professor of Information and Computer Sciences at the University of Hawaii.",
-          "interests": [
-            "Surfing",
-            "Photography"
-          ],
-          "title": "Professor, Information and Computer Sciences",
+          "email": "henric@hawaii.edu",
+          "facebook": "henricasanova",
+          "additional": "I am a Professor of Information and Computer Sciences at the University of Hawaii.",
           "picture": "/images/casanova.jpg"
+        },
+        {
+          "firstName": "Kiera",
+          "lastName": "Williams",
+          "username": "kieraw",
+          "email": "kieraw@hawaii.edu",
+          "additional": "",
+          "admin": "yes"
+        },
+        {
+          "firstName": "Natasha",
+          "lastName": "Meinzen",
+          "username": "nmeinzen",
+          "email": "nmeinzen@hawaii.edu",
+          "additional": "",
+          "admin": "yes"
+        }
+      ]
+    },
+    {
+      "name": "MessageCollection",
+      "contents": [
+        {
+          "username": "henric",
+          "events": "newEvent1",
+          "message": "hello there"
+        },
+        {
+          "username": "baek",
+          "events": "newEvent1",
+          "message": "hi"
+        },
+        {
+          "username": "esb",
+          "events": "newEvent1",
+          "message": "Who is ready for diamond head hike for the break?"
+        },
+        {
+          "username": "gelee",
+          "events": "newEvent1",
+          "message": "I am ready for diamond head hike."
         }
       ]
     },
@@ -89,36 +115,44 @@
       "name": "EventCollection",
       "contents": [
         {
-          "eventName": "Manoa Falls Hike",
-          "maxPeople": "15",
-          "eventDate": "12.17.17",
-          "eventTime": "11 AM",
-          "eventLocation": "Manoa Falls",
-          "additional": " ",
-          "tags": [
-            "hike, Sunday, morning, manoa falls"
-          ]
-        },
-        {
-          "eventName": "Diamond Head Hike",
-          "maxPeople": "20",
-          "eventDate": "12.20.17",
-          "eventTime": "5 AM",
+          "eventName": "newEvent1",
+          "maxPeople": 25,
+          "eventDate": "12.23.2017",
+          "eventTime": "5AM",
           "eventLocation": "Diamond Head",
-          "additional": " Sunrise hike ",
-          "tags": [
-            "hike, Wednesday, sunrise, diamond head "
+          "eventAdditional": "bring h2o",
+          "eventTags": "hiking, diamond head, over break",
+          "eventAttending": [
+            "amaskey",
+            "kieraw",
+            "nmeinzen"
           ]
         },
         {
-          "eventName": "Norht Shore Explore ",
-          "maxPeople": "7",
-          "eventDate": "12.16.17",
-          "eventTime": "7 AM",
-          "eventLocation": "North Shore",
-          "additional": "All day exploration of the North side of Oahu.",
-          "tags": [
-            "north shore, explore, allday, playingtourist, beach "
+          "eventName": "newEvent2",
+          "maxPeople": 25,
+          "eventDate": "12.23.2017",
+          "eventTime": "5AM",
+          "eventLocation": "Diamond Head",
+          "eventAdditional": "bring h2o",
+          "eventTags": "hiking, diamond head, over break",
+          "eventAttending": [
+            "kieraw",
+            "nmeinzen"
+          ]
+        },
+        {
+          "eventName": "newEvent3",
+          "maxPeople": 25,
+          "eventDate": "12.23.2017",
+          "eventTime": "5AM",
+          "eventLocation": "Diamond Head",
+          "eventAdditional": "bring h2o",
+          "eventTags": "hiking, diamond head, over break",
+          "eventAttending": [
+            "amaskey",
+            "henric",
+            "esb"
           ]
         }
       ]
