@@ -1,9 +1,9 @@
 <template name="Event_Page">
+  {{#if Template.subscriptionsReady}}
   <div class="ui text container">
     <div class="ui dividing header">
      Event
     </div>
-    {{#if Template.subscriptionsReady}}
     <div class="ui three column grid container">
 
       <div class="row">
@@ -21,22 +21,28 @@
         <div class="column"> event.tags</div>
         <div class="column"> </div>
       </div>
+    </div>
+
+    <div class="ui two column grid container">
+
       <div class="row">
-        <div class="column"> </div>
+        <div class="column"> <button class="ui rsvp-button" type="button"> RSVP </button>  </div>
         <div class="column">
           <div class="row">
             {{> Text_Form_Control placeholder="Tell a friend by username" value=event.eventRefer errorMessage=(fieldError "eventRefer")}}
           </div>
           <div class="row">
-          <button class="ui primary button" type="submit">Refer</button>
+          <button class="ui refer-button" style="margin-top: 10px" type="button">Refer</button>
           </div>
         </div>
       </div>
     </div>
-
-    {{else}}
-    {{> Loading}}
-    {{/if}}
-
+    <div class=" ui two column admin grid container">
+    <div class="row">
+      <div class="column"> <button class="ui edit-button" type="button">Edit </button> </div>
+      <div class="column"> <button class="ui delete-button" type="button">Delete</button> </div>
+    </div>
+    </div>
   </div>
+    {{/if}}
 </template>
