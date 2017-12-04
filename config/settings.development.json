@@ -11,5 +11,10 @@
       "popupHeight": 610
     },
     "initialDatabaseFileName": "database/initial-collection-data.json"
+  },
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://islandwanderer:islandwanderer@ds259305.mlab.com:59305/islanddb"
+    }
   }
 }
