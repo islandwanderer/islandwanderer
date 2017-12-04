@@ -48,10 +48,12 @@ Template.Message_Page.events({
   'submit .message-body': function (event, instance) {
     event.preventDefault();
     const message = event.target.message.value;
-    const events = event.target.events.value;
+    const events = Template.instance().messageFlags.get(selectedEventKey);
     const sendDate = new Date();
     const username = FlowRouter.getParam('username');
     const updatedMessageData = { username, events, message, sendDate };
+
+    console.log(message, events, sendDate, username, updatedMessageData);
 
     instance.context.reset();
     const cleanData = Messages.getSchema().clean(updatedMessageData);
