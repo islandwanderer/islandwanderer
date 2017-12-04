@@ -1,4 +1,5 @@
 <template name="Admin_Page">
+  {{#if isInRole 'admin'}}
 	{{#if Template.subscriptionsReady}}
 
 		<div class="ui text container segment">
@@ -8,6 +9,8 @@
     </div>
 
   {{/if}}
+  <input style="width: 100%" type="text" name="search" placeholder="Add Administrator">
+
 
   {{> Admin_Page_Directory profiles=profiles }}
 
@@ -19,6 +22,7 @@
     <div class="ui success message">
       <p>Flagged post successfully handled.</p>
     </div>
+  {{/if}}
   {{/if}}
 
 </template>
