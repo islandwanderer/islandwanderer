@@ -9,8 +9,8 @@
 			<div class="ui attached basic segment">
 				<ul class="message-window">
 					{{#each recentMessages }}
-						<li class="{{#if $eq username currentUser }} mine {{ else }} username {{/if}}">
-							<div class="ui text-message label">
+						<li class="{{#if $eq username currentUser }} mine {{ else }} {{ username }} {{/if}}">
+							<div class="ui {{#if $eq username currentUser }} mine {{ else }} {{ username }} {{/if}} text-message label">
 							{{ username }}:  {{ message }}
 							</div>
 						</li>

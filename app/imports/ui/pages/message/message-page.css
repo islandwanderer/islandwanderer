@@ -41,5 +41,10 @@
 
 .mine {
   text-align: right;
+  margin-left: 10%;
+}
+
+.mine.text-message.label {
   color: white;
+  background-color: black;
 }
