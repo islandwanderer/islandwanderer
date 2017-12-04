@@ -152,22 +152,22 @@
       "contents": [
         {
           "username": "henric",
-          "events": "newEvent1",
+          "events": "Hiking",
           "message": "hello there"
         },
         {
           "username": "baek",
-          "events": "newEvent1",
+          "events": "Hiking",
           "message": "hi"
         },
         {
           "username": "esb",
-          "events": "newEvent1",
+          "events": "Hiking",
           "message": "Who is ready for diamond head hike for the break?"
         },
         {
           "username": "gelee",
-          "events": "newEvent1",
+          "events": "Hiking",
           "message": "I am ready for diamond head hike."
         }
       ]
@@ -176,11 +176,12 @@
       "name": "EventCollection",
       "contents": [
         {
-          "eventName": "newEvent1",
+          "eventName": "Camping",
           "maxPeople": 25,
-          "eventDate": "12.23.2017",
-          "eventTime": "5AM",
-          "eventLocation": "Diamond Head",
+          "eventDate": "12-03-2017",
+          "endDate": "12-04-2017",
+          "eventTime": "5PM",
+          "eventLocation": "Makaha",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
           "eventAttending": [
@@ -190,30 +191,31 @@
           ]
         },
         {
-          "eventName": "newEvent2",
+          "eventName": "Hiking",
           "maxPeople": 25,
-          "eventDate": "12.23.2017",
+          "eventDate": "12-10-2017",
+          "endDate": "12-10-2017",
           "eventTime": "5AM",
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
           "eventAttending": [
             "kieraw",
-            "nmeinzen"
+            "nmeinzen",
+            "amaskey"
           ]
         },
         {
-          "eventName": "newEvent3",
+          "eventName": "Roadtrip",
           "maxPeople": 25,
-          "eventDate": "12.23.2017",
+          "eventDate": "12-28-2017",
+          "endDate": "01-05-2018",
           "eventTime": "5AM",
-          "eventLocation": "Diamond Head",
+          "eventLocation": "Seatle to LA",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
           "eventAttending": [
-            "amaskey",
-            "henric",
-            "esb"
+            "amaskey"
           ]
         }
       ]

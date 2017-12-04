@@ -50,7 +50,15 @@ insecure@1.0.7
 
 # Tests
 meteortesting:mocha
-momentjs:moment
+
+# calendar
 fullcalendar:fullcalendar
+
+#parse dates
+momentjs:moment
+
+# add admin roles
 alanning:roles
+
+# simplify blaze statement
 raix:handlebar-helpers

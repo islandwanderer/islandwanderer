@@ -21,6 +21,7 @@ class EventCollection extends BaseCollection {
       eventName: { type: String },
       maxPeople: { type: String },
       eventDate: { type: String },
+      endDate: { type: String },
       eventTime: { type: String },
       eventLocation: { type: String },
       eventAdditional: { type: String, optional: true },
@@ -46,12 +47,13 @@ class EventCollection extends BaseCollection {
    * @throws {Meteor.Error} If the event definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ eventName, eventDate, maxPeople, eventTime, eventLocation, eventAdditional, eventTags, eventAttending = [] }) {
+  define({ eventName, eventDate, endDate, maxPeople, eventTime, eventLocation, eventAdditional, eventTags, eventAttending = [] }) {
     check(eventName, String);
     check(eventLocation, String);
     check(eventAdditional, String);
     check(eventTags, String);
     check(eventDate, String);
+    check(endDate, String);
     check(eventTime, String);
     if (this.find({ eventName }).count() > 0) {
       throw new Meteor.Error(`${eventName} is previously defined in another Interest`);
@@ -60,6 +62,7 @@ class EventCollection extends BaseCollection {
       eventName,
       maxPeople,
       eventDate,
+      endDate,
       eventTime,
       eventLocation,
       eventAdditional,
