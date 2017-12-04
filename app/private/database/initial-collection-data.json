@@ -86,11 +86,11 @@
       "name": "ProfileCollection",
       "contents": [
         {
-          "firstName": "Lee",
-          "lastName": "Altenberg",
-          "username": "altenber",
-          "email": "altenber@hawaii.edu",
-          "additional": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
+          "firstName": "George",
+          "lastName": "Lee",
+          "username": "gelee",
+          "email": "gelee@hawaii.edu",
+          "additional": "I teach section 3 of ICS 314..",
           "picture": "/images/altenberg.jpg",
           "text": "808-123-3333"
         },
@@ -152,18 +152,69 @@
       "contents": [
         {
           "username": "henric",
-          "events": "test event",
+          "events": "newEvent1",
           "message": "hello there"
         },
         {
           "username": "baek",
-          "events": "test event",
+          "events": "newEvent1",
           "message": "hi"
         },
         {
           "username": "esb",
-          "events": "test event",
-          "message": "testing"
+          "events": "newEvent1",
+          "message": "Who is ready for diamond head hike for the break?"
+        },
+        {
+          "username": "gelee",
+          "events": "newEvent1",
+          "message": "I am ready for diamond head hike."
+        }
+      ]
+    },
+    {
+      "name": "EventCollection",
+      "contents": [
+        {
+          "eventName": "newEvent1",
+          "maxPeople": 25,
+          "eventDate": "12.23.2017",
+          "eventTime": "5AM",
+          "eventLocation": "Diamond Head",
+          "eventAdditional": "bring h2o",
+          "eventTags": "hiking, diamond head, over break",
+          "eventAttending": [
+            "amaskey",
+            "kieraw",
+            "nmeinzen"
+          ]
+        },
+        {
+          "eventName": "newEvent2",
+          "maxPeople": 25,
+          "eventDate": "12.23.2017",
+          "eventTime": "5AM",
+          "eventLocation": "Diamond Head",
+          "eventAdditional": "bring h2o",
+          "eventTags": "hiking, diamond head, over break",
+          "eventAttending": [
+            "kieraw",
+            "nmeinzen"
+          ]
+        },
+        {
+          "eventName": "newEvent3",
+          "maxPeople": 25,
+          "eventDate": "12.23.2017",
+          "eventTime": "5AM",
+          "eventLocation": "Diamond Head",
+          "eventAdditional": "bring h2o",
+          "eventTags": "hiking, diamond head, over break",
+          "eventAttending": [
+            "amaskey",
+            "henric",
+            "esb"
+          ]
         }
       ]
     }

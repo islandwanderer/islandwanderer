@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "meteor --no-release-check --settings ../config/settings.development.json",
-    "demo": "meteor --no-release-check --settings ../config/settings.demo.json",
+    "deploy": "DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy islandwanderer.meteorapp.com --owner ics314f17 --settings ../config/settings.development.json",
     "lint": "eslint ./imports",
     "jsdoc": "./node_modules/.bin/jsdoc -c ./jsdoc.json -r .",
     "test": "cross-env TEST_WATCH=1 meteor test --driver-package meteortesting:mocha"

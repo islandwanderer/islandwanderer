@@ -1,21 +1,46 @@
 import { Template } from 'meteor/templating';
 // import { Meteor } from 'meteor/meteor';
-// import { ReactiveDict } from 'meteor/reactive-dict';
+import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-// import { _ } from 'meteor/underscore';
+import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Messages } from '/imports/api/message/MessageCollection';
+import { Events } from '/imports/api/event/EventCollection';
+
+const selectedEventKey = 'selectedEvent';
 
 Template.Message_Page.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
   this.subscribe(Messages.getPublicationName());
-  // this.messageFlags = new ReactiveDict();
+  this.subscribe(Events.getPublicationName());
+  this.messageFlags = new ReactiveDict();
+  this.messageFlags.set(selectedEventKey, undefined);
   this.context = Messages.getSchema().namedContext('Message_Page');
 });
 
 Template.Message_Page.helpers({
   recentMessages() {
-    return Messages.find({}, { sort: { sendDate: 1 } });
+    const selectEvent = Template.instance().messageFlags.get(selectedEventKey);
+    const filteredEvent = Messages.filter({ events: selectEvent }, { sort: { sendDate: 1 } });
+    return filteredEvent;
+  },
+
+  urEvents() {
+    const eventList = _.map(Events.findAll(), function (oneEvent) {
+      const username = FlowRouter.getParam('username');
+      let eventObject = {};
+      const checkEventSubscription = _.contains(oneEvent.eventAttending, username);
+      if (checkEventSubscription) {
+        eventObject = {
+          label: oneEvent.eventName,
+        };
+      }
+      return eventObject;
+    });
+    return eventList;
+  },
+  currentUser() {
+    return FlowRouter.getParam('username');
   },
 });
 
@@ -23,10 +48,12 @@ Template.Message_Page.events({
   'submit .message-body': function (event, instance) {
     event.preventDefault();
     const message = event.target.message.value;
-    const events = event.target.event.value;
+    const events = Template.instance().messageFlags.get(selectedEventKey);
     const sendDate = new Date();
     const username = FlowRouter.getParam('username');
     const updatedMessageData = { username, events, message, sendDate };
+
+    console.log(message, events, sendDate, username, updatedMessageData);
 
     instance.context.reset();
     const cleanData = Messages.getSchema().clean(updatedMessageData);
@@ -39,7 +66,12 @@ Template.Message_Page.events({
         sendDate: sendDate,
         message: message,
       });
-      event.target.reset();
+  0-
+  event.target.reset();
     }
+  },
+  'change select[name="events"]': function (event) {
+    event.preventDefault();
+    Template.instance().messageFlags.set(selectedEventKey, event.target.value);
   },
 });
