@@ -5,7 +5,6 @@ import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { Tracker } from 'meteor/tracker';
 
-SimpleSchema.extendOptions(['autoform']);
 /** @module Event */
 
 /**
@@ -79,7 +78,7 @@ class EventCollection extends BaseCollection {
    * @throws {Meteor.Error} If the event definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ creator, eventName, startDateTime, endDateTime, maxPeople, eventLocation, meetupLocation, eventAdditional, eventTags = [], eventAttending = [] }) {
+  define({ creator, eventName, eventStart, eventEnd, maxPeople, eventLocation, meetupLocation, eventAdditional, eventTags = [], eventAttending = [] }) {
     check(eventName, String);
     check(eventLocation, String);
     check(eventAdditional, String);
@@ -91,8 +90,8 @@ class EventCollection extends BaseCollection {
       creator,
       eventName,
       maxPeople,
-      startDateTime,
-      endDateTime,
+      eventStart,
+      eventEnd,
       eventLocation,
       meetupLocation,
       eventAdditional,
@@ -169,8 +168,8 @@ class EventCollection extends BaseCollection {
     const creator = doc.creator;
     const name = doc.eventName;
     const max = doc.maxPeople;
-    const start = doc.eventDate;
-    const end = doc.eventTime;
+    const start = doc.eventStart;
+    const end = doc.eventEnd;
     const location = doc.eventLocation;
     const meetup = doc.meetupLocation;
     const additional = doc.eventAdditional;
