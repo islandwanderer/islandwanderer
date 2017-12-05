@@ -54,3 +54,5 @@ momentjs:moment
 fullcalendar:fullcalendar
 alanning:roles
 raix:handlebar-helpers
+aldeed:autoform
+mrt:moment-timezone

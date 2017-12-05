@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { Tracker } from 'meteor/tracker';
 
+SimpleSchema.extendOptions(['autoform']);
 /** @module Event */
 
 /**
@@ -18,17 +19,42 @@ class EventCollection extends BaseCollection {
    */
   constructor() {
     super('Event', new SimpleSchema({
-      creator: { type: String },
-      eventName: { type: String },
-      maxPeople: { type: String },
-      eventDate: { type: String },
-      eventTime: { type: String },
-      eventLocation: { type: String },
-      meetupLocation: { type: String },
-      eventAdditional: { type: String, optional: true },
-      eventTags: { type: Array, optional: true },
-      'eventTags.$': { type: String },
-      eventAttending: { type: Array, optional: true },
+      creator: {
+        type: String,
+        label: 'creator',
+      },
+      eventName: {
+        type: String,
+      },
+      maxPeople: {
+        type: Number,
+      },
+      eventStart: {
+        type: Date,
+      },
+      eventEnd: {
+        type: Date,
+      },
+      eventLocation: {
+        type: String,
+      },
+      meetupLocation: {
+        type: String,
+      },
+      eventAdditional: {
+        type: String,
+      },
+      eventTags: {
+        type: Array,
+        optional: true,
+      },
+      'eventTags.$': {
+        type: String,
+      },
+      eventAttending: {
+        type: Array,
+        optional: true,
+      },
       'eventAttending.$': { type: String },
     }, { tracker: Tracker }));
   }
@@ -40,9 +66,10 @@ class EventCollection extends BaseCollection {
    * Event.define({ creator: kieraw
    *               eventName: 'Diamond Head Hike',
    *               maxPeople: 25,
-   *               eventDate: '12.23.2017,
-   *               eventTime: 5 AM,
+   *               startDateTime: '12.23.2017 5AM,
+   *               endDateTime: '12.23.2017 8AM
    *               eventLocation: 'Diamon Head
+   *               meetupLocation: at Location;
    *               eventAdditional: 'Bring H20!',
    *               eventTags: 'hiking, diamondHead, sunrise;,
    *               eventAttending: 'kieraw, nmeinzen, amaskey});
@@ -52,13 +79,11 @@ class EventCollection extends BaseCollection {
    * @throws {Meteor.Error} If the event definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ creator, eventName, eventDate, maxPeople, eventTime, eventLocation, meetupLocation, eventAdditional, eventTags = [], eventAttending = [] }) {
+  define({ creator, eventName, startDateTime, endDateTime, maxPeople, eventLocation, meetupLocation, eventAdditional, eventTags = [], eventAttending = [] }) {
     check(eventName, String);
     check(eventLocation, String);
     check(eventAdditional, String);
     check(eventTags, String);
-    check(eventDate, String);
-    check(eventTime, String);
     if (this.find({ eventName }).count() > 0) {
       throw new Meteor.Error(`${eventName} is previously defined in another Interest`);
     }
@@ -66,8 +91,8 @@ class EventCollection extends BaseCollection {
       creator,
       eventName,
       maxPeople,
-      eventDate,
-      eventTime,
+      startDateTime,
+      endDateTime,
       eventLocation,
       meetupLocation,
       eventAdditional,
@@ -143,17 +168,16 @@ class EventCollection extends BaseCollection {
     const doc = this.findDoc(docID);
     const creator = doc.creator;
     const name = doc.eventName;
-    const date = doc.eventDate;
-    const time = doc.eventTime;
+    const max = doc.maxPeople;
+    const start = doc.eventDate;
+    const end = doc.eventTime;
     const location = doc.eventLocation;
     const meetup = doc.meetupLocation;
     const additional = doc.eventAdditional;
     const tags = doc.EventTags;
     const attending = doc.eventAttending;
-    return { creator, name, date, time, location, meetup, additional, tags, attending };
+    return { creator, max, name, start, end, location, meetup, additional, tags, attending };
   }
-
-
 }
 
 /**

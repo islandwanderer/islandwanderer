@@ -4,10 +4,10 @@
 
         <div style="margin-bottom: 30px" class="two column row">
           <div class="column">
-            <button class="ui teal newEvent button" type="submit">Create a New Event</button>
+            <button class="ui teal newEvent button" type="button"><a class="{{isActiveRoute "Create_Event_Page"}} item" href="{{pathFor "Create_Event_Page" username=routeUserName}}"> Create Event</a></button>
           </div>
           <div class="column">
-            <button class="ui teal review button" type="submit">Submit User or Event for Review</button>
+            <button class="ui teal review button" type="button"><a class="{{isActiveRoute "Review_Page"}} item" href="{{pathFor "Review_Page" username=routeUserName}}">Submit User or Event for Review </a></button>
           </div>
       </div>
 
