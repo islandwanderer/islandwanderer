@@ -4,7 +4,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Events } from '/imports/api/event/EventCollection';
 import { Tags } from '/imports/api/tag/TagCollection';
-import { Profile } from '/imports/api/profile/ProfileCollection';
+import { Profiles } from '/imports/api/profile/ProfileCollection';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
@@ -12,7 +12,7 @@ const displayErrorMessages = 'displayErrorMessages';
 Template.Edit_Event_Page.onCreated(function onCreated() {
   this.subscribe(Tags.getPublicationName());
   this.subscribe(Events.getPublicationName());
-  this.subscribe(Profile.getPublicationName());
+  this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
@@ -54,7 +54,7 @@ Template.Edit_Event_Page.events({
 /* eslint max-len:0 */
   'submit . event-data-form'(event, instance) {
     event.preventDefault();
-    const creator = Profile.username.value;
+    const creator = Profiles.username.value;
     const name = event.target.eventName.value;
     const max = event.target.maxPeople.value;
     const location = event.target.eventLocation.value;

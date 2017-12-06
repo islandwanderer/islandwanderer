@@ -115,10 +115,12 @@
       "name": "EventCollection",
       "contents": [
         {
+          "creator": "amaskey",
           "eventName": "newEvent1",
           "maxPeople": 25,
-          "eventDate": "12.23.2017",
-          "eventTime": "5AM",
+          "eventStart": "12.20.2017 7PM",
+          "eventEnd": "12.20.2017 8PM",
+          "meetupLocation": "At UH",
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
@@ -129,10 +131,12 @@
           ]
         },
         {
+          "creator": "nmeinzen",
           "eventName": "newEvent2",
           "maxPeople": 25,
-          "eventDate": "12.23.2017",
-          "eventTime": "5AM",
+          "eventStart": "12.25.2017 7AM",
+          "eventEnd": "12.20.2017 7PM",
+          "meetupLocation": "At UH",
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
@@ -142,10 +146,12 @@
           ]
         },
         {
+          "creator": "kieraw",
           "eventName": "newEvent3",
           "maxPeople": 25,
-          "eventDate": "12.23.2017",
-          "eventTime": "5AM",
+          "eventStart": "12.23.2017 5AM",
+          "eventEnd": "12.20.2017 7PM",
+          "meetupLocation": "At UH",
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",

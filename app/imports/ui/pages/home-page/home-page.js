@@ -16,23 +16,23 @@ Template.Home_Page.onCreated(function onCreated() {
 });
 
 Template.Home_Page.helpers({
-  profiles() {
+  events() {
     // Initialize selectedTags to all of them if messageFlags is undefined.
     if (!Template.instance().messageFlags.get(selectedTagsKey)) {
-      Template.instance().messageFlags.set(selectedTagsKey, _.map(Tags.findAll(), interest => interest.name));
+      Template.instance().messageFlags.set(selectedTagsKey, _.map(Tags.findAll(), tag => tag.name));
     }
     // Find all profiles with the currently selected interests.
     const allEvents = Events.findAll();
     const selectedTags = Template.instance().messageFlags.get(selectedTagsKey);
-    return _.filter(allEvents, profile => _.intersection(profile.interests, selectedTags).length > 0);
+    return _.filter(allEvents, event => _.intersection(event.tags, selectedTags).length > 0);
   },
 
-  interests() {
+  tags() {
     return _.map(Tags.findAll(),
-        function makeTagObject(interest) {
+        function makeTagObject(tag) {
           return {
-            label: interest.name,
-            selected: _.contains(Template.instance().messageFlags.get(selectedTagsKey), interest.name),
+            label: tag.name,
+            selected: _.contains(Template.instance().messageFlags.get(selectedTagsKey), tag.name),
           };
         });
   },
