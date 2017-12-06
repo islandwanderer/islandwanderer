@@ -10,6 +10,15 @@
 
           <div class="two fields">
             <div class="field">
+              {{> Text_Form_Control label="Creator " type="hidden" name="creator" errorMessage=(fieldError "creator")}}
+            </div>
+            <div class="field">
+              {{> Text_Form_Control label="Attending" type="hidden" name="eventAttending" errorMessage=(fieldError "eventAttending")}}
+            </div>
+          </div>
+
+          <div class="two fields">
+            <div class="field">
               {{> Text_Form_Control label="What: " required=true placeholder="Event name" errorMessage=(fieldError "eventName")}}
             </div>
             <div class="field">

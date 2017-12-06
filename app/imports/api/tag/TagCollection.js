@@ -19,24 +19,21 @@ class TagCollection extends BaseCollection {
   constructor() {
     super('Tag', new SimpleSchema({
       name: { type: String },
-      description: { type: String, optional: true },
     }, { tracker: Tracker }));
   }
 
   /**
    * Defines a new Tag.
    * @example
-   * Tags.define({ name: 'Software Engineering',
-   *                    description: 'Methods for group development of large, high quality software systems' });
+   * Tags.define({ name: 'Surfing' });
    * @param { Object } description Object with keys name and description.
-   * Name must be previously undefined. Description is optional.
+   * Name must be previously undefined.
    * Creates a "slug" for this name and stores it in the slug field.
    * @throws {Meteor.Error} If the tag definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ name, description }) {
+  define({ name }) {
     check(name, String);
-    check(description, String);
     if (this.find({ name }).count() > 0) {
       throw new Meteor.Error(`${name} is previously defined in another Tag`);
     }

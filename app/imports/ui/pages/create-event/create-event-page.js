@@ -34,10 +34,10 @@ Template.Create_Event_Page.helpers({
   },
   tags() {
     const event = Events.findDoc(FlowRouter.getParam('username'));
-    const selectedInterests = event.interests;
+    const selectedTags = event.tags;
     return event && _.map(Tags.findAll(),
-        function makeInterestObject(tag) {
-          return { label: tag.name, selected: _.contains(selectedInterests, tag.name) };
+        function makeTagObject(tag) {
+          return { label: tag.name, selected: _.contains(selectedTags, tag.name) };
         });
   },
   getUsername() {
@@ -49,7 +49,7 @@ Template.Create_Event_Page.events({
   /* eslint max-len:0 */
   'submit .event-data-form'(event, instance) {
     event.preventDefault();
-    const creator = Profile.username.value;
+    const creator = Profile.findDoc(FlowRouter.getParam('username'))._id;
     const name = event.target.eventName.value;
     const max = event.target.maxPeople.value;
     const location = event.target.eventLocation.value;

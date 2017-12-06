@@ -20,7 +20,6 @@ class EventCollection extends BaseCollection {
     super('Event', new SimpleSchema({
       creator: {
         type: String,
-        label: 'creator',
       },
       eventName: {
         type: String,
