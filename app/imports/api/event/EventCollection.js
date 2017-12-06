@@ -77,7 +77,7 @@ class EventCollection extends BaseCollection {
    * @throws {Meteor.Error} If the event definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ creator, eventName, eventStart, eventEnd, maxPeople, eventLocation, meetupLocation, eventAdditional, eventTags = [], eventAttending = [] }) {
+  define({ creator, eventName, eventStart = new Date(), eventEnd = new Date(), maxPeople, eventLocation, meetupLocation, eventAdditional, eventTags = [], eventAttending = [] }) {
     check(eventName, String);
     check(eventLocation, String);
     check(eventAdditional, String);

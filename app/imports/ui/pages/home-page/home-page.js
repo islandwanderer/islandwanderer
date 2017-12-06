@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
-// import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Tags } from '/imports/api/tag/TagCollection';
 import { Events } from '/imports/api/event/EventCollection';
@@ -16,6 +16,9 @@ Template.Home_Page.onCreated(function onCreated() {
 });
 
 Template.Home_Page.helpers({
+  routeUserName() {
+    return FlowRouter.getParam('username');
+  },
   events() {
     // Initialize selectedTags to all of them if messageFlags is undefined.
     if (!Template.instance().messageFlags.get(selectedTagsKey)) {

@@ -10,28 +10,28 @@
 
           <div class="two fields">
             <div class="field">
-              {{> Text_Form_Control label="What: " required=true placeholder="Event name" errorMessage=(fieldError "eventName")}}
+              {{> Text_Form_Control label="What: " name="eventName" required=true placeholder="Event name" errorMessage=(fieldError "eventName")}}
             </div>
             <div class="field">
-              {{> Text_Form_Control label="Max # of People: " required=true placeholder="ex. 100" errorMessage=(fieldError "maxPeople")}}
+              {{> Text_Form_Control label="Max # of People: " name="maxPeople" required=true placeholder="ex. 100" errorMessage=(fieldError "maxPeople")}}
             </div>
           </div>
 
           <div class="two fields">
             <div class="field">
               <label> Start </label>
-              <input id="event" type="datetime-local" name="eventStart" value="2017-12-01T08:30">
+              <input id="event" type="Date" name="eventStart" value="2017-12-01T08:30">
             </div>
 
             <div class="field">
               <label> End </label>
-              <input id="event" type="datetime-local" name="eventEnd" value="2017-12-01T08:30">
+              <input id="event" type="Date" name="eventEnd" value="2017-12-01T08:30">
             </div>
           </div>
 
           <div class="two fields">
             <div class="field">
-              {{> Text_Form_Control label="Where: " required=true placeholder="Event Location" errorMessage=(fieldError "eventLocation")}}
+              {{> Text_Form_Control label="Where: " name="eventLocation" required=true placeholder="Event Location" errorMessage=(fieldError "eventLocation")}}
             </div>
             <div class="field">
               <label> Meeting Place: </label>
@@ -45,10 +45,9 @@
             </div>
           </div>
 
-          {{> TextArea_Form_Control label="Additional Information" placeholder="Additional information about event" errorMessage=(fieldError "eventAdditional")}}
-          {{> TextArea_Form_Control label="Tags"  placeholder="Tags relating to event" errorMessage=(fieldError "tags")}}
-
-          <button class="ui primary button" type="submit">Create Event</button>
+          {{> TextArea_Form_Control label="Additional Information" name="eventAdditional" placeholder="Additional information about event" errorMessage=(fieldError "eventAdditional")}}
+          {{> TextArea_Form_Control label="Tags"  name="tags" placeholder="Tags relating to event" errorMessage=(fieldError "tags")}}
+        <button class="ui primary button" type="submit">Create Event</button>
 
         </form>
       </div>

@@ -20,6 +20,7 @@ Template.Create_Event_Page.onCreated(function onCreated() {
 });
 
 Template.Create_Event_Page.helpers({
+
   successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
   },
@@ -54,7 +55,7 @@ Template.Create_Event_Page.events({
     const max = event.target.maxPeople.value;
     const location = event.target.eventLocation.value;
     const username = FlowRouter.getParam('username'); // schema requires username.
-    const meetup = event.target.meetupLocation.checked.value;
+    const meetup = event.find('input:radio[name=meetupLocation]:checked');
     const additional = event.target.eventAdditional.value;
     const start = event.target.eventStart.value;
     const end = event.target.eventEnd.value;

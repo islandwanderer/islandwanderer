@@ -17,6 +17,9 @@ Template.Event_Page.onCreated(function onCreated() {
 });
 
 Template.Event_Page.helpers({
+  routeUserName() {
+    return FlowRouter.getParam('username');
+  },
   successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
   },
