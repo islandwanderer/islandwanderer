@@ -152,22 +152,22 @@
       "contents": [
         {
           "username": "henric",
-          "events": "newEvent1",
+          "events": "hiking",
           "message": "hello there"
         },
         {
           "username": "baek",
-          "events": "newEvent1",
+          "events": "hiking",
           "message": "hi"
         },
         {
           "username": "esb",
-          "events": "newEvent1",
-          "message": "Who is ready for diamond head hike for the break?"
+          "events": "hiking",
+          "message": "Who is ready for diamond head hike over the break?"
         },
         {
           "username": "gelee",
-          "events": "newEvent1",
+          "events": "hiking",
           "message": "I am ready for diamond head hike."
         }
       ]
@@ -177,7 +177,7 @@
       "contents": [
         {
           "creator": "amaskey",
-          "eventName": "camping",
+          "eventName": "hiking",
           "maxPeople": 25,
           "eventStart": "2017-12-21T08:30",
           "eventEnd": "2017-12-21T08:30",
@@ -193,7 +193,7 @@
         },
         {
           "creator": "nmeinzen",
-          "eventName": "hiking",
+          "eventName": "camping",
           "maxPeople": 25,
           "eventStart": "2017-12-21T08:30",
           "eventEnd": "2017-12-21T08:30",
