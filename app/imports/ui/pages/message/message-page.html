@@ -4,14 +4,12 @@
 
 		<div class="ui text container message-body raised segment">
 
-			<!--<div class="ui center aligned large top attached message-header basic segment header form"></div>-->
-
 			<div class="ui attached basic segment">
 				<ul class="message-window">
 					{{#each recentMessages }}
-						<li class="{{#if $eq username currentUser }} mine {{ else }} {{ username }} {{/if}}">
-							<div class="ui {{#if $eq username currentUser }} mine {{ else }} {{ username }} {{/if}} text-message label">
-							{{ username }}:  {{ message }}
+						<li class="{{#if $eq username currentUser }} mine {{/if}}">
+							<div class="ui {{ userHash username }} text-message label">
+								{{ username }}:  {{ message }}
 							</div>
 						</li>
 					{{/each }}
