@@ -6,9 +6,9 @@ import { Interests } from '/imports/api/interest/InterestCollection';
 
 const selectedInterestsKey = 'selectedInterests';
 
-let userId = Meteor.userId();
-Roles.addUsersToRoles( userId, [ 'admin', 'user' ] );
-Roles.userIsInRole(Meteor.userID(), 'admin');
+// let userId = Meteor.userId();
+// Roles.addUsersToRoles( userId, [ 'admin', 'user' ] );
+// Roles.userIsInRole(Meteor.userID(), 'admin');
 
 Template.Admin_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
