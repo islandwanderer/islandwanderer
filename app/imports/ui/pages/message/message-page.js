@@ -9,6 +9,16 @@ import { Events } from '/imports/api/event/EventCollection';
 
 const selectedEventKey = 'selectedEvent';
 
+
+function simpleHash(str){
+  let num = 2027;
+  let i = 0;
+  for (i = 0; i < str.length; i++) {
+    num += str.charCodeAt(i);
+  }
+  return num;
+}
+
 Template.Message_Page.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
   this.subscribe(Messages.getPublicationName());
@@ -42,16 +52,24 @@ Template.Message_Page.helpers({
   currentUser() {
     return FlowRouter.getParam('username');
   },
+  userHash(usr) {
+    const colors = ['red', 'blue', 'green', 'black', 'yellow', 'orange', 'pink'];
+    const hash = simpleHash(usr);
+    const index = hash % colors.length;
+    return colors[index];
+  },
 });
 
 Template.Message_Page.events({
   'submit .message-body': function (event, instance) {
     event.preventDefault();
     const message = event.target.message.value;
-    const events = event.target.events.value;
+    const events = Template.instance().messageFlags.get(selectedEventKey);
     const sendDate = new Date();
     const username = FlowRouter.getParam('username');
     const updatedMessageData = { username, events, message, sendDate };
+
+    console.log(message, events, sendDate, username, updatedMessageData);
 
     instance.context.reset();
     const cleanData = Messages.getSchema().clean(updatedMessageData);
