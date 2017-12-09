@@ -9,6 +9,16 @@ import { Events } from '/imports/api/event/EventCollection';
 
 const selectedEventKey = 'selectedEvent';
 
+
+function simpleHash(str){
+  let num = 2027;
+  let i = 0;
+  for (i = 0; i < str.length; i++) {
+    num += str.charCodeAt(i);
+  }
+  return num;
+}
+
 Template.Message_Page.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
   this.subscribe(Messages.getPublicationName());
@@ -41,6 +51,12 @@ Template.Message_Page.helpers({
   },
   currentUser() {
     return FlowRouter.getParam('username');
+  },
+  userHash(usr) {
+    const colors = ['red', 'blue', 'green', 'black', 'yellow', 'orange', 'pink'];
+    const hash = simpleHash(usr);
+    const index = hash % colors.length;
+    return colors[index];
   },
 });
 
