@@ -1,8 +1,9 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
-import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
+import Roles from '/alanning/roles';
+import { Events } from '/imports/api/event/EventCollection';
 
 const selectedInterestsKey = 'selectedInterests';
 
