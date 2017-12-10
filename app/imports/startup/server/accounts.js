@@ -9,7 +9,7 @@ import { Meteor } from 'meteor/meteor';
 Accounts.validateNewUser(function validate(user) {
   if (user) {
     const username = user.services.cas.id;
-    Roles.addUsersToRoles(Meteor.user(), 'user');
+    Roles.addUsersToRoles(user, 'user');
     if (!Profiles.isDefined(username)) {
       Profiles.define({ username });
     }
