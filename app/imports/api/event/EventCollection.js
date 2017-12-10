@@ -28,10 +28,10 @@ class EventCollection extends BaseCollection {
         type: Number,
       },
       eventStart: {
-        type: Date,
+        type: String,
       },
       eventEnd: {
-        type: Date,
+        type: String,
       },
       eventLocation: {
         type: String,
