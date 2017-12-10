@@ -4,6 +4,7 @@ import { Interests } from '/imports/api/interest/InterestCollection';
 import { Messages } from '/imports/api/message/MessageCollection';
 import { Events } from '/imports/api/event/EventCollection.js';
 import { _ } from 'meteor/underscore';
+import { Roles } from 'meteor/alanning:roles';
 
 /* global Assets */
 

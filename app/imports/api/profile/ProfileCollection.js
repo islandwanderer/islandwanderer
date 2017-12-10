@@ -4,8 +4,7 @@ import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
 // import { _ } from 'meteor/underscore';
 import { Tracker } from 'meteor/tracker';
-import { Roles } from '/alanning/roles';
-
+import { Roles } from 'meteor/alanning:roles';
 /** @module Profile */
 
 /**
@@ -54,8 +53,7 @@ class ProfileCollection extends BaseCollection {
     const facebook = doc.facebook;
     const twitter = doc.twitter;
     const additional = doc.additional;
-    const admin = doc.admin;
-    Roles.addUsersToRoles(doc.username, 'user');
+    Roles.addUsersToRoles(username, 'user');
     return { firstName, lastName, username, email, text, slack, facebook, twitter, picture, additional};
   }
 
