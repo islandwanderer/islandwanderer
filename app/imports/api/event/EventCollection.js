@@ -18,52 +18,79 @@ class EventCollection extends BaseCollection {
    */
   constructor() {
     super('Event', new SimpleSchema({
-      eventName: { type: String },
-      maxPeople: { type: String },
-      eventDate: { type: String },
-      eventTime: { type: String },
-      eventLocation: { type: String },
-      mmetupLocation: { type: String },
-      eventAdditional: { type: String, optional: true },
-      eventTags: { type: Array, optional: true },
-      'eventTags.$': { type: String },
-      eventAttending: { type: Array, optional: true },
+      creator: {
+        type: String,
+      },
+      eventName: {
+        type: String,
+      },
+      maxPeople: {
+        type: Number,
+      },
+      eventStart: {
+        type: String,
+      },
+      eventEnd: {
+        type: String,
+      },
+      eventLocation: {
+        type: String,
+      },
+      meetupLocation: {
+        type: String,
+      },
+      eventAdditional: {
+        type: String,
+      },
+      eventTags: {
+        type: Array,
+        optional: true,
+      },
+      'eventTags.$': {
+        type: String,
+      },
+      eventAttending: {
+        type: Array,
+        optional: true,
+      },
       'eventAttending.$': { type: String },
     }, { tracker: Tracker }));
   }
 
-/*eslint max-len:0*/
+  /* eslint max-len:0 */
   /** //eslint-disable-line max-len //eslint-disable-line max-len
    * Defines a new Event.
    * @example
-   * Event.define({ eventName: 'Diamond Head Hike',
+   * Event.define({ creator: kieraw
+   *               eventName: 'Diamond Head Hike',
    *               maxPeople: 25,
-   *               eventDate: '12.23.2017,
-   *               eventTime: 5 AM,
+   *               startDateTime: '12.23.2017 5AM,
+   *               endDateTime: '12.23.2017 8AM
    *               eventLocation: 'Diamon Head
+   *               meetupLocation: at Location;
    *               eventAdditional: 'Bring H20!',
-   *               eventTags: 'hiking, diamondHead, sunrise;, });
+   *               eventTags: 'hiking, diamondHead, sunrise;,
+   *               eventAttending: 'kieraw, nmeinzen, amaskey});
    * @param { Object } description Object with keys name and description.
    * eventNme must be previously undefined. eventAdditional and eventTags are optional.
    * Creates a "slug" for this name and stores it in the slug field.
    * @throws {Meteor.Error} If the event definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ eventName, eventDate, maxPeople, eventTime, eventLocation, meetupLocation, eventAdditional, eventTags = [], eventAttending = [] }) {
+  define({ creator, eventName, eventStart = new Date(), eventEnd = new Date(), maxPeople, eventLocation, meetupLocation, eventAdditional, eventTags = [], eventAttending = [] }) {
     check(eventName, String);
     check(eventLocation, String);
     check(eventAdditional, String);
     check(eventTags, String);
-    check(eventDate, String);
-    check(eventTime, String);
     if (this.find({ eventName }).count() > 0) {
       throw new Meteor.Error(`${eventName} is previously defined in another Interest`);
     }
     return this._collection.insert({
+      creator,
       eventName,
       maxPeople,
-      eventDate,
-      eventTime,
+      eventStart,
+      eventEnd,
       eventLocation,
       meetupLocation,
       eventAdditional,
@@ -137,16 +164,18 @@ class EventCollection extends BaseCollection {
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
+    const creator = doc.creator;
     const name = doc.eventName;
-    const date = doc.eventDate;
-    const time = doc.eventTime;
+    const max = doc.maxPeople;
+    const start = doc.eventStart;
+    const end = doc.eventEnd;
     const location = doc.eventLocation;
+    const meetup = doc.meetupLocation;
     const additional = doc.eventAdditional;
     const tags = doc.EventTags;
-    return { name, date, time, location, additional, tags };
+    const attending = doc.eventAttending;
+    return { creator, max, name, start, end, location, meetup, additional, tags, attending };
   }
-
-
 }
 
 /**

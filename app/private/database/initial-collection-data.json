@@ -152,22 +152,22 @@
       "contents": [
         {
           "username": "henric",
-          "events": "newEvent1",
+          "events": "hiking",
           "message": "hello there"
         },
         {
           "username": "baek",
-          "events": "newEvent1",
+          "events": "hiking",
           "message": "hi"
         },
         {
           "username": "esb",
-          "events": "newEvent1",
-          "message": "Who is ready for diamond head hike for the break?"
+          "events": "hiking",
+          "message": "Who is ready for diamond head hike over the break?"
         },
         {
           "username": "gelee",
-          "events": "newEvent1",
+          "events": "hiking",
           "message": "I am ready for diamond head hike."
         }
       ]
@@ -176,10 +176,12 @@
       "name": "EventCollection",
       "contents": [
         {
-          "eventName": "newEvent1",
+          "creator": "amaskey",
+          "eventName": "hiking",
           "maxPeople": 25,
-          "eventDate": "12.23.2017",
-          "eventTime": "5AM",
+          "eventStart": "2017-12-21T08:30:00",
+          "eventEnd": "2017-12-21T09:30:00",
+          "meetupLocation": "At UH",
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
@@ -190,23 +192,28 @@
           ]
         },
         {
-          "eventName": "newEvent2",
+          "creator": "nmeinzen",
+          "eventName": "camping",
           "maxPeople": 25,
-          "eventDate": "12.23.2017",
-          "eventTime": "5AM",
+          "eventStart": "2017-12-21T10:30:00",
+          "eventEnd": "2017-12-21T11:00:00",
+          "meetupLocation": "At UH",
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
           "eventAttending": [
             "kieraw",
-            "nmeinzen"
+            "nmeinzen",
+            "amaskey"
           ]
         },
         {
-          "eventName": "newEvent3",
+          "creator": "kieraw",
+          "eventName": "snorkeling",
           "maxPeople": 25,
-          "eventDate": "12.23.2017",
-          "eventTime": "5AM",
+          "eventStart": "2017-12-23T08:30:00",
+          "eventEnd": "2017-12-25T10:30:00",
+          "meetupLocation": "At UH",
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
