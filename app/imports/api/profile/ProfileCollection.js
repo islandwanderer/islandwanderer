@@ -53,8 +53,7 @@ class ProfileCollection extends BaseCollection {
     const facebook = doc.facebook;
     const twitter = doc.twitter;
     const additional = doc.additional;
-    Roles.addUsersToRoles(Meteor.userId(), 'user');
-    return { firstName, lastName, username, email, text, slack, facebook, twitter, picture, additional};
+    return { firstName, lastName, username, email, text, slack, facebook, twitter, picture, additional, };
   }
 
   /**
@@ -95,7 +94,7 @@ class ProfileCollection extends BaseCollection {
     }
 
     return this._collection.insert({
-      firstName, lastName, username, email, text, picture, facebook, twitter, slack, additional, });
+      firstName, lastName, username, email, text, picture, facebook, twitter, slack, additional,});
   }
 }
 

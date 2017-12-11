@@ -1,5 +1,4 @@
 <template name="Admin_Page">
-  {{#if isInRole 'admin'}}
 	{{#if Template.subscriptionsReady}}
 
 		<div class="ui text container segment">
@@ -8,20 +7,27 @@
 			</div>
     </div>
 
-  {{/if}}
+  <div style="margin-top: 20px" class="ui cards">
+    {{#each profile in profiles }}
+    {{> Directory_Profile profile=profile }}
+    <button class="ui primary button" type="submit">Remove Post</button>
 
-  {{> Admin_Page_Directory profiles=profiles }}
+    <button class="ui primary button" type="submit"><a href="/edit-event">Give Feedback</button>
 
-  <button class="ui primary button" type="submit">Remove Post</button>
-  <button class="ui primary button" type="submit">Give Feedback</button>
-  <button class="ui primary button" type="submit">Remove Tag</button>
-  {{#if displaySuccessMessage}}
+    <button class="ui primary button" type="submit">Remove Tag</button>
+
+    {{#if displaySuccessMessage}}
     <div class="ui success message">
       <p>Flagged post successfully handled.</p>
     </div>
+    {{/if}}
+    {{/each}}
+  </div>
   {{/if}}
-  {{else}}
-    <h1>Not Authorized</h1>
-  {{/if}}
+  <!--
+  Remove post will delete the post
+  Give Feedback will take the post to the edit post page, and the post can be edited and updated
+  Remove Tag will remove post from list of posts and will keep the post as is.
+
 
 </template>
