@@ -19,41 +19,48 @@ class EventCollection extends BaseCollection {
   constructor() {
     super('Event', new SimpleSchema({
       creator: {
+        label: 'Creator',
         type: String,
       },
       eventName: {
+        label: 'Name',
         type: String,
       },
       maxPeople: {
+        label: 'Maximum number of peole',
         type: Number,
       },
       eventStart: {
+        label: 'Start Date and Time',
         type: Date,
       },
       eventEnd: {
+        label: 'End Date and Time',
         type: Date,
       },
       eventLocation: {
+        label: 'Location',
         type: String,
       },
       meetupLocation: {
+        label: 'meeting location',
         type: String,
       },
       eventAdditional: {
+        label: 'Additional Information',
         type: String,
+        optional: true,
       },
       eventTags: {
         type: Array,
-        optional: true,
+        label: 'Tags',
       },
-      'eventTags.$': {
-        type: String,
-      },
+      'eventTags.$': { type: String },
       eventAttending: {
         type: Array,
-        optional: true,
+        label: 'Attendees',
       },
-      'eventAttending.$': { type: String },
+      'eventAttending.$': { type: String} ,
     }, { tracker: Tracker }));
   }
 
@@ -77,13 +84,16 @@ class EventCollection extends BaseCollection {
    * @throws {Meteor.Error} If the event definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ creator, eventName, eventStart = new Date(), eventEnd = new Date(), maxPeople, eventLocation, meetupLocation, eventAdditional, eventTags = [], eventAttending = [] }) {
-    check(eventName, String);
-    check(eventLocation, String);
-    check(eventAdditional, String);
-    check(eventTags, String);
+  define({ creator = '', eventName = '', eventStart = new Date(), eventEnd = new Date(), maxPeople = '', eventLocation = '', meetupLocation = '', eventAdditional = '', eventTags = [], eventAttending = [] }) {
+    const checkPattern = { creator: String, eventName: String, maxPeople: String, eventLocation: String, meetupLocation: String,
+      eventAdditional: String};
+    check({ creator, eventName, maxPeople, eventLocation, meetupLocation, eventAdditional }, checkPattern);
     if (this.find({ eventName }).count() > 0) {
-      throw new Meteor.Error(`${eventName} is previously defined in another Interest`);
+      throw new Meteor.Error(`${eventName} is previously defined in another Event`);
+      // Throw an error if there are duplicates in the passed interest names.
+      if (tags.length !== _.uniq(tags).length) {
+        throw new Meteor.Error(`${tags} contains duplicates`);
+      }
     }
     return this._collection.insert({
       creator,

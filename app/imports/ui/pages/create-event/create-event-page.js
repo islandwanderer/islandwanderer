@@ -9,6 +9,7 @@ import { Profiles } from '/imports/api/profile/ProfileCollection';
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
+
 Template.Create_Event_Page.onCreated(function onCreated() {
   this.subscribe(Tags.getPublicationName());
   this.subscribe(Events.getPublicationName());
@@ -16,7 +17,7 @@ Template.Create_Event_Page.onCreated(function onCreated() {
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
-  this.context = Events.getSchema().namedContext(' Event_Page');
+  this.context = Events.getSchema().namedContext('Create_Event_Page');
 });
 
 Template.Create_Event_Page.helpers({
@@ -31,18 +32,23 @@ Template.Create_Event_Page.helpers({
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
   event() {
-    return Events.findDoc(FlowRouter.getParam('username'));
+    return Events.findDoc(FlowRouter.getParam('eventName'));
+  },
+  maxPeople() {
+    const maxPeopleList = ['1', '2'];
+    return _.map(maxPeopleList, function makemaxPeopleObject(maxPeople) { return { label: maxPeople }; });
+  },
+  meetup() {
+    const meetupList = ['At Location', 'At UH', 'Other'];
+    return _.map(meetupList, function makemeetupObject(meetupLocation) { return { label: meetupLocation }; });
   },
   tags() {
-    const event = Events.findDoc(FlowRouter.getParam('username'));
+    const event = Events.findDoc(FlowRouter.getParam('eventName'));
     const selectedTags = event.tags;
     return event && _.map(Tags.findAll(),
         function makeTagObject(tag) {
           return { label: tag.name, selected: _.contains(selectedTags, tag.name) };
         });
-  },
-  getUsername() {
-    return FlowRouter.getParam('username');
   },
 });
 
@@ -55,7 +61,7 @@ Template.Create_Event_Page.events({
     const max = event.target.maxPeople.value;
     const location = event.target.eventLocation.value;
     const username = FlowRouter.getParam('username'); // schema requires username.
-    const meetup = event.find('input:radio[name=meetupLocation]:checked');
+    const meetup = event.target.meetupLocation.value;
     const additional = event.target.eventAdditional.value;
     const start = event.target.eventStart.value;
     const end = event.target.eventEnd.value;
@@ -64,7 +70,7 @@ Template.Create_Event_Page.events({
     Events.insert({ $addToSet: { Events: creator } });
 
     const createEventData = { creator, name, max, location, meetup, additional, start, end, tags, username };
-    const eventTags = { creator, name, location, start, end };
+   // const eventTags = { creator, name, location, start, end };
     // Clear out any old validation errors.
     instance.context.reset();
     // Invoke clean so that createdEventData reflects what will be inserted.
@@ -75,9 +81,10 @@ Template.Create_Event_Page.events({
     if (instance.context.isValid()) {
       const docID = Events.findDoc(FlowRouter.getParam('username'))._id;
       const id = Events.insert(docID, { $set: cleanData });
-      Events.insert(docID, { $set: eventTags });
+      // Events.insert(docID, { $set: eventTags });
       instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
+      instance.find('event-data-form ').reset();
       FlowRouter.go('Home_Page');
     } else {
       instance.messageFlags.set(displaySuccessMessage, false);
