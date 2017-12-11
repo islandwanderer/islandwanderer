@@ -1,4 +1,5 @@
 <template name="Admin_Page">
+  {{#if isInRole 'admin'}}
 	{{#if Template.subscriptionsReady}}
 
 		<div class="ui text container segment">
@@ -23,11 +24,14 @@
     {{/if}}
     {{/each}}
   </div>
+  {{else}}
+    <h1>Not Authorized to view page</h1>
+  {{/if}}
   {{/if}}
   <!--
   Remove post will delete the post
   Give Feedback will take the post to the edit post page, and the post can be edited and updated
-  Remove Tag will remove post from list of posts and will keep the post as is.
+  Remove Tag will remove post from list of posts and will keep the post as is.-->
 
 
 </template>
