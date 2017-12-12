@@ -10,7 +10,7 @@
 
           <div class="two fields">
             <div class="field">
-              {{> Text_Form_Control label="Event Name:  " name="eventName" required=true errorMessage=(fieldError "eventName")}}
+              {{> Text_Form_Control label="Event Name:  " placeholder=" " name="eventName" required=true errorMessage=(fieldError "eventName")}}
             </div>
             <div class="field">
               {{> Select_Form_Control label="Max Attendees" required=true options=maxPeoples name="maxPeople" errorMessage=(fieldError "maxPeople")}}
@@ -29,12 +29,12 @@
 
           <div class="two fields">
             <div class="field">
-              {{> Text_Form_Control label="Where: " name="eventLocation" required=true errorMessage=(fieldError "eventLocation")}}
+              {{> Text_Form_Control label="Where: " placeholder=" " name="eventLocation" required=true errorMessage=(fieldError "eventLocation")}}
             </div>
             </div>
 
           {{> TextArea_Form_Control label="Additional Information" name="eventAdditional" placeholder="Additional information about event" errorMessage=(fieldError "eventAdditional")}}
-          {{> Select_Form_Control label="Tags"  options=tags name="tags" multiple=true errorMessage=(fieldError "tags")}}
+          {{> Select_Form_Control label="Tags"  options=e_tags name="tags" multiple=true errorMessage=(fieldError "tags")}}
 
         <button class="ui primary button" type="submit">Create Event</button>
 

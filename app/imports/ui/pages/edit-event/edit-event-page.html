@@ -1,5 +1,5 @@
 <template name="Edit_Event_Page">
-
+{{#If_Logged_In}}
   {{#if Template.subscriptionsReady}}
 
     <div class="ui text container segment">
@@ -44,6 +44,6 @@
     </div>
 
   {{/if}}
-
+{{/If_Logged_In}}
 </template>
 

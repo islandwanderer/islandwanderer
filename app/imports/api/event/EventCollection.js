@@ -29,11 +29,12 @@ class EventCollection extends BaseCollection {
       },
       maxPeople: {
         label: 'Maximum number of peole',
-        type: Number,
+        type: String,
+        regEx: '^/d{3}',
       },
       eventStart: {
         label: 'Start Date and Time',
-        type: String
+        type: String,
       },
       eventEnd: {
         label: 'End Date and Time',
@@ -82,9 +83,16 @@ class EventCollection extends BaseCollection {
    * @returns The newly created docID.
    */
   define({ creator = '', eventName = '', eventStart = new Date(), eventEnd = new Date(), maxPeople = '', eventLocation = '', eventAdditional = '', eventTags = [], eventAttending = [] }) {
-    const checkPattern = { creator: String, eventName: String, maxPeople: String, eventLocation: String, meetupLocation: String,
-      eventAdditional: String };
-    check({ creator, eventName, maxPeople, eventLocation, eventAdditional }, checkPattern);
+    // check eventStart and eventEnd
+    // convert sto Date() and back again to String()
+    // b/c calendar need string input
+    const start = new Date(eventStart);
+    const end = new Date(eventEnd);
+    const checkPattern = { creator: String, eventName: String, maxPeople: String, eventLocation: String, eventAdditional: String, start: Date(), end: Date() };
+    check({ creator, eventName, maxPeople, eventLocation, eventAdditional, start, end }, checkPattern);
+    // convert back to string
+    const eventStartstr = String(start);
+    const eventEndstr = String(end);
     if (this.find({ eventName }).count() > 0) {
       throw new Meteor.Error(`${eventName} is previously defined in another Event`);
     }
@@ -98,9 +106,8 @@ class EventCollection extends BaseCollection {
       creator,
       eventName,
       maxPeople,
-      eventStart,
-      eventEnd,
-      meetupLocation,
+      eventStartstr,
+      eventEndstr,
       eventAdditional,
       eventTags,
       eventAttending,

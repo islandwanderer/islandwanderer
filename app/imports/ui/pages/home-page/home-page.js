@@ -19,6 +19,9 @@ Template.Home_Page.helpers({
   routeUserName() {
     return FlowRouter.getParam('username');
   },
+  routeEventName() {
+    return FlowRouter.getParam('eventName');
+  },
   events() {
     // Initialize selectedTags to all of them if messageFlags is undefined.
     if (!Template.instance().messageFlags.get(selectedTagsKey)) {
