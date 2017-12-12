@@ -9,6 +9,8 @@ import { Profiles } from '/imports/api/profile/ProfileCollection';
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
+export const meetupList = ['At Location', 'At UH', 'Other'];
+export const maxPeopleList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', ' 19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'];
 
 Template.Create_Event_Page.onCreated(function onCreated() {
   this.subscribe(Tags.getPublicationName());
@@ -34,12 +36,10 @@ Template.Create_Event_Page.helpers({
   event() {
     return Events.findDoc(FlowRouter.getParam('eventName'));
   },
-  maxPeople() {
-    const maxPeopleList = ['1', '2'];
-    return _.map(maxPeopleList, function makemaxPeopleObject(maxPeople) { return { label: maxPeople }; });
+  maxPeoples() {
+    return _.map(maxPeopleList, function makemeetupObject(maxPeople) { return { label: maxPeople }; });
   },
   meetup() {
-    const meetupList = ['At Location', 'At UH', 'Other'];
     return _.map(meetupList, function makemeetupObject(meetupLocation) { return { label: meetupLocation }; });
   },
   tags() {
@@ -56,7 +56,7 @@ Template.Create_Event_Page.events({
   /* eslint max-len:0 */
   'submit .event-data-form'(event, instance) {
     event.preventDefault();
-    const creator = Profiles.findDoc(FlowRouter.getParam('username'))._id;
+    const creator = Profiles.findDoc(FlowRouter.getParam('username'));
     const name = event.target.eventName.value;
     const max = event.target.maxPeople.value;
     const location = event.target.eventLocation.value;

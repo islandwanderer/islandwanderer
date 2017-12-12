@@ -13,7 +13,7 @@
               {{> Text_Form_Control label="Event Name:  " name="eventName" required=true errorMessage=(fieldError "eventName")}}
             </div>
             <div class="field">
-              {{> Select_Form_Control label="Max Attendees"  name="maxPeople" errorMessage=(fieldError "maxPeople")}}
+              {{> Select_Form_Control label="Max Attendees"  options=maxPeoples name="maxPeople" errorMessage=(fieldError "maxPeople")}}
             </div>
           </div>
 
@@ -39,7 +39,7 @@
           </div>
 
           {{> TextArea_Form_Control label="Additional Information" name="eventAdditional" placeholder="Additional information about event" errorMessage=(fieldError "eventAdditional")}}
-          {{> Select_Form_Control label="Tags"  name="tags" multiple=true errorMessage=(fieldError "tags")}}
+          {{> Select_Form_Control label="Tags"  options=tags name="tags" multiple=true errorMessage=(fieldError "tags")}}
 
         <button class="ui primary button" type="submit">Create Event</button>
 

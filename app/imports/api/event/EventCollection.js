@@ -1,5 +1,6 @@
 import SimpleSchema from 'simpl-schema';
 import BaseCollection from '/imports/api/base/BaseCollection';
+import { Tags } from '/imports/api/tag/TagCollection';
 import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
@@ -32,11 +33,12 @@ class EventCollection extends BaseCollection {
       },
       eventStart: {
         label: 'Start Date and Time',
-        type: Date,
+        type: datetime,
+        type: datetime,
       },
       eventEnd: {
         label: 'End Date and Time',
-        type: Date,
+        type: datetime,
       },
       eventLocation: {
         label: 'Location',
@@ -60,7 +62,7 @@ class EventCollection extends BaseCollection {
         type: Array,
         label: 'Attendees',
       },
-      'eventAttending.$': { type: String} ,
+      'eventAttending.$': { type: String },
     }, { tracker: Tracker }));
   }
 
@@ -86,14 +88,16 @@ class EventCollection extends BaseCollection {
    */
   define({ creator = '', eventName = '', eventStart = new Date(), eventEnd = new Date(), maxPeople = '', eventLocation = '', meetupLocation = '', eventAdditional = '', eventTags = [], eventAttending = [] }) {
     const checkPattern = { creator: String, eventName: String, maxPeople: String, eventLocation: String, meetupLocation: String,
-      eventAdditional: String};
+      eventAdditional: String };
     check({ creator, eventName, maxPeople, eventLocation, meetupLocation, eventAdditional }, checkPattern);
     if (this.find({ eventName }).count() > 0) {
       throw new Meteor.Error(`${eventName} is previously defined in another Event`);
+    }
+      // Throw an error if any of the passed Interest names are not defined.
+    Tags.assertNames(eventTags);
       // Throw an error if there are duplicates in the passed interest names.
-      if (tags.length !== _.uniq(tags).length) {
-        throw new Meteor.Error(`${tags} contains duplicates`);
-      }
+    if (eventTags.length !== _.uniq(eventTags).length) {
+      throw new Meteor.Error(`${eventTags} contains duplicates`);
     }
     return this._collection.insert({
       creator,
