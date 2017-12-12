@@ -39,9 +39,6 @@ Template.Create_Event_Page.helpers({
   maxPeoples() {
     return _.map(maxPeopleList, function makemeetupObject(maxPeople) { return { label: maxPeople }; });
   },
-  meetup() {
-    return _.map(meetupList, function makemeetupObject(meetupLocation) { return { label: meetupLocation }; });
-  },
   tags() {
     const event = Events.findDoc(FlowRouter.getParam('eventName'));
     const selectedTags = event.tags;
@@ -54,6 +51,11 @@ Template.Create_Event_Page.helpers({
 
 Template.Create_Event_Page.events({
   /* eslint max-len:0 */
+  'check'(event) {
+    if (event.target.meetupLocation.value === ('Other')) {
+
+    }
+  },
   'submit .event-data-form'(event, instance) {
     event.preventDefault();
     const creator = Profiles.findDoc(FlowRouter.getParam('username'));
@@ -61,7 +63,6 @@ Template.Create_Event_Page.events({
     const max = event.target.maxPeople.value;
     const location = event.target.eventLocation.value;
     const username = FlowRouter.getParam('username'); // schema requires username.
-    const meetup = event.target.meetupLocation.value;
     const additional = event.target.eventAdditional.value;
     const start = event.target.eventStart.value;
     const end = event.target.eventEnd.value;
@@ -69,7 +70,7 @@ Template.Create_Event_Page.events({
     const tags = _.map(selectedTags, (option) => option.value);
     Events.insert({ $addToSet: { Events: creator } });
 
-    const createEventData = { creator, name, max, location, meetup, additional, start, end, tags, username };
+    const createEventData = { creator, name, max, location, additional, start, end, tags, username };
    // const eventTags = { creator, name, location, start, end };
     // Clear out any old validation errors.
     instance.context.reset();

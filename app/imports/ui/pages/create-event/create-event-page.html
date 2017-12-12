@@ -13,19 +13,17 @@
               {{> Text_Form_Control label="Event Name:  " name="eventName" required=true errorMessage=(fieldError "eventName")}}
             </div>
             <div class="field">
-              {{> Select_Form_Control label="Max Attendees"  options=maxPeoples name="maxPeople" errorMessage=(fieldError "maxPeople")}}
+              {{> Select_Form_Control label="Max Attendees" required=true options=maxPeoples name="maxPeople" errorMessage=(fieldError "maxPeople")}}
             </div>
           </div>
 
           <div class="two fields">
             <div class="field">
-              <label> Start </label>
-              <input id="event" type="Date" name="eventStart" value="2017-12-01T08:30">
+              {{> Text_Form_Control label="Start: " name="eventStart" required=true errorMessage=(fieldError "eventStart") placeholder="2017-12-31 8:30PM"}}
             </div>
 
             <div class="field">
-              <label> End </label>
-              <input id="event" type="Date" name="eventEnd" value="2017-12-01T08:30">
+              {{> Text_Form_Control label="End: " name="eventEnd" required=true errorMessage=(fieldError "eventEnd") placeholder="2017-12-31 9:30PM"}}
             </div>
           </div>
 
@@ -33,10 +31,7 @@
             <div class="field">
               {{> Text_Form_Control label="Where: " name="eventLocation" required=true errorMessage=(fieldError "eventLocation")}}
             </div>
-            <div class="field">
-              {{> Radio_Form_Control label="Meeting Location" name="meetupLocation" required=true radios=meetup errorMessage=(fieldError "meetupLocation") }}
             </div>
-          </div>
 
           {{> TextArea_Form_Control label="Additional Information" name="eventAdditional" placeholder="Additional information about event" errorMessage=(fieldError "eventAdditional")}}
           {{> Select_Form_Control label="Tags"  options=tags name="tags" multiple=true errorMessage=(fieldError "tags")}}

@@ -33,16 +33,6 @@
           <div class="field">
             {{> Text_Form_Control label="Where: " required=true placeholder="Event Location" value=(eventDataField 'eventLocation') errorMessage=(fieldError "eventLocation")}}
           </div>
-          <div class="field">
-            <label> Meeting Place: </label>
-            <div class="ui radio checkbox">
-              <div class=" centered row">
-                {{> Radio_Field name="meetupLocation" label="At Location" checked="checked"}}
-                {{> Radio_Field name="meetupLocation" label="At UH Campus" }}
-                {{> Radio_Field name="meetupLocation" label="Other" }}
-              </div>
-            </div>
-          </div>
         </div>
 
         {{> TextArea_Form_Control label="Additional Information" value=(eventDataField 'eventAdditional') placeholder="Additional information about event" errorMessage=(fieldError "eventAdditional")}}

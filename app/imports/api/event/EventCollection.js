@@ -33,19 +33,14 @@ class EventCollection extends BaseCollection {
       },
       eventStart: {
         label: 'Start Date and Time',
-        type: datetime,
-        type: datetime,
+        type: String
       },
       eventEnd: {
         label: 'End Date and Time',
-        type: datetime,
+        type: String,
       },
       eventLocation: {
         label: 'Location',
-        type: String,
-      },
-      meetupLocation: {
-        label: 'meeting location',
         type: String,
       },
       eventAdditional: {
@@ -86,10 +81,10 @@ class EventCollection extends BaseCollection {
    * @throws {Meteor.Error} If the event definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ creator = '', eventName = '', eventStart = new Date(), eventEnd = new Date(), maxPeople = '', eventLocation = '', meetupLocation = '', eventAdditional = '', eventTags = [], eventAttending = [] }) {
+  define({ creator = '', eventName = '', eventStart = new Date(), eventEnd = new Date(), maxPeople = '', eventLocation = '', eventAdditional = '', eventTags = [], eventAttending = [] }) {
     const checkPattern = { creator: String, eventName: String, maxPeople: String, eventLocation: String, meetupLocation: String,
       eventAdditional: String };
-    check({ creator, eventName, maxPeople, eventLocation, meetupLocation, eventAdditional }, checkPattern);
+    check({ creator, eventName, maxPeople, eventLocation, eventAdditional }, checkPattern);
     if (this.find({ eventName }).count() > 0) {
       throw new Meteor.Error(`${eventName} is previously defined in another Event`);
     }
@@ -105,7 +100,6 @@ class EventCollection extends BaseCollection {
       maxPeople,
       eventStart,
       eventEnd,
-      eventLocation,
       meetupLocation,
       eventAdditional,
       eventTags,
@@ -184,11 +178,10 @@ class EventCollection extends BaseCollection {
     const start = doc.eventStart;
     const end = doc.eventEnd;
     const location = doc.eventLocation;
-    const meetup = doc.meetupLocation;
     const additional = doc.eventAdditional;
     const tags = doc.EventTags;
     const attending = doc.eventAttending;
-    return { creator, max, name, start, end, location, meetup, additional, tags, attending };
+    return { creator, max, name, start, end, location, additional, tags, attending };
   }
 }
 

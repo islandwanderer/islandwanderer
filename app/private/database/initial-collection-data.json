@@ -41,6 +41,12 @@
           "name": "Kayaking"
         },
         {
+          "name": "Food"
+        },
+        {
+          "name": "Backpacking"
+        },
+        {
           "name": "H20"
         }
       ]
@@ -144,7 +150,6 @@
           "maxPeople": 25,
           "eventStart": "2017-12-21T08:30",
           "eventEnd": "2017-12-21T08:30",
-          "meetupLocation": "At UH",
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
@@ -160,7 +165,6 @@
           "maxPeople": 25,
           "eventStart": "2017-12-21T08:30",
           "eventEnd": "2017-12-21T08:30",
-          "meetupLocation": "At UH",
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
@@ -175,7 +179,6 @@
           "maxPeople": 25,
           "eventStart": "2017-12-21T08:30",
           "eventEnd": "2017-12-21T08:30",
-          "meetupLocation": "At UH",
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
