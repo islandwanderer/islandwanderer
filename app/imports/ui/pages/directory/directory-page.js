@@ -1,16 +1,16 @@
 import { Template } from 'meteor/templating';
-import { Profiles } from '/imports/api/profile/ProfileCollection';
+import { Events } from '/imports/api/event/EventCollection';
 
 Template.Directory_Page.onCreated(function onCreated() {
-  this.subscribe(Profiles.getPublicationName());
+  this.subscribe(Events.getPublicationName());
 });
 
 Template.Directory_Page.helpers({
 
   /**
-   * Returns a cursor to profiles, sorted by last name.
+   * Returns a cursor to events, sorted by last name.
    */
-  profiles() {
-    return Profiles.find({}, { sort: { lastName: 1 } });
+  events() {
+    return Events.find({}, { sort: { eventName: 1 } });
   },
 });

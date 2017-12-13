@@ -152,7 +152,7 @@
           "eventEnd": "2017-12-21T08:30",
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
-          "eventTags": "hiking, diamond head, over break",
+          "eventTags": "Hiking, H20, weekend",
           "eventAttending": [
             "amaskey",
             "kieraw",
@@ -162,12 +162,12 @@
         {
           "creator": "nmeinzen",
           "eventName": "newEvent2",
-          "maxPeople": 25,
+          "maxPeople": 7,
           "eventStart": "2017-12-21T08:30",
           "eventEnd": "2017-12-21T08:30",
-          "eventLocation": "Diamond Head",
-          "eventAdditional": "bring h2o",
-          "eventTags": "hiking, diamond head, over break",
+          "eventLocation": "North Shore",
+          "eventAdditional": " ",
+          "eventTags": "Beach, allday, Surfing",
           "eventAttending": [
             "kieraw",
             "nmeinzen"
@@ -176,12 +176,12 @@
         {
           "creator": "kieraw",
           "eventName": "newEvent3",
-          "maxPeople": 25,
+          "maxPeople": 5,
           "eventStart": "2017-12-21T08:30",
-          "eventEnd": "2017-12-21T08:30",
-          "eventLocation": "Diamond Head",
-          "eventAdditional": "bring h2o",
-          "eventTags": "hiking, diamond head, over break",
+          "eventEnd": "2017-12-22T08:30",
+          "eventLocation": "Koolau",
+          "eventAdditional": "overnight camping",
+          "eventTags": "Camping, Mountains, weekend, multipleDays",
           "eventAttending": [
             "amaskey",
             "henric",

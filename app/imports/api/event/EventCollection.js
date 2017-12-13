@@ -91,8 +91,8 @@ class EventCollection extends BaseCollection {
     const checkPattern = { creator: String, eventName: String, maxPeople: String, eventLocation: String, eventAdditional: String, start: Date(), end: Date() };
     check({ creator, eventName, maxPeople, eventLocation, eventAdditional, start, end }, checkPattern);
     // convert back to string
-    const eventStartstr = String(start);
-    const eventEndstr = String(end);
+    const eventStarts = String(start);
+    const eventEnds = String(end);
     if (this.find({ eventName }).count() > 0) {
       throw new Meteor.Error(`${eventName} is previously defined in another Event`);
     }
@@ -106,8 +106,8 @@ class EventCollection extends BaseCollection {
       creator,
       eventName,
       maxPeople,
-      eventStartstr,
-      eventEndstr,
+      eventStarts,
+      eventEnds,
       eventAdditional,
       eventTags,
       eventAttending,

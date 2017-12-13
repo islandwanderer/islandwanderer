@@ -34,7 +34,7 @@
             </div>
 
           {{> TextArea_Form_Control label="Additional Information" name="eventAdditional" placeholder="Additional information about event" errorMessage=(fieldError "eventAdditional")}}
-          {{> Select_Form_Control label="Tags"  options=eventTags name="tags" multiple=true errorMessage=(fieldError "tags")}}
+          {{> Select_Form_Control label="Tags"  options=eventTag name="tags" multiple=true errorMessage=(fieldError "tags")}}
 
         <button class="ui primary button" type="submit">Create Event</button>
 
