@@ -22,6 +22,15 @@ Template.Home_Page.helpers({
   routeEventName() {
     return FlowRouter.getParam('eventName');
   },
+  eventTag() {
+    return _.map(Tags.findAll(),
+        function makeTagObject(tag) {
+          return {
+            label: tag.name,
+            selected: _.contains(Template.instance().messageFlags.get(selectedTagsKey), tag.name),
+          };
+        });
+  },
   events() {
     // Initialize selectedTags to all of them if messageFlags is undefined.
     if (!Template.instance().messageFlags.get(selectedTagsKey)) {
@@ -30,17 +39,7 @@ Template.Home_Page.helpers({
     // Find all profiles with the currently selected interests.
     const allEvents = Events.findAll();
     const selectedTags = Template.instance().messageFlags.get(selectedTagsKey);
-    return _.filter(allEvents, event => _.intersection(event.tags, selectedTags).length > 0);
-  },
-
-  tags() {
-    return _.map(Tags.findAll(),
-        function makeTagObject(tag) {
-          return {
-            label: tag.name,
-            selected: _.contains(Template.instance().messageFlags.get(selectedTagsKey), tag.name),
-          };
-        });
+    return _.filter(allEvents, event => _.intersection(event.eventTag, selectedTags).length > 0);
   },
 });
 

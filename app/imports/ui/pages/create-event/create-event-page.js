@@ -38,9 +38,9 @@ Template.Create_Event_Page.helpers({
   maxPeoples() {
     return _.map(maxPeopleList, function makemeetupObject(maxPeople) { return { label: maxPeople }; });
   },
-  e_tags() {
+  eventTag() {
     const event = Events.findDoc(FlowRouter.getParam('eventName'));
-    const selectedTags = event.e_tags;
+    const selectedTags = event.eventTag;
     return event && _.map(Tags.findAll(),
         function makeTagObject(tag) {
           return { label: tag.name, selected: _.contains(selectedTags, tag.name) };
