@@ -85,11 +85,11 @@ class EventCollection extends BaseCollection {
       throw new Meteor.Error(`${eventName} is previously defined in another Event`);
     }
       // Throw an error if any of the passed Interest names are not defined.
-    Tags.assertNames(eventTags);
+    // Tags.assertNames(eventTags);
       // Throw an error if there are duplicates in the passed interest names.
-    if (eventTags.length !== _.uniq(eventTags).length) {
-      throw new Meteor.Error(`${eventTags} contains duplicates`);
-    }
+    // if (eventTags.length !== _.uniq(eventTags).length) {
+    //   throw new Meteor.Error(`${eventTags} contains duplicates`);
+    // }
     return this._collection.insert({
       username,
       eventName,

@@ -166,7 +166,7 @@
           "eventStart": "2017-12-21T10:30",
           "eventEnd": "2017-12-21T11:30",
           "eventLocation": "North Shore",
-          "eventAdditional": " ",
+          "eventAdditional": "something",
           "eventTags": "Beach, allday, Surfing",
           "eventAttending": [
             "kieraw",
