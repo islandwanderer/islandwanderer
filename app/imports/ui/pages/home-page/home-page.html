@@ -22,11 +22,7 @@
         </div>
       </div>
 
-      <div class="ui four cards results">
-      {{#each event in events}}
-      {{> Event_Card event=event }}
-      {{/each}}
-        </div>
+        {{> Home_Page_Directory events=events }}
     </div>
   {{/if}}
 </template>

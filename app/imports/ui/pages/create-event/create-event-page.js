@@ -9,7 +9,6 @@ import { Profiles } from '/imports/api/profile/ProfileCollection';
 const displayErrorMessages = 'displayErrorMessages';
 const selectedTagsKey = 'selectedTags';
 
-export const meetupList = ['At Location', 'At UH', 'Other'];
 export const maxPeopleList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', ' 19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'];
 
 Template.Create_Event_Page.onCreated(function onCreated() {
@@ -48,9 +47,9 @@ Template.Create_Event_Page.events({
   /* eslint max-len:0 */
   'submit .event-data-form'(event, instance) {
     event.preventDefault();
-    const name = event.target.eventName.value;
+    const eventName = event.target.eventName.value;
     const max = event.target.maxPeople.value;
-    const location = event.target.eventLocation.value;
+    const eventLocation = event.target.eventLocation.value;
     const username = FlowRouter.getParam('username'); // schema requires username.
     const additional = event.target.eventAdditional.value;
     const eventStart = event.target.startDate.value + event.target.startTime.value;
@@ -59,7 +58,7 @@ Template.Create_Event_Page.events({
     const tags = _.map(selectedTags, (option) => option.value);
     // Events.insert({ $addToSet: { Events: creator } });
 
-    const createEventData = {  name, max, location, additional, eventStart, eventEnd, tags, username };
+    const createEventData = { eventName, max, eventLocation, additional, eventStart, eventEnd, tags, username };
     //
     // Clear out any old validation errors.
     instance.context.reset();

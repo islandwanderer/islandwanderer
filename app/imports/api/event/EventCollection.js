@@ -39,6 +39,7 @@ class EventCollection extends BaseCollection {
       },
       eventAdditional: {
         type: String,
+        optional: true,
       },
       eventTags: {
         type: Array,
