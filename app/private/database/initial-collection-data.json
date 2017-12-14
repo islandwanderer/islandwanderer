@@ -145,7 +145,7 @@
       "name": "EventCollection",
       "contents": [
         {
-          "creator": "amaskey",
+          "username": "amaskey",
           "eventName": "hiking",
           "maxPeople": 25,
           "eventStart": "2017-12-21T08:30",
@@ -160,7 +160,7 @@
           ]
         },
         {
-          "creator": "nmeinzen",
+          "username": "nmeinzen",
           "eventName": "camping",
           "maxPeople": 7,
           "eventStart": "2017-12-21T10:30",
@@ -175,7 +175,7 @@
           ]
         },
         {
-          "creator": "kieraw",
+          "username": "kieraw",
           "eventName": "snorkeling",
           "maxPeople": 5,
           "eventStart": "2017-12-23T08:30",
