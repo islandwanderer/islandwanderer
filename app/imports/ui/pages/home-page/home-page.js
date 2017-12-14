@@ -32,7 +32,7 @@ Template.Home_Page.helpers({
     // Find all events with the currently selected interests.
     const foundEvents = Events.findAll();
     const selectedTags = Template.instance().messageFlags.get(selectedTagsKey);
-    return _.filter(foundEvents, event => _.intersection(event.interests, selectedTags).length > 0);
+    return _.filter(foundEvents, event => _.intersection(event.tags, selectedTags).length > 0);
   },
 });
 
