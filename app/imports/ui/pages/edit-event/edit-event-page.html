@@ -1,6 +1,11 @@
 <template name="Edit_Event_Page">
+<<<<<<< HEAD
 
 	{{#if Template.subscriptionsReady}}
+=======
+{{#If_Logged_In}}
+  {{#if Template.subscriptionsReady}}
+>>>>>>> admin-and-review
 
 		<div class="ui text container segment">
 			<div class="ui dividing header">
@@ -8,6 +13,7 @@
 			</div>
 			<form class="ui equal width form event-data-form {{ successClass }} {{ errorClass }}">
 
+<<<<<<< HEAD
 				<div class="two fields">
 					<div class="field">
 						{{> Text_Form_Control label="What: " required=true placeholder="Event name" value=event.eventName errorMessage=(fieldError "eventName")}}
@@ -127,13 +133,51 @@
 
 				{{> TextArea_Form_Control label="Additional Information" value=event.eventAdditional placeholder="Additional information about event" errorMessage=(fieldError "eventAdditional")}}
 				{{> TextArea_Form_Control label="Tags" value=event.tags placeholder="Tags relating to event" errorMessage=(fieldError "tags")}}
+=======
+        <div class="two fields">
+          <div class="field">
+            {{> Text_Form_Control label="What: " required=true placeholder="Event name" value=(eventDataField 'eventName') errorMessage=(fieldError "eventName")}}
+          </div>
+          <div class="field">
+            {{> Text_Form_Control label="Max # of People: " required=true placeholder="ex. 100" value=(eventDataField 'maxPeople') errorMessage=(fieldError "maxPeople")}}
+          </div>
+        </div>
+
+        <div class="two fields">
+          <div class="field">
+            <label> Start </label>
+            <input id="event" type="Date" name="eventStart">
+          </div>
+
+          <div class="field">
+            <label> End </label>
+            <input id="event" type="Date" name="eventEnd">
+          </div>
+        </div>
+
+        <div class="two fields">
+          <div class="field">
+            {{> Text_Form_Control label="Where: " required=true placeholder="Event Location" value=(eventDataField 'eventLocation') errorMessage=(fieldError "eventLocation")}}
+          </div>
+        </div>
+
+        {{> TextArea_Form_Control label="Additional Information" value=(eventDataField 'eventAdditional') placeholder="Additional information about event" errorMessage=(fieldError "eventAdditional")}}
+        {{> TextArea_Form_Control label="Tags" value=(eventDataField 'tags') placeholder="Tags relating to event" errorMessage=(fieldError "tags")}}
+>>>>>>> admin-and-review
 
 
 				<button class="ui primary button" type="submit">Edit Event</button>
 
+<<<<<<< HEAD
 			</form>
 		</div>
 
 	{{/if}}
 
 </template>
+=======
+  {{/if}}
+{{/If_Logged_In}}
+</template>
+
+>>>>>>> admin-and-review

@@ -2,83 +2,52 @@
   "comment": "Initial contents for the BowFolios database. For development purposes only.",
   "collections": [
     {
-      "name": "InterestCollection",
+      "name": "TagCollection",
       "contents": [
         {
-          "name": "Software Engineering",
-          "description": "Techniques for development of high quality systems"
+          "name": "Hiking"
         },
         {
-          "name": "Algorithms",
-          "description": "A set of rules to be followed in computation"
+          "name": "Beach"
         },
         {
-          "name": "Mobile Networks",
-          "description": "Networks created using mobile devices."
+          "name": "Exploration"
         },
         {
-          "name": "Sailing",
-          "description": ""
+          "name": "Camping"
         },
         {
-          "name": "Mars",
-          "description": ""
+          "name": "weekend"
         },
         {
-          "name": "Imu Cooking",
-          "description": "Hawaiian practice of cooking in a pit."
+          "name": "allday"
         },
         {
-          "name": "Scuba",
-          "description": ""
+          "name": "multipleDays"
         },
         {
-          "name": "Photography",
-          "description": ""
+          "name": "sunrise"
         },
         {
-          "name": "Wind surfing",
-          "description": ""
+          "name": "sunset"
         },
         {
-          "name": "Psychology",
-          "description": ""
+          "name": "Surfing"
         },
         {
-          "name": "Motorcycling",
-          "description": ""
+          "name": "Mountains"
         },
         {
-          "name": "Accreditation",
-          "description": ""
+          "name": "Kayaking"
         },
         {
-          "name": "Paddling",
-          "description": ""
+          "name": "Food"
         },
         {
-          "name": "Crossfit",
-          "description": ""
+          "name": "Backpacking"
         },
         {
-          "name": "Cybersecurity",
-          "description": ""
-        },
-        {
-          "name": "Surfing",
-          "description": ""
-        },
-        {
-          "name": "Computer Vision",
-          "description": ""
-        },
-        {
-          "name": "Martial Arts",
-          "description": ""
-        },
-        {
-          "name": "Evolutionary Computation",
-          "description": ""
+          "name": "H20"
         }
       ]
     },
@@ -177,11 +146,18 @@
       "contents": [
         {
           "creator": "amaskey",
+<<<<<<< HEAD
           "eventName": "hiking",
           "maxPeople": 25,
           "eventStart": "2017-12-21T08:30:00",
           "eventEnd": "2017-12-21T09:30:00",
           "meetupLocation": "At UH",
+=======
+          "eventName": "newEvent1",
+          "maxPeople": 25,
+          "eventStart": "2017-12-21T08:30",
+          "eventEnd": "2017-12-21T08:30",
+>>>>>>> admin-and-review
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
@@ -193,11 +169,18 @@
         },
         {
           "creator": "nmeinzen",
+<<<<<<< HEAD
           "eventName": "camping",
           "maxPeople": 25,
           "eventStart": "2017-12-21T10:30:00",
           "eventEnd": "2017-12-21T11:00:00",
           "meetupLocation": "At UH",
+=======
+          "eventName": "newEvent2",
+          "maxPeople": 25,
+          "eventStart": "2017-12-21T08:30",
+          "eventEnd": "2017-12-21T08:30",
+>>>>>>> admin-and-review
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
@@ -209,11 +192,18 @@
         },
         {
           "creator": "kieraw",
+<<<<<<< HEAD
           "eventName": "snorkeling",
           "maxPeople": 25,
           "eventStart": "2017-12-23T08:30:00",
           "eventEnd": "2017-12-25T10:30:00",
           "meetupLocation": "At UH",
+=======
+          "eventName": "newEvent3",
+          "maxPeople": 25,
+          "eventStart": "2017-12-21T08:30",
+          "eventEnd": "2017-12-21T08:30",
+>>>>>>> admin-and-review
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",

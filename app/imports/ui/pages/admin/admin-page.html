@@ -1,22 +1,34 @@
 <template name="Admin_Page">
+<<<<<<< HEAD
   {{#if isInRole 'admin'}}
 	{{#if Template.subscriptionsReady}}
+=======
+    {{#if Template.subscriptionsReady}}
+      <div class="ui text container segment">
+        <div style="text-align: center" class="ui dividing header">
+          Administrator
+        </div>
+      </div>
+>>>>>>> admin-and-review
 
-		<div class="ui text container segment">
- <div style="text-align: center" class="ui dividing header">
-				Administrator
-			</div>
-    </div>
 
+<<<<<<< HEAD
   <div style="margin-top: 20px" class="ui cards">
     {{#each profile in profiles }}
     {{> Directory_Profile profile=profile }}
     <button class="ui primary button" type="submit">Remove Post</button>
 
     <button class="ui primary button" type="submit"><a href="/edit-event">Give Feedback</a></button>
+=======
+    <input style="width: 100%" type="text" name="search" placeholder="Add Administrator">
+
+
+    {{> Admin_Page_Directory profiles=profiles }}
+>>>>>>> admin-and-review
 
     <button class="ui primary button" type="submit">Remove Tag</button>
 
+<<<<<<< HEAD
     {{#if displaySuccessMessage}}
     <div class="ui success message">
       <p>Flagged post successfully handled.</p>
@@ -27,11 +39,22 @@
   {{else}}
     <h1>Not Authorized to view page</h1>
   {{/if}}
+=======
+    <button class="ui primary button" type="submit">Remove Post</button>
+    <button class="ui primary button" type="submit">Give Feedback</button>
+    <button class="ui primary button" type="submit">Remove Tag</button>
+    {{#if displaySuccessMessage}}
+      <div class="ui success message">
+        <p>Flagged post successfully handled.</p>
+      </div>
+    {{/if}}
+>>>>>>> admin-and-review
   {{/if}}
   <!--
   Remove post will delete the post
   Give Feedback will take the post to the edit post page, and the post can be edited and updated
   Remove Tag will remove post from list of posts and will keep the post as is.-->
+
 
 
 </template>

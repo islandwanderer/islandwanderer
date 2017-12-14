@@ -1,41 +1,48 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
+<<<<<<< HEAD
 import { Interests } from '/imports/api/interest/InterestCollection';
 import Roles from '/alanning/roles';
 import { Events } from '/imports/api/event/EventCollection';
+=======
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Meteor } from 'meteor/meteor';
+import { Profiles } from '/imports/api/profile/ProfileCollection';
+import { Tagss } from '/imports/api/tag/TagCollection';
+>>>>>>> admin-and-review
 
-const selectedInterestsKey = 'selectedInterests';
+const selectedTagssKey = 'selectedTagss';
 
 // let userId = Meteor.userId();
 // Roles.addUsersToRoles( userId, [ 'admin', 'user' ] );
 // Roles.userIsInRole(Meteor.userID(), 'admin');
 
 Template.Admin_Page.onCreated(function onCreated() {
-  this.subscribe(Interests.getPublicationName());
+  this.subscribe(Tagss.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
-  this.messageFlags.set(selectedInterestsKey, undefined);
+  this.messageFlags.set(selectedTagssKey, undefined);
 });
 
 Template.Admin_Page.helpers({
   profiles() {
-    // Initialize selectedInterests to all of them if messageFlags is undefined.
-    if (!Template.instance().messageFlags.get(selectedInterestsKey)) {
-      Template.instance().messageFlags.set(selectedInterestsKey, _.map(Interests.findAll(), interest => interest.name));
+    // Initialize selectedTagss to all of them if messageFlags is undefined.
+    if (!Template.instance().messageFlags.get(selectedTagssKey)) {
+      Template.instance().messageFlags.set(selectedTagssKey, _.map(Tagss.findAll(), tag => tag.name));
     }
-    // Find all profiles with the currently selected interests.
+    // Find all profiles with the currently selected tags.
     const allProfiles = Profiles.findAll();
-    const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
-    return _.filter(allProfiles, profile => _.intersection(profile.interests, selectedInterests).length > 0);
+    const selectedTagss = Template.instance().messageFlags.get(selectedTagssKey);
+    return _.filter(allProfiles, profile => _.intersection(profile.tags, selectedTagss).length > 0);
   },
 
-  interests() {
-    return _.map(Interests.findAll(),
-        function makeInterestObject(interest) {
+  tags() {
+    return _.map(Tagss.findAll(),
+        function makeTagsObject(tag) {
           return {
-            label: interest.name,
-            selected: _.contains(Template.instance().messageFlags.get(selectedInterestsKey), interest.name),
+            label: tag.name,
+            selected: _.contains(Template.instance().messageFlags.get(selectedTagssKey), tag.name),
           };
         });
   },
@@ -44,8 +51,8 @@ Template.Admin_Page.helpers({
 Template.Admin_Page.events({
   'submit .filter-data-form'(event, instance) {
     event.preventDefault();
-    const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
-    instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
+    const selectedOptions = _.filter(event.target.Tagss.selectedOptions, (option) => option.selected);
+    instance.messageFlags.set(selectedTagssKey, _.map(selectedOptions, (option) => option.value));
   },
 });
 

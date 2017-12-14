@@ -1,36 +1,44 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
-import { Profiles } from '/imports/api/profile/ProfileCollection';
-import { Interests } from '/imports/api/interest/InterestCollection';
+import { Tags } from '/imports/api/tag/TagCollection';
+import { Events } from '/imports/api/event/EventCollection';
 
-const selectedInterestsKey = 'selectedInterests';
+const selectedTagsKey = 'selectedTags';
+// const events = Events.findDoc(FlowRouter.getParam('username'));
 
 Template.Home_Page.onCreated(function onCreated() {
-  this.subscribe(Interests.getPublicationName());
-  this.subscribe(Profiles.getPublicationName());
+  this.subscribe(Tags.getPublicationName());
+  this.subscribe(Events.getPublicationName());
   this.messageFlags = new ReactiveDict();
-  this.messageFlags.set(selectedInterestsKey, undefined);
+  this.messageFlags.set(selectedTagsKey, undefined);
 });
 
 Template.Home_Page.helpers({
-  profiles() {
-    // Initialize selectedInterests to all of them if messageFlags is undefined.
-    if (!Template.instance().messageFlags.get(selectedInterestsKey)) {
-      Template.instance().messageFlags.set(selectedInterestsKey, _.map(Interests.findAll(), interest => interest.name));
+  routeUserName() {
+    return FlowRouter.getParam('username');
+  },
+  routeEventName() {
+    return FlowRouter.getParam('eventName');
+  },
+  events() {
+    // Initialize selectedTags to all of them if messageFlags is undefined.
+    if (!Template.instance().messageFlags.get(selectedTagsKey)) {
+      Template.instance().messageFlags.set(selectedTagsKey, _.map(Tags.findAll(), tag => tag.name));
     }
     // Find all profiles with the currently selected interests.
-    const allProfiles = Profiles.findAll();
-    const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
-    return _.filter(allProfiles, profile => _.intersection(profile.interests, selectedInterests).length > 0);
+    const allEvents = Events.findAll();
+    const selectedTags = Template.instance().messageFlags.get(selectedTagsKey);
+    return _.filter(allEvents, event => _.intersection(event.tags, selectedTags).length > 0);
   },
 
-  interests() {
-    return _.map(Interests.findAll(),
-        function makeInterestObject(interest) {
+  tags() {
+    return _.map(Tags.findAll(),
+        function makeTagObject(tag) {
           return {
-            label: interest.name,
-            selected: _.contains(Template.instance().messageFlags.get(selectedInterestsKey), interest.name),
+            label: tag.name,
+            selected: _.contains(Template.instance().messageFlags.get(selectedTagsKey), tag.name),
           };
         });
   },
@@ -39,8 +47,8 @@ Template.Home_Page.helpers({
 Template.Home_Page.events({
   'submit .filter-data-form'(event, instance) {
     event.preventDefault();
-    const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
-    instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
+    const selectedOptions = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
+    instance.messageFlags.set(selectedTagsKey, _.map(selectedOptions, (option) => option.value));
   },
 });
 

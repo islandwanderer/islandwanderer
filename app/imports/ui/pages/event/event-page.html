@@ -1,4 +1,5 @@
 <template name="Event_Page">
+  {{#If_Logged_In}}
   {{#if Template.subscriptionsReady}}
   <div class="ui text container">
     <div class="ui dividing header">
@@ -7,21 +8,21 @@
     <div class="ui three column grid container">
 
       <div class="row">
-        <div class="column"> event.name</div>
-        <div class="column">event.date</div>
-        <div class="column">event.time</div>
+        <div class="column"> {{ event.name }} </div>
+        <div class="column"> {{ event.start }} </div>
+        <div class="column"> {{ event.end }} </div>
       </div>
       <div class="row">
-        <div class="column">event.location</div>
-        <div class="column">event.meeting</div>
-        <div class="column">event.additional</div>
-      </div>
-      <div class="row">
-        <div class="column"> </div>
-        <div class="column"> event.tags</div>
-        <div class="column"> </div>
+        <div class="column"> {{ event.location }} </div>
+        <div class="column"> {{ event.maxPeople }} </div>
       </div>
     </div>
+    <div class=" ui two column grid container">
+      <div class="row">
+        <div class="column"> {{ event.additional }} </div>
+        <div class="column"> {{ event.tags }} </div>
+    </div>
+
 
     <div class="ui two column grid container">
 
@@ -44,5 +45,7 @@
     </div>
     </div>
   </div>
+  </div>
     {{/if}}
+{{/If_Logged_In}}
 </template>
