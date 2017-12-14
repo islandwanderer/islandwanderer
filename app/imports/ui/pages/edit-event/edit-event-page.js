@@ -53,11 +53,6 @@ Template.Edit_Event_Page.helpers({
   getUsername() {
     return FlowRouter.getParam('_id');
   },
-  fieldError(fieldName) {
-    const invalidKey = Template.instance().context.invalidKeys();
-    const errorObj = _.find(invalidKey, (keyObj) => keyObj.name === fieldName);
-    return errorObj && Template.instance().context.keyErrorMessage(errorObj.name);
-  },
 });
 
 Template.Edit_Event_Page.events({
