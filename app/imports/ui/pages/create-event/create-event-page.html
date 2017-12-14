@@ -13,7 +13,7 @@
               {{> Text_Form_Control label="Name: " placeholder=" " name="eventName" required=true errorMessage=(fieldError "eventName")}}
             </div>
             <div class="field">
-              {{> Select_Form_Control label="Max Attendees" required=true options=maxPeoples name="maxPeople" 6=(fieldError "maxPeople")}}
+              {{> Select_Form_Control label="Max Attendees" required=true options=maxPeoples name="maxPeople" errorMessage=(fieldError "maxPeople")}}
             </div>
           </div>
 
@@ -22,16 +22,16 @@
               {{> Text_Form_Control label="Start: " placeholder="yyyy/mm/dd " name="startDate" required=true errorMessage=(fieldError "startDate")}}
             </div>
             <div class="field">
-              {{> Select_Form_Control required=true  placeholder="hh:mm am/pm" name="startTime" errorMessage=(fieldError "startTime")}}
+              {{> Text_Form_Control required=true  placeholder="hh:mm am/pm" name="startTime" errorMessage=(fieldError "startTime")}}
             </div>
           </div>
 
           <div class="two fields">
             <div class="field">
-              {{> Text_Form_Control label="End: " placeholder="yyyy/mm/dd " name="startDate" required=true errorMessage=(fieldError "startDate")}}
+              {{> Text_Form_Control label="End: " placeholder="2017/12/23" name="startDate" required=true errorMessage=(fieldError "startDate")}}
             </div>
             <div class="field">
-              {{> Select_Form_Control required=true  placeholder="10:30AM" name="startTime" errorMessage=(fieldError "startTime")}}
+              {{> Text_Form_Control required=true  placeholder="10:30AM" name="startTime" errorMessage=(fieldError "startTime")}}
             </div>
           </div>
 

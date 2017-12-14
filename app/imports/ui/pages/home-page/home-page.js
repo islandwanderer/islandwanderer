@@ -39,8 +39,10 @@ Template.Home_Page.helpers({
 Template.Home_Page.events({
   'submit .filter-data-form'(event, instance) {
     event.preventDefault();
-    const selectedOptionss = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
-    instance.messageFlags.set(selectedTagsKey, _.map(selectedOptionss, (option) => option.value));
+    const selectedOptions = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
+    // error in console: Event map has to be an object
+    // cards do not show when searched
+    instance.messageFlags.set(selectedTagsKey, _.map(selectedOptions, (option) => option.value));
   },
 });
 
