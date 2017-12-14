@@ -3,8 +3,6 @@ import { Profiles } from '/imports/api/profile/ProfileCollection';
 import {Roles} from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
 
-import { Roles } from 'meteor/alanning:roles';
-
 /* eslint-disable no-console */
 
 /* Create a profile document for this user if none exists already. */
