@@ -1,27 +1,29 @@
 import { Template } from 'meteor/templating';
-import { ReactiveDict } from 'meteor/reactive-dict';
+// import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
-import { Interests } from '/imports/api/interest/InterestCollection';
-import { Roles } from 'meteor/alanning:roles';
+// import { Interests } from '/imports/api/interest/InterestCollection';
+// import { Roles } from 'meteor/alanning:roles';
 import { Events } from '/imports/api/event/EventCollection';
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Tags } from '/imports/api/tag/TagCollection';
+import { Profiles } from '/imports/api/profile/ProfileCollection';
+// import { FlowRouter } from 'meteor/kadira:flow-router';
 
 const selectedTagssKey = 'selectedTagss';
 
 
 Template.Admin_Page.onCreated(function onCreated() {
   this.subscribe(Events.getPublicationName());
-  //this.subscribe(Tagss.getPublicationName());
-  //this.subscribe(Profiles.getPublicationName());
-  //this.messageFlags = new ReactiveDict();
-  //this.messageFlags.set(selectedTagssKey, undefined);
+  // this.subscribe(Tagss.getPublicationName());
+  // this.subscribe(Profiles.getPublicationName());
+  // this.messageFlags = new ReactiveDict();
+  // this.messageFlags.set(selectedTagssKey, undefined);
 });
 
 Template.Admin_Page.helpers({
   profiles() {
     // Initialize selectedTagss to all of them if messageFlags is undefined.
     if (!Template.instance().messageFlags.get(selectedTagssKey)) {
-      Template.instance().messageFlags.set(selectedTagssKey, _.map(Tagss.findAll(), tag => tag.name));
+      Template.instance().messageFlags.set(selectedTagssKey, _.map(Tags.findAll(), tag => tag.name));
     }
     // Find all profiles with the currently selected tags.
     const allProfiles = Profiles.findAll();
@@ -30,7 +32,7 @@ Template.Admin_Page.helpers({
   },
 
   tags() {
-    return _.map(Tagss.findAll(),
+    return _.map(Tags.findAll(),
         function makeTagsObject(tag) {
           return {
             label: tag.name,
