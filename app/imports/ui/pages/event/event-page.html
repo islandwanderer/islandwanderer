@@ -1,5 +1,4 @@
 <template name="Event_Page">
-  {{#If_Logged_In}}
   {{#if Template.subscriptionsReady}}
   <div class="ui text container">
     <div class="ui dividing header">
@@ -27,25 +26,17 @@
     <div class="ui two column grid container">
 
       <div class="row">
-        <div class="column"> <button class="ui rsvp-button" type="button"> RSVP </button>  </div>
-        <div class="column">
-          <div class="row">
-            {{> Text_Form_Control placeholder="Tell a friend by username" value=event.eventRefer errorMessage=(fieldError "eventRefer")}}
-          </div>
-          <div class="row">
-          <button class="ui refer-button" style="margin-top: 10px" type="button">Refer</button>
-          </div>
+        <div class="column"> <button class="ui button rsvp" type="button"> RSVP </button>  </div>
         </div>
       </div>
     </div>
+
     <div class=" ui two column admin grid container">
     <div class="row">
-      <div class="column"> <button class="ui edit-button" type="button">Edit </button> </div>
-      <div class="column"> <button class="ui delete-button" type="button">Delete</button> </div>
+      <div class="column"> <button class="ui button edit" type="button">Edit </button> </div>
+      <div class="column"> <button class="ui button delete" type="button">Delete</button> </div>
     </div>
     </div>
-  </div>
   </div>
     {{/if}}
-{{/If_Logged_In}}
 </template>

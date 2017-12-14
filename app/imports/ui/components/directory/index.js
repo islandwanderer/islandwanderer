@@ -1,1 +1,1 @@
-import './directory-profile.html';
+import './event-card.html';

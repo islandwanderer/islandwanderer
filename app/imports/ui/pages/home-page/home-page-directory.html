@@ -1,7 +1,0 @@
-<template name="Home_Page_Directory">
-  <div style="margin-top: 20px" class="ui cards" href="{{pathFor "Event_Page" username=routeUserName eventName=routeEventName}}">
-    {{#each event in events }}
-      {{> Directory_Event event=event }}
-    {{/each}}
-  </div>
-</template>

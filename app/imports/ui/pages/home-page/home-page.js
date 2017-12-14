@@ -6,21 +6,17 @@ import { Tags } from '/imports/api/tag/TagCollection';
 import { Events } from '/imports/api/event/EventCollection';
 
 const selectedTagsKey = 'selectedTags';
-// const events = Events.findDoc(FlowRouter.getParam('username'));
 
 Template.Home_Page.onCreated(function onCreated() {
   this.subscribe(Tags.getPublicationName());
   this.subscribe(Events.getPublicationName());
   this.messageFlags = new ReactiveDict();
-  this.messageFlags.set(selectedTagsKey, undefined);
+  this.messageFlags.set(selectedTagsKey, []);
 });
 
 Template.Home_Page.helpers({
   routeUserName() {
     return FlowRouter.getParam('username');
-  },
-  routeEventName() {
-    return FlowRouter.getParam('eventName');
   },
   eventTag() {
     return _.map(Tags.findAll(),
@@ -32,14 +28,10 @@ Template.Home_Page.helpers({
         });
   },
   events() {
-    // Initialize selectedTags to all of them if messageFlags is undefined.
-    if (!Template.instance().messageFlags.get(selectedTagsKey)) {
-      Template.instance().messageFlags.set(selectedTagsKey, _.map(Tags.findAll(), tag => tag.name));
-    }
-    // Find all profiles with the currently selected interests.
-    const allEvents = Events.findAll();
+    // Find all events with the currently selected interests.
+    const foundEvents = Events.findAll();
     const selectedTags = Template.instance().messageFlags.get(selectedTagsKey);
-    return _.filter(allEvents, event => _.intersection(event.eventTag, selectedTags).length > 0);
+    return _.filter(foundEvents, event => _.intersection(event.interests, selectedTags).length > 0);
   },
 });
 
