@@ -1,16 +1,15 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
-<<<<<<< HEAD
+
 import { Interests } from '/imports/api/interest/InterestCollection';
-import Roles from '/alanning/roles';
+import Roles from 'meteor/alanning:roles;
 import { Events } from '/imports/api/event/EventCollection';
-=======
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Meteor } from 'meteor/meteor';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Tagss } from '/imports/api/tag/TagCollection';
->>>>>>> admin-and-review
+
 
 const selectedTagssKey = 'selectedTagss';
 
