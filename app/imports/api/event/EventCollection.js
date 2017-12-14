@@ -78,9 +78,9 @@ class EventCollection extends BaseCollection {
    * @throws {Meteor.Error} If the event definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ username, creator = '', eventName = '', eventStart = '', eventEnd = '', maxPeople = '', eventLocation = '', eventAdditional = '', eventTags = [], eventAttending = [] }) {
+  define({ username, eventName = '', eventStart = '', eventEnd = '', maxPeople = '', eventLocation = '', eventAdditional = '', eventTags = [], eventAttending = [] }) {
     const checkPattern = { username: String, creator: String, eventName: String, maxPeople: String, eventLocation: String, eventAdditional: String, start: Date(), end: Date() };
-    check({ username, creator, eventName, maxPeople, eventLocation, eventAdditional, eventStart, eventEnd }, checkPattern);
+    check({ username, eventName, maxPeople, eventLocation, eventAdditional, eventStart, eventEnd }, checkPattern);
 
     if (this.find({ eventName }).count() > 0) {
       throw new Meteor.Error(`${eventName} is previously defined in another Event`);
@@ -93,7 +93,6 @@ class EventCollection extends BaseCollection {
     }
     return this._collection.insert({
       username,
-      creator,
       eventName,
       maxPeople,
       eventStart,
