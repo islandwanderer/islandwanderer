@@ -10,32 +10,30 @@
 
           <div class="two fields">
             <div class="field">
-              {{> Text_Form_Control label="Name:  " placeholder=" " name="eventName" required=true errorMessage=(fieldError "eventName")}}
+              {{> Text_Form_Control label="Name: " placeholder=" " name="eventName" required=true errorMessage=(fieldError "eventName")}}
             </div>
             <div class="field">
               {{> Select_Form_Control label="Max Attendees" required=true options=maxPeoples name="maxPeople" errorMessage=(fieldError "maxPeople")}}
             </div>
           </div>
 
-          <div class="fields">
+          <div class="two fields">
             <div class="field">
-            <label> Start </label>
-            <input id="event" type="Date" required=required name="startDate">
-          </div>
+              {{> Text_Form_Control label="Start: " placeholder="yyyy/mm/dd " name="startDate" required=true errorMessage=(fieldError "startDate")}}
+            </div>
             <div class="field">
-              <input id="event" type="Time" required=required name="startTime">
+              {{> Select_Form_Control required=true  placeholder="hh:mm am/pm" name="startTime" errorMessage=(fieldError "startTime")}}
             </div>
           </div>
 
-            <div class="two fields">
-              <div class="field">
-                <label> End </label>
-                <input id="event" type="Date" required=required name="endDate">
-              </div>
-              <div class="field">
-                <input id="event" type="Time" required=required name="endTime">
-              </div>
+          <div class="two fields">
+            <div class="field">
+              {{> Text_Form_Control label="End: " placeholder="yyyy/mm/dd " name="startDate" required=true errorMessage=(fieldError "startDate")}}
             </div>
+            <div class="field">
+              {{> Select_Form_Control required=true  placeholder="10:30AM" name="startTime" errorMessage=(fieldError "startTime")}}
+            </div>
+          </div>
 
               {{> Text_Form_Control label="Location: " placeholder=" " name="eventLocation" required=true errorMessage=(fieldError "eventLocation")}}
           {{> TextArea_Form_Control label="Additional Information" name="eventAdditional" placeholder="Additional information about event" errorMessage=(fieldError "eventAdditional")}}
