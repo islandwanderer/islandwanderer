@@ -37,9 +37,9 @@ class EventCollection extends BaseCollection {
       eventLocation: {
         type: String,
       },
-      meetupLocation: {
-        type: String,
-      },
+      // meetupLocation: {
+      //   type: String,
+      // },
       eventAdditional: {
         type: String,
       },
