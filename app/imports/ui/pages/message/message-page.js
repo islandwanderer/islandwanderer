@@ -69,7 +69,7 @@ Template.Message_Page.events({
     const username = FlowRouter.getParam('username');
     const updatedMessageData = { username, events, message, sendDate };
 
-    console.log(message, events, sendDate, username, updatedMessageData);
+    // console.log(message, events, sendDate, username, updatedMessageData);
 
     instance.context.reset();
     const cleanData = Messages.getSchema().clean(updatedMessageData);

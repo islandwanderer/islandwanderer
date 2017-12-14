@@ -56,9 +56,8 @@ Template.Create_Event_Page.events({
     const eventEnd = event.target.endDate.value + event.target.endTime.value;
     const selectedTags = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
     const tags = _.map(selectedTags, (option) => option.value);
-    // Events.insert({ $addToSet: { Events: creator } });
-
     const createEventData = { eventName, max, eventLocation, additional, eventStart, eventEnd, tags, username };
+
     //
     // Clear out any old validation errors.
     instance.context.reset();
@@ -66,8 +65,10 @@ Template.Create_Event_Page.events({
     const cleanData = Events.getSchema().clean(createEventData);
     // Determine validity.
     instance.context.validate(cleanData);
+    // Events.insert({ $addToSet: { Events: creator } });
 
     if (instance.context.isValid()) {
+      console.log('calid');
       const userName = FlowRouter.getParam('username');
       const id = Events.define(cleanData);
       const eventID = instance.data.event._id;
@@ -77,6 +78,7 @@ Template.Create_Event_Page.events({
       FlowRouter.go('Event_Page', { username: userName, _id: id });
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
+      console.log('invalid');
     }
   },
 });

@@ -13,7 +13,7 @@
               {{> Text_Form_Control label="Name:  " placeholder=" " name="eventName" required=true errorMessage=(fieldError "eventName")}}
             </div>
             <div class="field">
-              {{> Select_Form_Control label="Max Attendees" required=true options=maxPeoples name="maxPeople" 6=(fieldError "maxPeople")}}
+              {{> Select_Form_Control label="Max Attendees" required=true options=maxPeoples name="maxPeople" errorMessage=(fieldError "maxPeople")}}
             </div>
           </div>
 
