@@ -68,8 +68,10 @@ Template.Create_Event_Page.events({
     const cleanData = Events.getSchema().clean(createEventData);
     // Determine validity.
     instance.context.validate(cleanData);
+    // Events.insert({ $addToSet: { Events: creator } });
 
     if (instance.context.isValid()) {
+      console.log('calid');
       const userName = FlowRouter.getParam('username');
       const id = Events.define(cleanData);
       const eventID = instance.data.event._id;
@@ -79,6 +81,7 @@ Template.Create_Event_Page.events({
       FlowRouter.go('Event_Page', { username: userName, _id: id });
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
+      console.log('invalid');
     }
   },
 });
