@@ -4,29 +4,37 @@
 
         <div style="margin-bottom: 30px" class="two column row">
           <div class="column">
-            <button class="ui teal newEvent button" type="button"><a class="{{isActiveRoute "Create_Event_Page"}} item" href="{{pathFor "Create_Event_Page" username=routeUserName}}"> Create Event</a></button>
+            <button class="ui newEvent button" type="button"><a class="{{isActiveRoute "Create_Event_Page"}}" href="{{pathFor "Create_Event_Page" username=routeUserName}}"> Create Event</a></button>
           </div>
           <div class="column">
-            <button class="ui teal review button" type="button"><a class="{{isActiveRoute "Review_Page"}} item" href="{{pathFor "Review_Page" username=routeUserName}}">Submit User or Event for Review </a></button>
+            <button class="ui review button" type="button"><a class="{{isActiveRoute "Review_Page"}} item" href="{{pathFor "Review_Page" username=routeUserName}}">Submit User or Event for Review </a></button>
           </div>
       </div>
 
-      <div style="margin:20px; background-color: #3ed489" class="row">
+      <div style="margin:20px; background-color: #00b5ad" class="row">
         <div  class="centered column">
       <form class="ui equal width form filter-data-form">
         <div class="field">
-          {{> Select_Form_Control label="Find Events by Key Word, Date, or Tag" options=interests multiple=true }}
+          {{> Select_Form_Control label="Find Events by Tag" name="Tags" options=eventTag multiple=true }}
         </div>
-        <button class="ui white button" type="submit">Filter</button>
+        <button class="ui white button" type="submit">Search Tags</button>
       </form>
         </div>
       </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
       {{> Home_Page_Directory profiles=profiles }}
 =======
 
       {{> Home_Page_Directory events=events }}
 >>>>>>> admin-and-review
+=======
+      <div class="ui four cards results">
+      {{#each event in events}}
+      {{> Event_Card event=event }}
+      {{/each}}
+>>>>>>> event-db
         </div>
+    </div>
   {{/if}}
 </template>

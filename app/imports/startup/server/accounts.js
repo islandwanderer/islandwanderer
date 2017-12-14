@@ -1,7 +1,11 @@
 import { Accounts } from 'meteor/accounts-base';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
+<<<<<<< HEAD
 import {Roles} from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
+=======
+import { Roles } from 'meteor/alanning:roles';
+>>>>>>> event-db
 
 /* eslint-disable no-console */
 
@@ -12,6 +16,7 @@ Accounts.validateNewUser(function validate(user) {
     Roles.addUsersToRoles(user, 'user');
     if (!Profiles.isDefined(username)) {
       Profiles.define({ username });
+      Roles.addUsersToRoles(username, 'user');
     }
   }
 

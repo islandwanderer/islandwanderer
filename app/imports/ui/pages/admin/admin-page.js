@@ -1,26 +1,30 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
+<<<<<<< HEAD
 import { Interests } from '/imports/api/interest/InterestCollection';
 import { Roles } from 'meteor/alanning:roles;
 import { Events } from '/imports/api/event/EventCollection';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+=======
+>>>>>>> event-db
 import { Meteor } from 'meteor/meteor';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Tagss } from '/imports/api/tag/TagCollection';
+import { Roles } from 'meteor/alanning:roles';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Events } from '/imports/api/event/EventCollection';
 
 
 const selectedTagssKey = 'selectedTagss';
 
-// let userId = Meteor.userId();
-// Roles.addUsersToRoles( userId, [ 'admin', 'user' ] );
-// Roles.userIsInRole(Meteor.userID(), 'admin');
 
 Template.Admin_Page.onCreated(function onCreated() {
-  this.subscribe(Tagss.getPublicationName());
-  this.subscribe(Profiles.getPublicationName());
-  this.messageFlags = new ReactiveDict();
-  this.messageFlags.set(selectedTagssKey, undefined);
+  this.subscribe(Events.getPublicationName());
+  //this.subscribe(Tagss.getPublicationName());
+  //this.subscribe(Profiles.getPublicationName());
+  //this.messageFlags = new ReactiveDict();
+  //this.messageFlags.set(selectedTagssKey, undefined);
 });
 
 Template.Admin_Page.helpers({

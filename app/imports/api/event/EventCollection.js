@@ -19,6 +19,9 @@ class EventCollection extends BaseCollection {
    */
   constructor() {
     super('Event', new SimpleSchema({
+      username: {
+        type: String,
+      },
       creator: {
 <<<<<<< HEAD
         type: String,
@@ -123,6 +126,7 @@ class EventCollection extends BaseCollection {
    * @returns The newly created docID.
    */
 <<<<<<< HEAD
+<<<<<<< HEAD
   define({ creator, eventName, eventStart = new Date(), eventEnd = new Date(), maxPeople, eventLocation, meetupLocation, eventAdditional, eventTags = [], eventAttending = [] }) {
     check(eventName, String);
     check(eventLocation, String);
@@ -141,6 +145,12 @@ class EventCollection extends BaseCollection {
     const eventStartstr = String(start);
     const eventEndstr = String(end);
 >>>>>>> admin-and-review
+=======
+  define({ username, creator = '', eventName = '', eventStart = '', eventEnd = '', maxPeople = '', eventLocation = '', eventAdditional = '', eventTags = [], eventAttending = [] }) {
+    const checkPattern = { username: String, creator: String, eventName: String, maxPeople: String, eventLocation: String, eventAdditional: String, start: Date(), end: Date() };
+    check({ username, creator, eventName, maxPeople, eventLocation, eventAdditional, eventStart, eventEnd }, checkPattern);
+
+>>>>>>> event-db
     if (this.find({ eventName }).count() > 0) {
       throw new Meteor.Error(`${eventName} is previously defined in another Event`);
     }
@@ -151,9 +161,11 @@ class EventCollection extends BaseCollection {
       throw new Meteor.Error(`${eventTags} contains duplicates`);
     }
     return this._collection.insert({
+      username,
       creator,
       eventName,
       maxPeople,
+<<<<<<< HEAD
 <<<<<<< HEAD
       eventStart,
       eventEnd,
@@ -163,6 +175,10 @@ class EventCollection extends BaseCollection {
       eventStartstr,
       eventEndstr,
 >>>>>>> admin-and-review
+=======
+      eventStart,
+      eventEnd,
+>>>>>>> event-db
       eventAdditional,
       eventTags,
       eventAttending,
@@ -234,6 +250,7 @@ class EventCollection extends BaseCollection {
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
+    const username = doc.username;
     const creator = doc.creator;
     const name = doc.eventName;
     const max = doc.maxPeople;
@@ -245,10 +262,14 @@ class EventCollection extends BaseCollection {
     const tags = doc.EventTags;
     const attending = doc.eventAttending;
 <<<<<<< HEAD
+<<<<<<< HEAD
     return { creator, max, name, start, end, location, meetup, additional, tags, attending };
 =======
     return { creator, max, name, start, end, location, additional, tags, attending };
 >>>>>>> admin-and-review
+=======
+    return { username, creator, max, name, start, end, location, additional, tags, attending };
+>>>>>>> event-db
   }
 }
 

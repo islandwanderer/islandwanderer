@@ -160,7 +160,7 @@
 >>>>>>> admin-and-review
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
-          "eventTags": "hiking, diamond head, over break",
+          "eventTags": "Hiking, H20, weekend",
           "eventAttending": [
             "amaskey",
             "kieraw",
@@ -177,13 +177,19 @@
           "meetupLocation": "At UH",
 =======
           "eventName": "newEvent2",
-          "maxPeople": 25,
+          "maxPeople": 7,
           "eventStart": "2017-12-21T08:30",
           "eventEnd": "2017-12-21T08:30",
+<<<<<<< HEAD
 >>>>>>> admin-and-review
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
+=======
+          "eventLocation": "North Shore",
+          "eventAdditional": " ",
+          "eventTags": "Beach, allday, Surfing",
+>>>>>>> event-db
           "eventAttending": [
             "kieraw",
             "nmeinzen",
@@ -200,13 +206,20 @@
           "meetupLocation": "At UH",
 =======
           "eventName": "newEvent3",
-          "maxPeople": 25,
+          "maxPeople": 5,
           "eventStart": "2017-12-21T08:30",
+<<<<<<< HEAD
           "eventEnd": "2017-12-21T08:30",
 >>>>>>> admin-and-review
           "eventLocation": "Diamond Head",
           "eventAdditional": "bring h2o",
           "eventTags": "hiking, diamond head, over break",
+=======
+          "eventEnd": "2017-12-22T08:30",
+          "eventLocation": "Koolau",
+          "eventAdditional": "overnight camping",
+          "eventTags": "Camping, Mountains, weekend, multipleDays",
+>>>>>>> event-db
           "eventAttending": [
             "amaskey",
             "henric",

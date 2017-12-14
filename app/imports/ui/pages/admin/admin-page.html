@@ -1,9 +1,14 @@
 <template name="Admin_Page">
 <<<<<<< HEAD
+<<<<<<< HEAD
   {{#if isInRole 'admin'}}
 	{{#if Template.subscriptionsReady}}
 =======
     {{#if Template.subscriptionsReady}}
+=======
+  {{#if Template.subscriptionsReady}}
+  {{#if isInRole 'admin'}}
+>>>>>>> event-db
       <div class="ui text container segment">
         <div style="text-align: center" class="ui dividing header">
           Administrator
@@ -11,6 +16,7 @@
       </div>
 >>>>>>> admin-and-review
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
   <div style="margin-top: 20px" class="ui cards">
@@ -22,10 +28,13 @@
 =======
     <input style="width: 100%" type="text" name="search" placeholder="Add Administrator">
 
+=======
+>>>>>>> event-db
 
     {{> Admin_Page_Directory profiles=profiles }}
 >>>>>>> admin-and-review
 
+<<<<<<< HEAD
     <button class="ui primary button" type="submit">Remove Tag</button>
 
 <<<<<<< HEAD
@@ -40,14 +49,18 @@
     <h1>Not Authorized to view page</h1>
   {{/if}}
 =======
+=======
+>>>>>>> event-db
     <button class="ui primary button" type="submit">Remove Post</button>
     <button class="ui primary button" type="submit">Give Feedback</button>
     <button class="ui primary button" type="submit">Remove Tag</button>
+
     {{#if displaySuccessMessage}}
       <div class="ui success message">
         <p>Flagged post successfully handled.</p>
       </div>
     {{/if}}
+<<<<<<< HEAD
 >>>>>>> admin-and-review
   {{/if}}
   <!--
@@ -58,3 +71,10 @@
 
 
 </template>
+=======
+  {{else}}
+    <h1>Not Authorized to View Page</h1>
+  {{/if}}
+  {{/if}}
+</template>
+>>>>>>> event-db

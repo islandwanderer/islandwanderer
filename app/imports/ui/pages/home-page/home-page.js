@@ -5,35 +5,21 @@ import { _ } from 'meteor/underscore';
 import { Tags } from '/imports/api/tag/TagCollection';
 import { Events } from '/imports/api/event/EventCollection';
 
+
 const selectedTagsKey = 'selectedTags';
-// const events = Events.findDoc(FlowRouter.getParam('username'));
 
 Template.Home_Page.onCreated(function onCreated() {
   this.subscribe(Tags.getPublicationName());
   this.subscribe(Events.getPublicationName());
   this.messageFlags = new ReactiveDict();
-  this.messageFlags.set(selectedTagsKey, undefined);
+  this.messageFlags.set(selectedTagsKey, []);
 });
 
 Template.Home_Page.helpers({
   routeUserName() {
     return FlowRouter.getParam('username');
   },
-  routeEventName() {
-    return FlowRouter.getParam('eventName');
-  },
-  events() {
-    // Initialize selectedTags to all of them if messageFlags is undefined.
-    if (!Template.instance().messageFlags.get(selectedTagsKey)) {
-      Template.instance().messageFlags.set(selectedTagsKey, _.map(Tags.findAll(), tag => tag.name));
-    }
-    // Find all profiles with the currently selected interests.
-    const allEvents = Events.findAll();
-    const selectedTags = Template.instance().messageFlags.get(selectedTagsKey);
-    return _.filter(allEvents, event => _.intersection(event.tags, selectedTags).length > 0);
-  },
-
-  tags() {
+  eventTag() {
     return _.map(Tags.findAll(),
         function makeTagObject(tag) {
           return {
@@ -42,13 +28,19 @@ Template.Home_Page.helpers({
           };
         });
   },
+  events() {
+    // Find all events with the currently selected interests.
+    const foundEvents = Events.findAll();
+    const selectedTags = Template.instance().messageFlags.get(selectedTagsKey);
+    return _.filter(foundEvents, event => _.intersection(event.interests, selectedTags).length > 0);
+  },
 });
 
 Template.Home_Page.events({
   'submit .filter-data-form'(event, instance) {
     event.preventDefault();
-    const selectedOptions = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
-    instance.messageFlags.set(selectedTagsKey, _.map(selectedOptions, (option) => option.value));
+    const selectedOptionss = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
+    instance.messageFlags.set(selectedTagsKey, _.map(selectedOptionss, (option) => option.value));
   },
 });
 
