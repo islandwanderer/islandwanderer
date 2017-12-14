@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 // import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
 // import { Interests } from '/imports/api/interest/InterestCollection';
-// import { Roles } from 'meteor/alanning:roles';
+import { Roles } from 'meteor/alanning:roles';
 import { Events } from '/imports/api/event/EventCollection';
 import { Tags } from '/imports/api/tag/TagCollection';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
