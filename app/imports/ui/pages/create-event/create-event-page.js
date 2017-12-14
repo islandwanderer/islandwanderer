@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
+import { moment } from 'meteor/moment';
 import { Events } from '/imports/api/event/EventCollection';
 import { Tags } from '/imports/api/tag/TagCollection';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
@@ -31,10 +32,6 @@ Template.Create_Event_Page.helpers({
   maxPeoples() {
     return _.map(maxPeopleList, function makemeetupObject(maxPeople) { return { label: maxPeople }; });
   },
-  getUser(event) {
-    if (event.username === FlowRouter.getParam('username')) { return 1; }
-    return 0;
-  },
   eventTag() {
     return _.map(Tags.findAll(),
         function makeTagObject(tag) {
@@ -47,18 +44,23 @@ Template.Create_Event_Page.events({
   /* eslint max-len:0 */
   'submit .event-data-form'(event, instance) {
     event.preventDefault();
+    const username = FlowRouter.getParam('username');
     const eventName = event.target.eventName.value;
     const max = event.target.maxPeople.value;
     const eventLocation = event.target.eventLocation.value;
-    const username = FlowRouter.getParam('username'); // schema requires username.
     const additional = event.target.eventAdditional.value;
-    const eventStart = event.target.startDate.value + event.target.startTime.value;
-    const eventEnd = event.target.endDate.value + event.target.endTime.value;
+    const startDate = moment('event.target.startDate.value', 'YYY-MM-DD');
+    const startTime = moment('event.target.startTime.value', 'hh:mmA');
+    let eventStart = startDate + startTime;
+    eventStart = moment.format();
+    const endDate = moment('event.target.endDate.value', 'YYY-MM-DD');
+    const endTime = moment('event.target.endTime.value', 'hh:mmA');
+    let eventEnd = endDate + endTime;
+    eventEnd = moment.format();
     const selectedTags = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
     const tags = _.map(selectedTags, (option) => option.value);
-    // Events.insert({ $addToSet: { Events: creator } });
 
-    const createEventData = { eventName, max, eventLocation, additional, eventStart, eventEnd, tags, username };
+    const createEventData = { username, eventName, max, eventLocation, additional, eventStart, eventEnd, tags };
     //
     // Clear out any old validation errors.
     instance.context.reset();
