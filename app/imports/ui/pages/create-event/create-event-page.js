@@ -48,7 +48,6 @@ Template.Create_Event_Page.events({
   /* eslint max-len:0 */
   'submit .event-data-form'(event, instance) {
     event.preventDefault();
-    const creator = Profiles.FlowRouter.getParam('username');
     const name = event.target.eventName.value;
     const max = event.target.maxPeople.value;
     const location = event.target.eventLocation.value;
@@ -60,7 +59,7 @@ Template.Create_Event_Page.events({
     const tags = _.map(selectedTags, (option) => option.value);
     // Events.insert({ $addToSet: { Events: creator } });
 
-    const createEventData = { creator, name, max, location, additional, eventStart, eventEnd, tags, username };
+    const createEventData = {  name, max, location, additional, eventStart, eventEnd, tags, username };
     //
     // Clear out any old validation errors.
     instance.context.reset();

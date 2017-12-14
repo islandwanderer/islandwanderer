@@ -22,9 +22,6 @@ class EventCollection extends BaseCollection {
       username: {
         type: String,
       },
-      creator: {
-        type: String,
-      },
       eventName: {
         type: String,
       },
@@ -174,7 +171,6 @@ class EventCollection extends BaseCollection {
   dumpOne(docID) {
     const doc = this.findDoc(docID);
     const username = doc.username;
-    const creator = doc.creator;
     const name = doc.eventName;
     const max = doc.maxPeople;
     const start = doc.eventStart;
@@ -184,7 +180,7 @@ class EventCollection extends BaseCollection {
     const tags = doc.EventTags;
     const attending = doc.eventAttending;
 
-    return { username, creator, max, name, start, end, location, additional, tags, attending };
+    return { username, max, name, start, end, location, additional, tags, attending };
   }
 }
 

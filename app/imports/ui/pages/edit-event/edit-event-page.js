@@ -64,7 +64,6 @@ Template.Edit_Event_Page.events({
 /* eslint max-len:0 */
   'submit . event-data-form'(event, instance) {
     event.preventDefault();
-    const creator = Profiles.FlowRouter.getParam('username');
     const name = event.target.eventName.value;
     const max = event.target.maxPeople.value;
     const location = event.target.eventLocation.value;
@@ -75,7 +74,7 @@ Template.Edit_Event_Page.events({
     const selectedTags = _.filter(event.target.Tags.selectedOptions, (option) => option.selected);
     const tags = _.map(selectedTags, (option) => option.value);
 
-    const updatedEventData = { creator, name, max, location, additional, start, end, tags, username };
+    const updatedEventData = { name, max, location, additional, start, end, tags, username };
 
     // Clear out any old validation errors.
     instance.context.reset();
