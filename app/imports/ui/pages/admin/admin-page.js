@@ -1,15 +1,13 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
-// import { Meteor } from 'meteor/meteor';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Meteor } from 'meteor/meteor';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Tagss } from '/imports/api/tag/TagCollection';
 
 const selectedTagssKey = 'selectedTagss';
 
-// let userId = Meteor.userId();
-// Roles.addUsersToRoles( userId, [ 'admin', 'user' ] );
-// Roles.userIsInRole(Meteor.userID(), 'admin');
 
 Template.Admin_Page.onCreated(function onCreated() {
   this.subscribe(Tagss.getPublicationName());

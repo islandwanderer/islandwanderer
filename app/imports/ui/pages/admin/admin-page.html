@@ -1,14 +1,12 @@
 <template name="Admin_Page">
-  {{#if isInRole 'admin'}}
     {{#if Template.subscriptionsReady}}
-
       <div class="ui text container segment">
         <div style="text-align: center" class="ui dividing header">
           Administrator
         </div>
       </div>
 
-    {{/if}}
+
     <input style="width: 100%" type="text" name="search" placeholder="Add Administrator">
 
 
@@ -24,5 +22,6 @@
       </div>
     {{/if}}
   {{/if}}
+
 
 </template>
