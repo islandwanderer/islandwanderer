@@ -5,6 +5,7 @@ import { _ } from 'meteor/underscore';
 import { Tags } from '/imports/api/tag/TagCollection';
 import { Events } from '/imports/api/event/EventCollection';
 
+
 const selectedTagsKey = 'selectedTags';
 
 Template.Home_Page.onCreated(function onCreated() {
