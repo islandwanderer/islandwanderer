@@ -1,7 +1,8 @@
 <template name="Admin_Page">
 
-  {{#if isInRole 'admin'}}
+
 	{{#if Template.subscriptionsReady}}
+  {{#if isInRole 'admin'}}
 
       <div class="ui text container segment">
         <div style="text-align: center" class="ui dividing header">
