@@ -37,9 +37,6 @@ class EventCollection extends BaseCollection {
       eventLocation: {
         type: String,
       },
-      // meetupLocation: {
-      //   type: String,
-      // },
       eventAdditional: {
         type: String,
       },
@@ -78,8 +75,10 @@ class EventCollection extends BaseCollection {
    * @throws {Meteor.Error} If the event definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ username, eventName = '', eventStart = '', eventEnd = '', maxPeople = '', eventLocation = '', eventAdditional = '', eventTags = [], eventAttending = [] }) {
-    const checkPattern = { username: String, creator: String, eventName: String, maxPeople: String, eventLocation: String, eventAdditional: String, start: Date(), end: Date() };
+  define({ username, eventName = '', eventStart = '', eventEnd = '', maxPeople = '',
+           eventLocation = '', eventAdditional = '', eventTags = [], eventAttending = [] }) {
+    const checkPattern = { username: String, eventName: String, maxPeople: String,
+      eventLocation: String, eventAdditional: String, start: Date(), end: Date() };
     check({ username, eventName, maxPeople, eventLocation, eventAdditional, eventStart, eventEnd }, checkPattern);
 
     if (this.find({ eventName }).count() > 0) {
@@ -176,7 +175,7 @@ class EventCollection extends BaseCollection {
     const end = doc.eventEnd;
     const location = doc.eventLocation;
     const additional = doc.eventAdditional;
-    const tags = doc.EventTags;
+    const tags = doc.eventTags;
     const attending = doc.eventAttending;
 
     return { username, max, name, start, end, location, additional, tags, attending };
