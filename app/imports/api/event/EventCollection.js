@@ -23,7 +23,6 @@ class EventCollection extends BaseCollection {
         type: String,
       },
       creator: {
-<<<<<<< HEAD
         type: String,
       },
       eventName: {
@@ -56,56 +55,13 @@ class EventCollection extends BaseCollection {
       },
       eventAttending: {
         type: Array,
-        optional: true,
-=======
-        label: 'Creator',
-        type: String,
-      },
-      eventName: {
-        label: 'Name',
-        type: String,
-      },
-      maxPeople: {
-        label: 'Maximum number of peole',
-        type: String,
-        regEx: '^/d{3}',
-      },
-      eventStart: {
-        label: 'Start Date and Time',
-        type: String,
-      },
-      eventEnd: {
-        label: 'End Date and Time',
-        type: String,
-      },
-      eventLocation: {
-        label: 'Location',
-        type: String,
-      },
-      eventAdditional: {
-        label: 'Additional Information',
-        type: String,
-        optional: true,
-      },
-      eventTags: {
-        type: Array,
-        label: 'Tags',
-      },
-      'eventTags.$': { type: String },
-      eventAttending: {
-        type: Array,
         label: 'Attendees',
->>>>>>> admin-and-review
       },
       'eventAttending.$': { type: String },
     }, { tracker: Tracker }));
   }
 
-<<<<<<< HEAD
-  /* eslint max-len:0 */
-=======
 /* eslint max-len:0 */
->>>>>>> admin-and-review
   /** //eslint-disable-line max-len //eslint-disable-line max-len
    * Defines a new Event.
    * @example
@@ -125,32 +81,10 @@ class EventCollection extends BaseCollection {
    * @throws {Meteor.Error} If the event definition includes a defined name.
    * @returns The newly created docID.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
-  define({ creator, eventName, eventStart = new Date(), eventEnd = new Date(), maxPeople, eventLocation, meetupLocation, eventAdditional, eventTags = [], eventAttending = [] }) {
-    check(eventName, String);
-    check(eventLocation, String);
-    check(eventAdditional, String);
-    check(eventTags, String);
-=======
-  define({ creator = '', eventName = '', eventStart = new Date(), eventEnd = new Date(), maxPeople = '', eventLocation = '', eventAdditional = '', eventTags = [], eventAttending = [] }) {
-    // check eventStart and eventEnd
-    // convert sto Date() and back again to String()
-    // b/c calendar need string input
-    const start = new Date(eventStart);
-    const end = new Date(eventEnd);
-    const checkPattern = { creator: String, eventName: String, maxPeople: String, eventLocation: String, eventAdditional: String, start: Date(), end: Date() };
-    check({ creator, eventName, maxPeople, eventLocation, eventAdditional, start, end }, checkPattern);
-    // convert back to string
-    const eventStartstr = String(start);
-    const eventEndstr = String(end);
->>>>>>> admin-and-review
-=======
   define({ username, creator = '', eventName = '', eventStart = '', eventEnd = '', maxPeople = '', eventLocation = '', eventAdditional = '', eventTags = [], eventAttending = [] }) {
     const checkPattern = { username: String, creator: String, eventName: String, maxPeople: String, eventLocation: String, eventAdditional: String, start: Date(), end: Date() };
     check({ username, creator, eventName, maxPeople, eventLocation, eventAdditional, eventStart, eventEnd }, checkPattern);
 
->>>>>>> event-db
     if (this.find({ eventName }).count() > 0) {
       throw new Meteor.Error(`${eventName} is previously defined in another Event`);
     }
@@ -165,20 +99,9 @@ class EventCollection extends BaseCollection {
       creator,
       eventName,
       maxPeople,
-<<<<<<< HEAD
-<<<<<<< HEAD
       eventStart,
       eventEnd,
       eventLocation,
-      meetupLocation,
-=======
-      eventStartstr,
-      eventEndstr,
->>>>>>> admin-and-review
-=======
-      eventStart,
-      eventEnd,
->>>>>>> event-db
       eventAdditional,
       eventTags,
       eventAttending,
@@ -257,19 +180,11 @@ class EventCollection extends BaseCollection {
     const start = doc.eventStart;
     const end = doc.eventEnd;
     const location = doc.eventLocation;
-    const meetup = doc.meetupLocation;
     const additional = doc.eventAdditional;
     const tags = doc.EventTags;
     const attending = doc.eventAttending;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    return { creator, max, name, start, end, location, meetup, additional, tags, attending };
-=======
-    return { creator, max, name, start, end, location, additional, tags, attending };
->>>>>>> admin-and-review
-=======
+
     return { username, creator, max, name, start, end, location, additional, tags, attending };
->>>>>>> event-db
   }
 }
 

@@ -53,7 +53,7 @@ class ProfileCollection extends BaseCollection {
     const facebook = doc.facebook;
     const twitter = doc.twitter;
     const additional = doc.additional;
-    return { firstName, lastName, username, email, text, slack, facebook, twitter, picture, additional, };
+    return { firstName, lastName, username, email, text, slack, facebook, twitter, picture, additional };
   }
 
   /**
