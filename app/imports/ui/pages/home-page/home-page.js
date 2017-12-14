@@ -12,7 +12,7 @@ Template.Home_Page.onCreated(function onCreated() {
   this.subscribe(Tags.getPublicationName());
   this.subscribe(Events.getPublicationName());
   this.messageFlags = new ReactiveDict();
-  this.messageFlags.set(selectedTagsKey, undefined);
+  this.messageFlags.set(selectedTagsKey, []);
 });
 
 Template.Home_Page.helpers({
@@ -28,23 +28,11 @@ Template.Home_Page.helpers({
           };
         });
   },
-  eventing() {
-    if (!Template.instance().messageFlags.get(selectedTagsKey)) {
-      Template.instance().messageFlags.set(selectedTagsKey, _.map(Events.findAll(), oneEvent => oneEvent.eventName));
-    }
+  events() {
     // Find all events with the currently selected interests.
     const foundEvents = Events.findAll();
     const selectedTags = Template.instance().messageFlags.get(selectedTagsKey);
-<<<<<<< HEAD
     return _.filter(foundEvents, event => _.intersection(event.tags, selectedTags).length > 0);
-=======
-    const x = _.filter(foundEvents, function (oneEvent) {
-      return _.filter(selectedTags, function (tag) {
-        return oneEvent.eventName === tag;
-      });
-    });
-    return x;
->>>>>>> 894c9f612f47ecf69200a36d1d8f90377cd8a9ac
   },
 });
 

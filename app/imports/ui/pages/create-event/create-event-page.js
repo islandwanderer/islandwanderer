@@ -2,11 +2,7 @@ import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
-<<<<<<< HEAD
 import { moments } from 'moment';
-=======
-import { moment } from 'meteor/momentjs:moment';
->>>>>>> 894c9f612f47ecf69200a36d1d8f90377cd8a9ac
 import { Events } from '/imports/api/event/EventCollection';
 import { Tags } from '/imports/api/tag/TagCollection';
 import { Profiles } from '/imports/api/profile/ProfileCollection';

@@ -10,16 +10,18 @@
         </div>
       </div>
 
-  <div class="ui four cards results">
-    {{#each event in events}}
-    {{> Event_Card event=event }}
-    <div style="margin-top: 20px" class="ui cards">
-      <button class="ui primary button" type="submit">Remove Post</button>
-      <button class="ui primary button" type="submit">Give Feedback</button>
-      <button class="ui primary button" type="submit">Remove Tag</button>
-    </div>
-    {{/each}}
+  {{> Admin_Page_Directory profiles=profiles }}
+
+  {{#each event in events}}
+  {{> Event_Card event=event }}
+  {{/each}}
+
+  <div style="margin-top: 20px" class="ui cards">
+    <button class="ui primary button" type="submit">Remove Post</button>
+    <button class="ui primary button" type="submit">Give Feedback</button>
+    <button class="ui primary button" type="submit">Remove Tag</button>
   </div>
+
 
     {{#if displaySuccessMessage}}
     <div class="ui success message">
